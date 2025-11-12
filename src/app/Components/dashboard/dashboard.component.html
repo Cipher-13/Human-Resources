@@ -1,0 +1,46 @@
+<header class="header container-fluid py-3 bg-white">
+  <div class="row align-items-center justify-content-between g-0 mb-3">
+    <!-- Right side: Greeting -->
+    <section
+      class="welcoming col-md-6 d-flex align-items-center justify-content-md-start justify-content-center text-md-start text-center gap-2">
+      <h1 class="fw-bold mb-0">لوحة التحكم</h1>
+      <span class="greeting">👋 هلا والله محمود</span>
+    </section>
+
+    <!-- Left side: Company identity -->
+    <section class="identity col-md-6 d-flex align-items-center justify-content-md-end justify-content-center gap-3">
+      <div class="circle-avatar">
+        <img src="assets/images/KSA.png" alt="Avatar">
+      </div>
+
+      <div class="logo">
+        <img src="assets/images/header-logo.png" alt="Logo">
+        <h3 class="company-name mb-0">شركة آفاق السبل لتقنية المعلومات</h3>
+      </div>
+
+
+    </section>
+  </div>
+
+  <div class="row align-items-center justify-content-between  g-0 mb-3">
+    <div class="taps col-md-8 d-flex flex-wrap gap-2">
+      <button type="button" class="btn btn-outline-gradient">
+        الصفحة الرئيسية
+      </button>
+
+      <button type="button" class="btn btn-outline-saudi">
+        لوحة المعلومات السعودية
+      </button>
+
+      <button type="button" class="btn btn-outline-black">
+        <span>+</span>
+      </button>
+    </div>
+
+    <div
+      class="date-picker-container  col-md-6 d-flex align-items-center justify-content-md-end justify-content-center gap-3">
+      <input type="date" id="dateInput" class="form-control" [(ngModel)]="selectedDate">
+    </div>
+
+  </div>
+</header>

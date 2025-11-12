@@ -1,0 +1,237 @@
+.header {
+  background-color: #fff;
+  color: #000;
+  padding: 1rem 2rem;
+  transition: var(--transition);
+
+  .welcoming {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+
+    h1 {
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+    }
+
+    .greeting {
+      font-size: 25px;
+      color: #333;
+    }
+  }
+
+.identity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; // space between image and text
+    transition: transform 0.3s ease; // smooth hover for both
+
+    img {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .company-name {
+      font-size: 0.95rem;
+      color: #222;
+      font-weight: 600;
+      white-space: nowrap;
+      margin: 0; // remove default h3 margin
+    }
+
+    &:hover {
+      transform: scale(1.1); // scale both image and text together
+    }
+  }
+
+  .circle-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.3s ease; // smooth hover
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+
+
+  // الصف الثاني: الأزرار و Date Picker
+  .row + .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem; // لضمان التباعد الأفقي والعمودي متساوي
+  }
+
+  .taps {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    .btn-outline-gradient,
+    .btn-outline-saudi {
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
+      border: none;
+      border-radius: 0.375rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(8, 166, 148, 0.2) 0%,
+          #08a694 100%
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+    }
+
+    .btn-outline-gradient {
+      color: #08a694;
+    }
+
+    .btn-outline-gradient:hover {
+      background-color: #08a694;
+      color: white;
+    }
+
+    .btn-outline-saudi::before {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 107, 165, 0.2) 0%,
+        #006ba5 100%
+      );
+    }
+
+    .btn-outline-saudi {
+      color: #006ba5;
+    }
+
+    .btn-outline-saudi:hover {
+      background-color: #006ba5;
+      color: white;
+    }
+
+    .btn-outline-black {
+      border: 1px solid black;
+      background-color: transparent;
+      color: black;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-black:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .date-picker-container {
+    flex: 1; // يساوي مساحة الـ taps
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1rem; // يبعد عن الصف الأول بشكل متساوي
+
+    input[type="date"] {
+      border-radius: 8px;
+      border: 1px solid #024b44;
+      padding: 8px 12px;
+      color: #045b52;
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+
+      &:focus {
+        border-color: #06796e;
+        box-shadow: 0 0 5px rgba(6, 121, 110, 0.5);
+        outline: none;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(0.5);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// RESPONSIVE
+@each $break in 320,360,375,414,600,768,820,900,1024,1200,1366,1440 {
+  @media (max-width: #{$break}px) {
+    .header {
+      .welcoming {
+        flex-direction: column;
+        text-align: right;
+      }
+      .identity {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+
+        .circle-avatar {
+          width: 40px;
+          height: 40px;
+        }
+
+        .logo img {
+          height: 40px;
+        }
+
+        h3 {
+          font-size: 0.9rem;
+          text-align: center;
+        }
+      }
+
+      .taps {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .date-picker-container {
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

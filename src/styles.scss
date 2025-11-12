@@ -1,4 +1,7 @@
-  :root {
+@import "bootstrap/scss/bootstrap";
+
+
+:root {
   --clr-bg: #045b52;
   --clr-bg-dark: #024b44;
   --clr-text: #ffffff;
@@ -7,8 +10,24 @@
   --transition: all 0.3s ease-in-out;
 }
 
+@font-face {
+  font-family: 'Lyon Arabic Display';
+  src: url('assets/fonts/Lyon_Arabic_2/COMM\ -\ Lyon\ Arabic\ Display\ Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lyon Arabic Display';
+  src: url('assets/fonts/Lyon_Arabic_2/COMM\ -\ Lyon\ Arabic\ Display\ Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
   html, body {
     direction: rtl;
     text-align: right;
-    font-family: "Cairo", sans-serif;
+    font-family: lyon Arabic Display, sans-serif;
   }
+
