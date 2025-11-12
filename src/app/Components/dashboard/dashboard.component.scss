@@ -22,57 +22,55 @@
     }
   }
 
-.identity {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.75rem;
-
-  .logo {
+  .identity {
     display: flex;
     align-items: center;
-    gap: 0.5rem; // space between image and text
-    transition: transform 0.3s ease; // smooth hover for both
+    justify-content: flex-end;
+    gap: 0.75rem;
 
-    img {
-      height: 45px;
-      width: auto;
-      object-fit: contain;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+
+      img {
+        height: 45px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .company-name {
+        font-size: 0.95rem;
+        color: #222;
+        font-weight: 600;
+        white-space: nowrap;
+        margin: 0;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
-    .company-name {
-      font-size: 0.95rem;
-      color: #222;
-      font-weight: 600;
-      white-space: nowrap;
-      margin: 0; // remove default h3 margin
-    }
+    .circle-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: transform 0.3s ease;
 
-    &:hover {
-      transform: scale(1.1); // scale both image and text together
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
-
-  .circle-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    transition: transform 0.3s ease; // smooth hover
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-}
-
-
 
   // الصف الثاني: الأزرار و Date Picker
   .row + .row {
@@ -80,7 +78,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem; // لضمان التباعد الأفقي والعمودي متساوي
+    gap: 1rem;
   }
 
   .taps {
@@ -165,12 +163,12 @@
   }
 
   .date-picker-container {
-    flex: 1; // يساوي مساحة الـ taps
+    flex: 1;
     max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 1rem; // يبعد عن الصف الأول بشكل متساوي
+    margin-top: 1rem;
 
     input[type="date"] {
       border-radius: 8px;
@@ -194,14 +192,101 @@
   }
 }
 
+// زر طلب إجازة
+.stylish {
+  button {
+    border: none;
+    color: #045b52;
+    background-color: transparent;
+    border-radius: 8px;
+    font-weight: 300;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #08a694;
+      color: #fff;
+      border-color: #08a694;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(8, 166, 148, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+}
+
+// صف الكروت
+.cards {
+  display: flex;
+  gap: 30px;
+  align-items: stretch; // ✅ خلي الأعمدة متساوية الارتفاع
+}
+
+.types {
+  flex: 1;
+  padding: 28px 33px;
+  border-radius: 12px;
+  border: 1px solid rgb(185, 182, 182);
+
+  .dayOff {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.quests {
+  flex: 1;
+  display: flex;
+  align-items: stretch; // ✅ يخلي الكروت نفس الطول
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px; // ✅ added gap between quest elements
+}
+
+
+.pallette {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 1;
+  border-radius: 12px;
+  padding: 30px 40px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+
+  p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+    color: #333;
+
+    &:first-child {
+      font-size: 24px;
+    }
+  }
+
+  &:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-3px);
+  }
+}
+
 // RESPONSIVE
-@each $break in 320,360,375,414,600,768,820,900,1024,1200,1366,1440 {
+@each $break in 320, 360, 375, 414, 600, 768, 820, 900, 1024, 1200, 1366, 1440 {
   @media (max-width: #{$break}px) {
     .header {
       .welcoming {
         flex-direction: column;
         text-align: right;
       }
+
       .identity {
         flex-direction: column;
         justify-content: center;
@@ -232,6 +317,20 @@
         width: 100%;
         margin-top: 0.5rem;
       }
+    }
+
+    .cards {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .quests {
+      justify-content: center;
+    }
+
+    .pallette {
+      width: 100%;
+      max-width: 300px;
     }
   }
 }
