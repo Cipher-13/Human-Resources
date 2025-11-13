@@ -213,11 +213,11 @@
   }
 }
 
-// صف الكروت
 .cards {
   display: flex;
-  gap: 30px;
-  align-items: stretch; // ✅ خلي الأعمدة متساوية الارتفاع
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 .types {
@@ -306,17 +306,13 @@
   }
 }
 .team-card {
+  width: 95%;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid gray;
   padding: 1rem;
   text-align: center;
-  transition: all 0.3s ease-in-out;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  }
 
   .card-header {
     font-weight: 600;
@@ -348,8 +344,8 @@
 
   .card-section {
     width: 100%;
-    display: flex; // ✅ Add this
-    flex-direction: column; // ✅ stack items vertically
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
 
     h5 {

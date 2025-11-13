@@ -7,13 +7,15 @@ import { NavBarComponent } from './Shared/Components/nav-bar/nav-bar.component';
 import { SideBarComponent } from './Shared/Components/side-bar/side-bar.component';
 import { SharableModule } from './Shared/sharable/sharable.module';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { SaudiInfoComponent } from './Components/saudi-info/saudi-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     SideBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    SaudiInfoComponent
   ],
   imports: [
     BrowserModule,
