@@ -73,7 +73,7 @@
   }
 
   // الصف الثاني: الأزرار و Date Picker
-  .row + .row {
+  .row+.row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -107,11 +107,9 @@
         inset: 0;
         border-radius: inherit;
         padding: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(8, 166, 148, 0.2) 0%,
-          #08a694 100%
-        );
+        background: linear-gradient(90deg,
+            rgba(8, 166, 148, 0.2) 0%,
+            #08a694 100%);
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
           linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
@@ -129,11 +127,9 @@
     }
 
     .btn-outline-saudi::before {
-      background: linear-gradient(
-        90deg,
-        rgba(0, 107, 165, 0.2) 0%,
-        #006ba5 100%
-      );
+      background: linear-gradient(90deg,
+          rgba(0, 107, 165, 0.2) 0%,
+          #006ba5 100%);
     }
 
     .btn-outline-saudi {
@@ -243,7 +239,7 @@
   align-items: stretch; // ✅ يخلي الكروت نفس الطول
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px; // ✅ added gap between quest elements
+  gap: 10px; // ✅ added gap between quest elements
 }
 
 
@@ -278,8 +274,165 @@
   }
 }
 
+.person {
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  white-space: nowrap;
+  flex-direction: row;
+}
+
+
+
+
+.circled-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+  }
+}
+.team-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-header {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .card-body {
+    .progress {
+      height: 6px;
+      border-radius: 10px;
+    }
+
+    .date {
+      font-weight: 600;
+      margin-top: 0.5rem;
+      color: #555;
+    }
+  }
+}
+.art {
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .card-section {
+    width: 100%;
+    display: flex; // ✅ Add this
+    flex-direction: column; // ✅ stack items vertically
+    gap: 0.75rem;
+
+    h5 {
+      font-weight: 700;
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+
+    .person-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      transition: 0.2s;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .circled-avatar {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .text {
+          text-align: right;
+
+          p {
+            margin: 0;
+
+            &:first-child {
+              font-weight: 600;
+              color: #111;
+            }
+
+            &:last-child {
+              color: #999;
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        color: #555;
+      }
+    }
+  }
+}
+
+
+
+
 // RESPONSIVE
-@each $break in 320, 360, 375, 414, 600, 768, 820, 900, 1024, 1200, 1366, 1440 {
+@each $break in 320,
+360,
+375,
+414,
+600,
+768,
+820,
+900,
+1024,
+1200,
+1366,
+1440 {
   @media (max-width: #{$break}px) {
     .header {
       .welcoming {
