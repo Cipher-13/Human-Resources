@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{HttpClientModule} from '@angular/common/http'
 import { Router, RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [],
   imports: [

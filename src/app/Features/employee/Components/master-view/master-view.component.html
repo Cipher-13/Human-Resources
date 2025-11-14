@@ -1,0 +1,89 @@
+<header class="header container-fluid py-3 bg-white">
+
+  <!-- First Row: Greeting and Company Identity -->
+  <div class="row align-items-center justify-content-between g-0 mb-3">
+
+    <!-- Right side: Greeting -->
+    <section
+      class="welcoming col-md-6 d-flex align-items-center justify-content-md-start justify-content-center text-md-start text-center gap-2">
+      <h1 class="fw-bold mb-0">ادارة الموظفين</h1>
+    </section>
+
+    <!-- Left side: Company identity -->
+    <section
+      class="identity col-md-6 d-flex align-items-center justify-content-md-end justify-content-center gap-3">
+      <div class="circle-avatar">
+        <img src="assets/images/KSA.png" alt="Avatar" />
+      </div>
+
+      <div class="logo">
+        <img src="assets/images/header-logo.png" alt="Logo" />
+        <h3 class="company-name mb-0">شركة آفاق السبل لتقنية المعلومات</h3>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Second Row -->
+  <div class="row align-items-center justify-content-between g-0 mb-3">
+
+    <div class="taps d-flex flex-nowrap gap-2">
+
+      <button type="button" class="btn btn-outline-designing d-flex align-items-center gap-2" [routerLink]="'/em/view'">
+        <img src="assets/images/persona.png" alt="الملف الشخصي" class="btn-icon" />
+        <span>الملف الشخصي</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2" [routerLink]="'/em/view/bank-account'">
+        <img src="assets/images/banque.png" alt="الحساب البنكي" class="btn-icon" />
+        <span>الحساب البنكي</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2">
+        <img src="assets/images/emp-folder.png" alt="الملفات و العقود" class="btn-icon" />
+        <span>الملفات و العقود</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2">
+        <img src="assets/images/dollar.png" alt="الراتب و الحوافز" class="btn-icon" />
+        <span>الراتب و الحوافز</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2">
+        <img src="assets/images/clock.png" alt="ساعات العمل" class="btn-icon" />
+        <span>ساعات العمل</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-daysOff d-flex align-items-center gap-2">
+        <img src="assets/images/aero.png" alt="الإجازات" class="btn-icon" />
+        <span>الإجازات</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-customersServices d-flex align-items-center gap-2">
+        <img src="assets/images/inssurance.png" alt="التأمين الصحي" class="btn-icon" />
+        <span>التأمين الصحي</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-oath d-flex align-items-center gap-2">
+        <img src="assets/images/emp-breifcase.png" alt="العهد" class="btn-icon" />
+        <span>العهد</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-black d-flex align-items-center gap-2">
+        <img src="assets/images/pc.png" alt="المشاريع" class="btn-icon" />
+        <span>المشاريع</span>
+      </button>
+
+      <button type="button" class="btn btn-outline-customersServices d-flex align-items-center gap-2">
+        <img src="assets/images/warning.png" alt="إجراءات تأديبية" class="btn-icon" />
+        <span>إجراءات تأديبية</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+.profile {
+  gap: 25px;
+
+  p {
+    color: #878787;
+  }
+
+  .stylish {
+    color: black;
+  }
+
+  .emp-img img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+
+}
