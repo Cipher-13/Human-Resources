@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
 import { MasterViewComponent } from './Components/master-view/master-view.component';
 
-//4200/em/...
-const routes: Routes = [
+
+const routes: Routes = [ //4200/em/...
   { path: '', component: EmployeeComponent, title: 'Managing Employees' },
 
   {
