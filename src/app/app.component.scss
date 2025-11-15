@@ -1,7 +1,7 @@
 .layout {
   display: flex;
   flex-direction: row;
-  min-height: 88.5vh; /* default desktop */
+  min-height: 88.9vh; 
 }
 
 .sidebar {
@@ -9,6 +9,7 @@
   background-color: var(--clr-bg-dark);
   color: var(--clr-text);
   transition: var(--transition);
+
 }
 
 .main-content {
@@ -16,7 +17,6 @@
   padding: 1rem;
 }
 
-/* WIDTH + LAYOUT HEIGHT RESPONSIVE */
 @media (max-width: 1440px) {
   .sidebar { width: 80px; }
   .layout { min-height: 88vh; }
