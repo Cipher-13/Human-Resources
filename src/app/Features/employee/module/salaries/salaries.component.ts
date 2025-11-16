@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./salaries.component.scss']
 })
 export class SalariesComponent {
-
+ selectedDate: string = '';
 }
