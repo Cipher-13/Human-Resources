@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OffDaysRoutingModule } from './off-days-routing.module';
 import { OffDaysComponent } from './off-days.component';
+import { SharableModule } from 'src/app/Shared/sharable/sharable.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { OffDaysComponent } from './off-days.component';
   ],
   imports: [
     CommonModule,
+    SharableModule,
     OffDaysRoutingModule
   ]
 })

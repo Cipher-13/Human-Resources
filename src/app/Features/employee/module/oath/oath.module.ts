@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OathRoutingModule } from './oath-routing.module';
 import { OathComponent } from './oath.component';
+import { SharableModule } from 'src/app/Shared/sharable/sharable.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { OathComponent } from './oath.component';
   ],
   imports: [
     CommonModule,
+    SharableModule,
     OathRoutingModule
   ]
 })
