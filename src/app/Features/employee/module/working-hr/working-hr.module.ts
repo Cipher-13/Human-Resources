@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { WorkingHrRoutingModule } from './working-hr-routing.module';
 import { WorkingHrComponent } from './working-hr.component';
+import { SharableModule } from 'src/app/Shared/sharable/sharable.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { WorkingHrComponent } from './working-hr.component';
   ],
   imports: [
     CommonModule,
+    SharableModule,
     WorkingHrRoutingModule
   ]
 })

@@ -1,1 +1,45 @@
-<p>working-hr works!</p>
+  <div class="calendar-container container mt-4">
+    <!-- Header -->
+    <div
+      class="calendar-header d-flex justify-content-between align-items-center"
+    >
+      <div class="month-switcher d-flex align-items-center">
+        <button class="btn btn-light me-2">&lt;</button>
+        <h4 class="m-0">{{ currentMonthName }} {{ currentYear }}</h4>
+        <button class="btn btn-light ms-2">&gt;</button>
+      </div>
+      <div class="left-actions">
+        <input
+          type="date"
+          id="dateInput"
+          class="form-control"
+          style="max-width: 160px"
+          [(ngModel)]="selectedDate"
+        />
+
+        
+        <button class="btn btn-outline-designing">تحميل الجدول 📁</button>
+        <button class="btn btn-outline-gradient">تعديل ساعات العمل</button>
+        <button class="btn btn-outline-designing">إضافة حدث</button>
+      </div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar-grid mt-3">
+    
+      <div
+        class="day-box"
+        *ngFor="let day of calendarDays"
+        [class.empty]="day.empty"
+      >
+        <div class="day-number">{{ day.day }}</div>
+
+        <div class="events">
+          <div *ngFor="let ev of day.events" class="event" [ngClass]="ev.type">
+            <span>{{ ev.title }}</span>
+            <span class="time">{{ ev.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
