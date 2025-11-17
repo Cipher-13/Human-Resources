@@ -8,6 +8,7 @@ import { SideBarComponent } from './Shared/Components/side-bar/side-bar.componen
 import { SharableModule } from './Shared/sharable/sharable.module';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { SaudiInfoComponent } from './Components/saudi-info/saudi-info.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SaudiInfoComponent } from './Components/saudi-info/saudi-info.component
     BrowserModule,
     SharableModule,
     AppRoutingModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

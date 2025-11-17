@@ -1,82 +1,27 @@
 <div class="container">
   <div class="second">
     <div class="total">
-      <div class="card">
+      <!-- Cards Section -->
+      <div
+        class="card"
+        *ngFor="
+          let leave of [
+            { icon: '✈️', type: 'اجازات سنوية', days: '15/3 يوم' },
+            { icon: '🤒', type: 'اجازات مرضية', days: '10/5 يوم' },
+            { icon: '💰', type: 'اجازات بدون اجر', days: '15/8 يوم' },
+            { icon: '🚨', type: 'اجازات طارئة', days: '5/2 يوم' },
+            { icon: '🤵‍♂️', type: 'اجازات زواج', days: '5/2 يوم' },
+            { icon: '📘', type: 'اجازات دراسية', days: '5/2 يوم' },
+            { icon: '🥀', type: 'عطلات وفاة', days: '15/3 يوم' },
+            { icon: '📢', type: 'عطلات رسمية', days: '3 يوم' }
+          ]
+        "
+      >
         <div class="row-data">
-          <p class="icon">✈️</p>
+          <p class="icon">{{ leave.icon }}</p>
           <div class="d-flex flex-column txt">
-            <p>اجازات سنوية</p>
-            <p>15/3 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">🤒</p>
-          <div class="d-flex flex-column txt">
-            <p>اجازات مرضية</p>
-            <p>10/5 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">💰</p>
-          <div class="d-flex flex-column txt">
-            <p>اجازات بدون اجر</p>
-            <p>15/8 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">🚨</p>
-          <div class="d-flex flex-column txt">
-            <p>اجازات طارئة</p>
-            <p>5/2 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">🤵‍♂️</p>
-          <div class="d-flex flex-column txt">
-            <p>اجازات زواج</p>
-            <p>5/2 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">📘</p>
-          <div class="d-flex flex-column txt">
-            <p>اجازات دراسية</p>
-            <p>5/2 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">🥀</p>
-          <div class="d-flex flex-column txt">
-            <p>عطلات وفاة</p>
-            <p>15/3 يوم</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="row-data">
-          <p class="icon">📢</p>
-          <div class="d-flex flex-column txt">
-            <p>عطلات رسمية</p>
-            <p>3 يوم</p>
+            <p>{{ leave.type }}</p>
+            <p>{{ leave.days }}</p>
           </div>
         </div>
       </div>
@@ -87,7 +32,26 @@
   <div class="leave-table table-bordered container mt-4">
     <div class="d-flex justify-content-end align-items-center mb-3">
       <div class="d-flex align-items-center gap-2">
-        <button class="btn month-btn">شهر سبتمبر <span>📅</span></button>
+        <!-- Month & Date Picker -->
+        <div class="date-picker-wrapper">
+          <button class="date-button month-btn" (click)="picker.open()">
+            <span class="arrow">⌄</span>
+            <span class="text">{{ selectedMonthLabel }}</span>
+            📅
+          </button>
+
+          <mat-datepicker
+            #picker
+            startView="multi-year"
+            (monthSelected)="monthSelected($event, picker)"
+            (dateChange)="dateSelected($event)"
+          >
+          </mat-datepicker>
+
+          <input matInput [matDatepicker]="picker" hidden />
+        </div>
+
+        <!-- Add Leave Button -->
         <button class="btn btn-outline-gradient">إضافة إجازة +</button>
       </div>
     </div>
@@ -101,37 +65,58 @@
             <th>عدد الأيام</th>
             <th>الحالة</th>
             <th></th>
+            <th>الإجراءات</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>إجازة سنوية</td>
-            <td>٢٠٣٥ / ١١ / ٦</td>
-            <td>١</td>
-            <td><span class="status approved">تم الموافقة عليها</span></td>
-            <td></td>
-            <td><span class="delete-icon">✖</span></td>
-          </tr>
-
-          <tr>
-            <td>إجازة سنوية</td>
-            <td>٢٠٣٥ / ١١ / ٢٣</td>
-            <td>٢</td>
-            <td><span class="status rejected">مرفوضة</span></td>
-            <td></td>
-            <td><span class="delete-icon">✖</span></td>
-          </tr>
-
-          <tr>
-            <td>إجازة سنوية</td>
-            <td>٢٠٣٥ / ١١ / ٢٣</td>
-            <td>٢</td>
-            <td><span class="status pending">قيد المراجعة</span></td>
+          <tr
+            *ngFor="
+              let leave of [
+                {
+                  type: 'إجازة سنوية',
+                  date: '6 سبتمبر 2035',
+                  days: 1,
+                  status: 'approved'
+                },
+                {
+                  type: 'إجازة سنوية',
+                  date: '23 سبتمبر 2035',
+                  days: 2,
+                  status: 'rejected'
+                },
+                {
+                  type: 'إجازة سنوية',
+                  date: '23 سبتمبر 2035',
+                  days: 2,
+                  status: 'pending'
+                }
+              ]
+            "
+            [@fadeSlide]
+          >
+            <td>{{ leave.type }}</td>
+            <td>{{ leave.date }}</td>
+            <td>{{ leave.days }}</td>
             <td>
-              <button class="btn btn-outline-gradient">قبول الطلب ✓</button>
+              <span class="status {{ leave.status }}">
+                {{
+                  leave.status === "approved"
+                    ? "تم الموافقة عليها"
+                    : leave.status === "rejected"
+                    ? "مرفوضة"
+                    : "قيد المراجعة"
+                }}
+              </span>
             </td>
-            <td><span class="delete-icon">✖</span></td>
+            <td>
+              <ng-container *ngIf="leave.status === 'pending'">
+                <button class="btn btn-outline-gradient">قبول الطلب ✓</button>
+              </ng-container>
+            </td>
+            <td>
+              <span class="delete-icon">✖</span>
+            </td>
           </tr>
         </tbody>
       </table>
