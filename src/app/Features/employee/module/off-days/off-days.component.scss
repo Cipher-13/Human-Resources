@@ -1,6 +1,6 @@
 .second {
   padding: 10px;
-  border: 1px solid gray;    
+  border: 1px solid gray;
   border-radius: 10px;
 
   .total {
@@ -10,10 +10,10 @@
     margin-top: 1rem;
 
     .card {
-      background: #fff;
-      padding: 5px;
+      background: transparent !important;
+      padding: 0 !important;
+      border: none !important;
 
-      // flex row: icon + text
       .row-data {
         display: flex;
         align-items: center;
@@ -36,4 +36,114 @@
       }
     }
   }
+}
+
+/* ---------------- TABLE SECTION ---------------- */
+.leave-table {
+  .month-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 500;
+  }
+
+  .custom-table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    thead tr {
+      background: #f8f9fa;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    th {
+      padding: 14px;
+      color: #444;
+      font-size: 15px;
+    }
+
+    td {
+      padding: 16px;
+      font-size: 14px;
+      vertical-align: middle;
+      text-align: right;
+    }
+
+    .delete-icon {
+      color: red;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .status {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .approved {
+      background: #d6f5d6;
+      color: #108b10;
+      border: 1px solid #98e598;
+    }
+
+    .rejected {
+      background: #ffd6d6;
+      color: #c53030;
+      border: 1px solid #ff9c9c;
+    }
+
+    .pending {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffe68a;
+    }
+
+    .accept-btn {
+      background: #fff;
+      border: 1px solid #111;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ---------------- OUTLINE GRADIENT BUTTON (GLOBAL) ---------------- */
+.btn-outline-gradient {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-outline-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, rgba(128, 120, 121, 0.2) 0%, #807879 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.btn-outline-gradient {
+  color: black;
+}
+
+.btn-outline-gradient:hover {
+  background-color: gray;
+  color: white;
 }
