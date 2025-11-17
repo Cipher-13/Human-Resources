@@ -1,0 +1,39 @@
+.second {
+  padding: 10px;
+  border: 1px solid gray;    
+  border-radius: 10px;
+
+  .total {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .card {
+      background: #fff;
+      padding: 5px;
+
+      // flex row: icon + text
+      .row-data {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .icon {
+        font-size: 25px;
+      }
+
+      .txt {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+
+        p {
+          margin: 0;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
