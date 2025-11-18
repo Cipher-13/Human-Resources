@@ -3,6 +3,8 @@
   color: #000;
   padding: 1rem 2rem;
   transition: var(--transition);
+  overflow-x: hidden;
+
 
   .welcoming {
     display: flex;
