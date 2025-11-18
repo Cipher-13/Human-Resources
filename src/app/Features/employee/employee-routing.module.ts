@@ -14,21 +14,21 @@ const routes: Routes = [ //4200/employee/...
       {
         path: '', title: 'Employee Profile',
         loadChildren: () =>
-          import('./module/identity/identity.module').then(
+          import('./Modules/identity/identity.module').then(
             (m) => m.IdentityModule
           ),
       },
       {
         path: 'bank-account',title: 'Banking Account',
         loadChildren: () =>
-          import('./module/bank-account/bank-account.module').then(
+          import('./Modules/bank-account/bank-account.module').then(
             (m) => m.BankAccountModule
           ),
       },
       {
         path: 'contracts', title: 'Related Files & Contracts',
         loadChildren: () =>
-          import('./module/contracts/contracts.module').then(
+          import('./Modules/contracts/contracts.module').then(
             (m) => m.ContractsModule
           ),
       },
@@ -36,47 +36,47 @@ const routes: Routes = [ //4200/employee/...
        {
         path: 'salaries',  title: 'Salaries & Incentives',
         loadChildren: () =>
-          import('./module/salaries/salaries.module').then(
+          import('./Modules/salaries/salaries.module').then(
             (m) => m.SalariesModule
           ),
       },
       {
         path: 'working-hr', title: 'Duty Schedule',
         loadChildren: () =>
-          import('./module/working-hr/working-hr.module').then(
+          import('./Modules/working-hr/working-hr.module').then(
             (m) => m.WorkingHrModule
           ),
       },
       {
         path: 'offDays', title: 'Vacations',
         loadChildren: () =>
-          import('./module/off-days/off-days.module').then(
+          import('./Modules/off-days/off-days.module').then(
             (m) => m.OffDaysModule
           ),
       },
       {
         path: 'insurance', title: 'Health Insurance',
         loadChildren: () =>
-          import('./module/insurance/insurance.module').then(
+          import('./Modules/insurance/insurance.module').then(
             (m) => m.InsuranceModule
           ),
       },
       {
         path: 'cash-advance', title: 'Cash Custody',
         loadChildren: () =>
-          import('./module/oath/oath.module').then((m) => m.OathModule),
+          import('./Modules/oath/oath.module').then((m) => m.OathModule),
       },
       {
         path: 'projects', title: 'Assigned Projects',
         loadChildren: () =>
-          import('./module/projects/projects.module').then(
+          import('./Modules/projects/projects.module').then(
             (m) => m.ProjectsModule
           ),
       },
       {
         path: 'consequences',title:'Disciplinary actions',
         loadChildren: () =>
-          import('./module/consequences/consequences.module').then(
+          import('./Modules/consequences/consequences.module').then(
             (m) => m.ConsequencesModule
           ),
       },

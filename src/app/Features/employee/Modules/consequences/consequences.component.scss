@@ -117,3 +117,41 @@
   font-size: 20px;
   cursor: pointer;
 }
+/* ================================
+   Expand/Collapse Text in One Line
+   ================================ */
+
+.text-cell {
+  max-width: 350px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+/* --- النص المختصر: يظهر سطر واحد فقط --- */
+.short-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: opacity 0.25s ease;
+}
+
+.short-text.hidden {
+  display: none;
+}
+
+/* --- النص الكامل مع انيميشن --- */
+.full-text {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  padding: 0 6px;
+}
+
+.full-text.visible {
+  max-height: 500px;
+  opacity: 1;
+  padding-top: 8px;
+}
