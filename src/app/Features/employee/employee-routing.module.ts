@@ -4,8 +4,8 @@ import { EmployeeComponent } from './employee.component';
 import { MasterViewComponent } from './Components/master-view/master-view.component';
 
 
-const routes: Routes = [ //4200/em/...
-  { path: '', component: EmployeeComponent, title: 'Managing Employees' },
+const routes: Routes = [ //4200/employee/...
+  { path: '', component: EmployeeComponent, title: 'Employees Administration' },
 
   {
     path: 'view',
