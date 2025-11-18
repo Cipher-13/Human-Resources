@@ -38,17 +38,25 @@
       </button>
     </div>
 
-    <div
-      class="date-picker-container col-md-6 d-flex align-items-center justify-content-md-end justify-content-center gap-3"
-    >
-      <input
-        type="date"
-        id="dateInput"
-        class="form-control"
-        [(ngModel)]="selectedDate"
-      />
-    </div>
-  </div>
+    <!-- Month & Date Picker -->
+        <div class="date-picker-container">
+          <button class="date-button month-btn" (click)="picker.open()">
+            <span class="arrow">⌄</span>
+            <span class="text">{{ selectedMonthLabel }}</span>
+            📅
+          </button>
+
+          <mat-datepicker
+            #picker
+            startView="multi-year"
+            (monthSelected)="monthSelected($event, picker)"
+            (dateChange)="dateSelected($event)"
+          >
+          </mat-datepicker>
+
+          <input matInput [matDatepicker]="picker" hidden />
+        </div>
+ </div>
 </header>
 
 <div class="holidays container-fluid py-3">

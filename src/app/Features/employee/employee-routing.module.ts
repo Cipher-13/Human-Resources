@@ -62,7 +62,7 @@ const routes: Routes = [ //4200/em/...
           ),
       },
       {
-        path: 'oath', title: 'Oath',
+        path: 'cash-advance', title: 'Cash Custody',
         loadChildren: () =>
           import('./module/oath/oath.module').then((m) => m.OathModule),
       },

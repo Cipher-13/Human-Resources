@@ -13,6 +13,7 @@ thead .btn-outline-gradient p {
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
+
     thead {
       background: linear-gradient(90deg, #06796e, #045b52);
       color: #fff;
@@ -24,6 +25,13 @@ thead .btn-outline-gradient p {
         vertical-align: middle;
       }
 
+      .month-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 500;
+  }
       img {
         filter: brightness(0) invert(1);
         cursor: pointer;

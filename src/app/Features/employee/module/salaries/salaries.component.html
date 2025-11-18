@@ -8,14 +8,25 @@
         <th>عدد الساعات(ان وجد)</th>
     <th>
   <div class="d-flex align-items-center justify-content-end gap-3">
+        <!-- Month & Date Picker -->
+        <div class="date-picker-wrapper">
+          <button class="date-button month-btn" (click)="picker.open()">
+            <span class="arrow">⌄</span>
+            <span class="text">{{ selectedMonthLabel }}</span>
+            📅
+          </button>
 
-    <input
-      type="date"
-      id="dateInput"
-      class="form-control"
-      style="max-width: 160px"
-      [(ngModel)]="selectedDate"
-    />
+          <mat-datepicker
+            #picker
+            startView="multi-year"
+            (monthSelected)="monthSelected($event, picker)"
+            (dateChange)="dateSelected($event)"
+          >
+          </mat-datepicker>
+
+          <input matInput [matDatepicker]="picker" hidden />
+        </div>
+
 
     <button type="button" class="btn btn-outline-gradient">
       +

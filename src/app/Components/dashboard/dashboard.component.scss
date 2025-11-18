@@ -3,7 +3,19 @@
   color: #000;
   padding: 1rem 2rem;
   transition: var(--transition);
+   .row + .row {
+    flex-wrap: nowrap !important; // يمنع العناصر تنزل لتحت
+  }
 
+  .taps {
+    flex-wrap: nowrap !important; // يخلي الأزرار في سطر واحد
+  }
+
+  .date-picker-container {
+    margin-top: 0 !important;  // يشيل النزول للأسفل
+  }
+
+  
   .welcoming {
     display: flex;
     align-items: center;
@@ -20,6 +32,14 @@
       font-size: 25px;
       color: #333;
     }
+  }
+
+     .month-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 500;
   }
 
   .identity {
@@ -72,15 +92,7 @@
     }
   }
 
-  // الصف الثاني: الأزرار و Date Picker
-  .row+.row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
+ 
   .taps {
     flex: 1;
     display: flex;
