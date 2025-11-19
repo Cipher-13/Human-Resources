@@ -7,31 +7,49 @@
         <th>تاريخ الانتهاء</th>
         <th>اقتطاع</th>
         <th>الحالة</th>
-        <th><button type="button" class="btn btn-outline-gradient">
-        +
-          <span> اضافة تابع</span>
+
+        <!-- الأعمدة الفاضية -->
+        <th *ngFor="let c of emptyCols"></th>
+
+        <th>
+          <button type="button" class="btn btn-outline-gradient">
+            +
+            <span> اضافة تابع</span>
           </button>
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>تأمين صحي</td>
-        <td>6/11/2025</td>
-        <td>6/11/2026 </td>
-        <td>24$ </td>
-       <td>
-  <button type="button" class="btn-outline-green ">
-    ●
-فعال   </button>
-</td>
 
-        <td><button type="button" class="btn btn-outline-gradient">
+    <tbody>
+      <tr *ngFor="let item of projects">
+        <td>{{ item.name }}</td>
+        <td>{{ item.start }}</td>
+        <td>{{ item.end }}</td>
+        <td>{{ item.deduction }}</td>
+
+        <td>
+          <span
+            class="status-badge"
+            [ngClass]="{
+              completed: item.status === 'completed',
+              'in-progress': item.status === 'in-progress'
+            }"
+          >
+            {{ item.statusText }}
+            <span class="status-dot"></span>
+          </span>
+        </td>
+
+        <!-- أعمدة فارغة ديناميكية -->
+        <td *ngFor="let c of emptyCols"></td>
+
+        <td>
+          <button type="button" class="btn btn-outline-gradient">
             <img src="assets/images/report.png" alt class="btn-icon">
             <span> تعديل </span>
-          </button></td>
+          </button>
+        </td>
       </tr>
-
     </tbody>
   </table>
 </div>
@@ -40,17 +58,17 @@
   <ul class="pagination justify-content-start flex-row-reverse">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="السابق">
-        <span aria-hidden="true">&raquo;</span> <!-- سهم لليسار -->
+        <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
 
     <li class="page-item active">
-      <a class="page-link" href="#">٢</a> <!-- رقم بالعربي -->
+      <a class="page-link" href="#">٢</a>
     </li>
 
     <li class="page-item">
       <a class="page-link" href="#" aria-label="التالي">
-        <span aria-hidden="true">&laquo;</span> <!-- سهم لليمين -->
+        <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
   </ul>

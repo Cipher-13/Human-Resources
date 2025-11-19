@@ -19,7 +19,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ]
 })
 export class SalariesComponent {
- 
+
+  emptyColumns = Array(12).fill(null);
   selectedMonthLabel: string = "شهر سبتمبر";
   selectedDateLabel: string = "";
 

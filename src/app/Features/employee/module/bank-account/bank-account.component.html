@@ -3,45 +3,37 @@
     <thead class="table-header">
       <tr>
         <th>اسم البنك</th>
-        <th>الفرع </th>
+        <th>الفرع</th>
         <th>رقم الحساب البنكي</th>
         <th>الرقم الدولي للحساب البنكي</th>
-        <th>نسبة التحويل من الراتب </th>
-        <th><button type="button" class="btn btn-outline-gradient">
-        +  
-          <span> اضافة موظف</span>
+        <th>نسبة التحويل من الراتب</th>
+        <th>
+          <button type="button" class="btn btn-outline-gradient">
+            +
+            <span> اضافة موظف</span>
           </button>
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>CIB</td>
-        <td>الثورة</td>
-        <td>12345 </td>
-        <td>78945 </td>
-        <td>المرتب كامل</td>
-        <td><button type="button" class="btn btn-outline-gradient">
-            <img src="assets/images/report.png" alt class="btn-icon">
-            <span> تعديل </span>
-          </button></td>
-      </tr>
-      <tr>
-        <td>مصر</td>
-        <td>المعادي</td>
-        <td>78945 </td>
-        <td>123456 </td>
-        <td>المرتب كامل</td>
-        <td><button type="button" class="btn btn-outline-gradient">
-            <img src="assets/images/report.png" alt class="btn-icon">
-            <span> تعديل </span>
-          </button></td>
-      </tr>
 
+    <tbody>
+      <tr *ngFor="let bank of banks">
+        <td>{{ bank.name }}</td>
+        <td>{{ bank.branch }}</td>
+        <td>{{ bank.account }}</td>
+        <td>{{ bank.iban }}</td>
+        <td>{{ bank.salaryRate }}</td>
+
+        <td>
+          <button type="button" class="btn btn-outline-gradient" >
+            <img src="assets/images/report.png" alt class="btn-icon">
+            <span> تعديل </span>
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
-
 <nav aria-label="صفحات">
   <ul class="pagination justify-content-start flex-row-reverse">
     <li class="page-item">

@@ -1,22 +1,9 @@
 <div class="container">
   <div class="second">
     <div class="total">
+
       <!-- Cards Section -->
-      <div
-        class="card"
-        *ngFor="
-          let leave of [
-            { icon: '✈️', type: 'اجازات سنوية', days: '15/3 يوم' },
-            { icon: '🤒', type: 'اجازات مرضية', days: '10/5 يوم' },
-            { icon: '💰', type: 'اجازات بدون اجر', days: '15/8 يوم' },
-            { icon: '🚨', type: 'اجازات طارئة', days: '5/2 يوم' },
-            { icon: '🤵‍♂️', type: 'اجازات زواج', days: '5/2 يوم' },
-            { icon: '📘', type: 'اجازات دراسية', days: '5/2 يوم' },
-            { icon: '🥀', type: 'عطلات وفاة', days: '15/3 يوم' },
-            { icon: '📢', type: 'عطلات رسمية', days: '3 يوم' }
-          ]
-        "
-      >
+      <div class="card" *ngFor="let leave of leaveCards">
         <div class="row-data">
           <p class="icon">{{ leave.icon }}</p>
           <div class="d-flex flex-column txt">
@@ -25,12 +12,14 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
   <div class="leave-table table-bordered container mt-4">
     <div class="d-flex justify-content-end align-items-center mb-3">
       <div class="d-flex align-items-center gap-2">
+
         <!-- Month & Date Picker -->
         <div class="date-picker-wrapper">
           <button class="date-button month-btn" (click)="picker.open()">
@@ -43,15 +32,14 @@
             #picker
             startView="multi-year"
             (monthSelected)="monthSelected($event, picker)"
-            (dateChange)="dateSelected($event)"
-          >
+            (dateChange)="dateSelected($event)">
           </mat-datepicker>
 
           <input matInput [matDatepicker]="picker" hidden />
         </div>
 
-        <!-- Add Leave Button -->
         <button class="btn btn-outline-gradient">إضافة إجازة +</button>
+
       </div>
     </div>
 
@@ -64,61 +52,47 @@
             <th>عدد الأيام</th>
             <th>الحالة</th>
             <th></th>
+            <th></th>
             <th>الإجراءات</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr
-            *ngFor="
-              let leave of [
-                {
-                  type: 'إجازة سنوية',
-                  date: '6 سبتمبر 2035',
-                  days: 1,
-                  status: 'approved'
-                },
-                {
-                  type: 'إجازة سنوية',
-                  date: '23 سبتمبر 2035',
-                  days: 2,
-                  status: 'rejected'
-                },
-                {
-                  type: 'إجازة سنوية',
-                  date: '23 سبتمبر 2035',
-                  days: 2,
-                  status: 'pending'
-                }
-              ]
-            "
-            [@fadeSlide]
-          >
+          <tr *ngFor="let leave of leaveRows" [@fadeSlide]>
+
             <td>{{ leave.type }}</td>
             <td>{{ leave.date }}</td>
             <td>{{ leave.days }}</td>
+
             <td>
               <span class="status {{ leave.status }}">
                 {{
-                  leave.status === "approved"
-                    ? "تم الموافقة عليها"
-                    : leave.status === "rejected"
-                    ? "مرفوضة"
-                    : "قيد المراجعة"
+                  leave.status === 'approved'
+                    ? 'تم الموافقة عليها'
+                    : leave.status === 'rejected'
+                    ? 'مرفوضة'
+                    : 'قيد المراجعة'
                 }}
               </span>
             </td>
+
+            <td></td>
+
             <td>
               <ng-container *ngIf="leave.status === 'pending'">
                 <button class="btn btn-outline-gradient">قبول الطلب ✓</button>
               </ng-container>
             </td>
+
             <td>
               <span class="delete-icon">✖</span>
             </td>
+
           </tr>
         </tbody>
+
       </table>
     </div>
+
   </div>
 </div>

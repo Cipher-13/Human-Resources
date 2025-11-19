@@ -1,14 +1,22 @@
 <div class="table-container container mt-4">
   <table class="table table-striped table-hover align-middle text-center">
     <thead class="table-header">
-      <tr>
-        <th>اسم</th>
-        <th>القيمة</th>
-        <th>عدد الايام</th>
-        <th>عدد الساعات(ان وجد)</th>
+  <tr>
+    <th>اسم</th>
+    <th></th>
+    <th>القيمة</th>
+    <th></th>
+    <th>عدد الايام</th>
+    <th></th>
+    <th>عدد الساعات(ان وجد)</th>
+
+    <!-- 🔥 الأعمدة الفاضية الديناميكية -->
+    <th *ngFor="let c of emptyColumns"></th>
+
+    <!-- 🔥 عمود إضافة راتب ثابت -->
     <th>
-  <div class="d-flex align-items-center justify-content-end gap-3">
-        <!-- Month & Date Picker -->
+      <div class="d-flex align-items-center justify-content-end gap-3">
+
         <div class="date-picker-wrapper">
           <button class="date-button month-btn" (click)="picker.open()">
             <span class="arrow">⌄</span>
@@ -21,62 +29,79 @@
             startView="multi-year"
             (monthSelected)="monthSelected($event, picker)"
             (dateChange)="dateSelected($event)"
-          >
-          </mat-datepicker>
+          ></mat-datepicker>
 
           <input matInput [matDatepicker]="picker" hidden />
         </div>
 
-
-    <button type="button" class="btn btn-outline-gradient">
-      +
-      <span> اضافة راتب</span>
-    </button>
-
-  </div>
-</th>
+        <button type="button" class="btn btn-outline-gradient">
+          + <span> اضافة راتب</span>
+        </button>
+      </div>
+    </th>
   </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>الراتب الاساسي</td>
-        <td>24$</td>
-        <td>18 يوم</td>
-        <td>144 ساعة</td>
-        
-        <td>
-          <button type="button" class="btn btn-outline-gradient">
-            <img src="assets/images/report.png" alt class="btn-icon" />
-            <span> تعديل </span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>حوافز</td>
-        <td>24$</td>
-        <td>18 يوم</td>
-        <td>144 ساعة</td>
-        <td>
-          <button type="button" class="btn btn-outline-gradient">
-            <img src="assets/images/report.png" alt class="btn-icon" />
-            <span> تعديل </span>
-          </button>
-        </td>
-      </tr>
+</thead>
 
-      <tr>
-        <td>عمل اضافي</td>
-        <td>24$</td>
-        <td></td>
-        <td></td>
-        <td>
-          <button type="button" class="btn btn-outline-gradient">
-            <img src="assets/images/report.png" alt class="btn-icon" />
-            <span> تعديل </span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+    <tbody>
+  <tr>
+    <td>الراتب الاساسي</td>
+    <td></td>
+    <td>24$</td>
+    <td></td>
+    <td>18 يوم</td>
+    <td></td>
+    <td>144 ساعة</td>
+
+    <!-- 🔥 نفس عدد الأعمدة الفاضية ← محاذاة محسوبة -->
+    <td *ngFor="let c of emptyColumns"></td>
+
+    <td>
+      <button type="button" class="btn btn-outline-gradient">
+        <img src="assets/images/report.png" alt class="btn-icon" />
+        <span> تعديل </span>
+      </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>حوافز</td>
+    <td></td>
+    <td>24$</td>
+    <td></td>
+    <td>18 يوم</td>
+    <td></td>
+    <td>144 ساعة</td>
+
+    <td *ngFor="let c of emptyColumns"></td>
+
+    <td>
+      <button type="button" class="btn btn-outline-gradient">
+        <img src="assets/images/report.png" alt class="btn-icon" />
+        <span> تعديل </span>
+      </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>عمل اضافي</td>
+    <td></td>
+    <td>24$</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td *ngFor="let c of emptyColumns"></td>
+
+    <td>
+      <button type="button" class="btn btn-outline-gradient">
+        <img src="assets/images/report.png" alt class="btn-icon" />
+        <span> تعديل </span>
+      </button>
+    </td>
+  </tr>
+</tbody>
+
   </table>
 </div>
 

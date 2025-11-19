@@ -174,3 +174,41 @@
     }
   }
 }
+  .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 18px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 2px solid transparent;
+      width: fit-content;
+
+      .status-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+      }
+
+      &.completed {
+        background: #e9f8ec;         // خلفية خضراء باهتة
+        border-color: #1fa237;       // البوردر
+        color: #0f7a24;              // النص
+
+        .status-dot {
+          background: radial-gradient(circle, #3dd45a, #0f7a24);
+        }
+      }
+
+      &.in-progress {
+        background: #fff7d7;         // خلفية صفراء باهتة
+        border-color: #f1c232;       // البوردر
+        color: #c69000;              // النص
+
+        .status-dot {
+          background: radial-gradient(circle, #ffe97b, #e0b100);
+        }
+      }
+    }
+  
