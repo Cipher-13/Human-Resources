@@ -40,7 +40,7 @@ thead .btn-outline-gradient p {
       tr {
         transition: all 0.3s ease;
 
-        
+
 
         td {
           padding: 0.85rem;
@@ -72,7 +72,7 @@ thead .btn-outline-gradient p {
     .btn-outline-gradient {
       position: relative;
         color: #000 !important;  // الزرار يبقى أسود
-   
+
       z-index: 1;
       background-color: transparent;
       border: none;
@@ -136,5 +136,40 @@ thead .btn-outline-gradient p {
       pointer-events: none;
       background-color: #f8f9fa;
     }
+  }
+}
+.add-bank-modal {
+  width: 1216px;
+  max-width: 100%;
+  border-radius: 12px;
+  padding: 42px 50px;
+  background: #fff;
+
+  .modal-title {
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .form-select,
+  .form-control {
+    height: 48px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+  }
+
+  .confirm-btn {
+    width: 100%;
+    background-color: #004d40;
+    color: #fff;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    border: none;
   }
 }

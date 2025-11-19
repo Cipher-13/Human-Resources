@@ -8,11 +8,16 @@
         <th>الرقم الدولي للحساب البنكي</th>
         <th>نسبة التحويل من الراتب</th>
         <th>
-          <button type="button" class="btn btn-outline-gradient">
-            +
-            <span> اضافة موظف</span>
-          </button>
-        </th>
+          <button
+  type="button"
+  class="btn btn-outline-gradient"
+  data-bs-toggle="modal"
+  data-bs-target="#addBankAccountModal"
+>
+  +
+  <span> اضافة حساب بنكي</span>
+</button>
+</th>
       </tr>
     </thead>
 
@@ -34,6 +39,66 @@
     </tbody>
   </table>
 </div>
+
+<!-- Add Bank Account Modal -->
+<div class="modal fade" id="addBankAccountModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content add-bank-modal">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title">🏦 اضافة حساب بنكي</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="row g-4">
+
+          <div class="col-md-6">
+            <label class="form-label">الفرع</label>
+            <select class="form-select">
+              <option selected>الزيتون</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">البنك</label>
+            <select class="form-select">
+              <option selected>البنك الأهلي</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">الرقم الدولي للحساب البنكي</label>
+            <input type="text" class="form-control" placeholder="ادخل الرقم الدولي للحساب البنكي" />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">رقم الحساب البنكي</label>
+            <input type="text" class="form-control" placeholder="ادخل رقم الحساب البنكي" />
+          </div>
+
+          <div class="col-md-12">
+            <label class="form-label">نسبة تحويل الراتب</label>
+            <select class="form-select">
+              <option selected>تحويل كامل</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer border-0">
+        <button type="button" class="confirm-btn">تأكيد</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 <nav aria-label="صفحات">
   <ul class="pagination justify-content-start flex-row-reverse">
     <li class="page-item">
