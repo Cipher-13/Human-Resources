@@ -86,67 +86,32 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1001</td>
-        <td>2457896321</td>
-        <td [routerLink]="'/employee/view'">أحمد العتيبي</td>
-        <td>مهندس مدني</td>
-        <td>الرياض</td>
-        <td>الإنشاءات</td>
-        <td>الهندسة</td>
-        <td>مشروع الأبراج</td>
-        <td><span class="badge bg-success">لا إشعارات</span></td>
-        <td><i class="fa fa-ellipsis-v text-muted"></i></td>
-      </tr>
-      <tr>
-        <td>1002</td>
-        <td>2457854329</td>
-        <td [routerLink]="'/employee/view'">سعيد القحطاني</td>
-        <td>محاسب</td>
-        <td>جدة</td>
-        <td>المالية</td>
-        <td>الحسابات</td>
-        <td>مشروع الإسكان</td>
-        <td><span class="badge bg-warning text-dark">تنبيه واحد</span></td>
-        <td><i class="fa fa-ellipsis-v text-muted"></i></td>
-      </tr>
-      <tr>
-        <td>1003</td>
-        <td>2457841119</td>
-        <td [routerLink]="'/employee/view'">محمد الزهراني</td>
-        <td>فني كهرباء</td>
-        <td>الدمام</td>
-        <td>الصيانة</td>
-        <td>الكهرباء</td>
-        <td>مشروع الجسر</td>
-        <td><span class="badge bg-danger">3 إشعارات</span></td>
-        <td><i class="fa fa-ellipsis-v text-muted"></i></td>
-      </tr>
-      <tr>
-        <td>1004</td>
-        <td>2457815634</td>
-        <td [routerLink]="'/employee/view'">نورة الشهري</td>
-        <td>مصممة جرافيك</td>
-        <td>الخبر</td>
-        <td>التسويق</td>
-        <td>التصميم</td>
-        <td>مشروع الهوية الجديدة</td>
-        <td><span class="badge bg-success">لا إشعارات</span></td>
-        <td><i class="fa fa-ellipsis-v text-muted"></i></td>
-      </tr>
-      <tr>
-        <td>1005</td>
-        <td>2457892221</td>
-        <td [routerLink]="'/employee/view'">فهد الدوسري</td>
-        <td>مدير مشروع</td>
-        <td>مكة</td>
-        <td>الإدارة</td>
-        <td>المشاريع</td>
-        <td>مشروع الصيانة العامة</td>
-        <td><span class="badge bg-warning text-dark">تنبيه</span></td>
-        <td><i class="fa fa-ellipsis-v text-muted"></i></td>
-      </tr>
-    </tbody>
+  <tr *ngFor="let emp of employees">
+
+    <td>{{ emp.id }}</td>
+    <td>{{ emp.iqama }}</td>
+
+    <td class="employee-data" [routerLink]="'/employee/view'">
+      <img [src]="emp.image" alt="">
+      <span>خالد حسن</span>
+    </td>
+
+    <td>{{ emp.job }}</td>
+    <td>{{ emp.city }}</td>
+    <td>{{ emp.department }}</td>
+    <td>{{ emp.section }}</td>
+    <td>{{ emp.project }}</td>
+
+    <td>
+      <span [class]="getBadgeClass(emp.notifications)">
+        {{ getBadgeText(emp.notifications) }}
+      </span>
+    </td>
+
+    <td><i class="fa fa-ellipsis-v text-muted"></i></td>
+  </tr>
+</tbody>
+
   </table>
 </div>
 
@@ -166,6 +131,6 @@
       <a class="page-link" href="#" aria-label="التالي">
         <span aria-hidden="true">&laquo;</span> <!-- سهم لليمين -->
       </a>
-     </li>
+    </li>
   </ul>
 </nav>

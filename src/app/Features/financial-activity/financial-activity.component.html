@@ -24,11 +24,11 @@
   <div class="row align-items-center justify-content-between g-0 mb-3">
     <!-- Left: Buttons -->
     <div class="taps col-md-4 d-flex flex-wrap gap-2">
-      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2">
+      <button type="button" class="btn btn-outline-gradient d-flex align-items-center gap-2" [routerLink]="'/financial-activity'">
       💲
         <span>حركات الرواتب  </span>
       </button>
-      <button type="button" class="btn btn-outline-designing">
+      <button type="button" class="btn btn-outline-designing" [routerLink]="'/financial-activity/off-payroll'">
        💵
         <span> خارج حركة الرواتب </span>
       </button>
@@ -58,3 +58,5 @@
     </div>
   </div>
 </header>
+<router-outlet></router-outlet>
+

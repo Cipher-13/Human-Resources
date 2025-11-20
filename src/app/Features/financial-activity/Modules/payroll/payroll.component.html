@@ -1,0 +1,54 @@
+<section class="table-wrapper container-fluid mt-4">
+
+  <div class="custom-table table-responsive">
+    <table class="table mb-0">
+
+      <thead>
+        <tr>
+          <th>الرقم الوظيفي</th>
+          <th>اسم الموظف</th>
+          <th>نوع الحركة</th>
+          <th>اسم الحركة</th>
+          <th>المبلغ</th>
+          <th>التاريخ</th>
+          <th>الحالة</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let row of movements">
+          <td>{{ row.id }}</td>
+
+          <td class="employee-data">
+            <img [src]="row.image" alt="">
+            <span>{{ row.employeeName }}</span>
+          </td>
+
+          <td>{{ row.type }}</td>
+          <td>{{ row.movementName }}</td>
+          <td>{{ row.amount }}</td>
+          <td>{{ row.date }}</td>
+
+          <td class="status">{{ row.status }}</td>
+
+          <td>
+            <button class="btn btn-see" (click)="view(row)">👁 عرض</button>
+          </td>
+          <td>
+            <button class="btn btn-edit" (click)="edit(row)">📝 تعديل</button>
+          </td>
+          <td>
+            <button class="btn btn-delete" (click)="delete(row)">❌</button>
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+
+</section>
