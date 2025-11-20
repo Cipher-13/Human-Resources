@@ -34,10 +34,13 @@
           <input matInput [matDatepicker]="picker" hidden />
         </div>
 
-        <button type="button" class="btn btn-outline-gradient">
-          + <span> اضافة راتب</span>
-        </button>
-      </div>
+     <button type="button"
+        class="btn btn-outline-gradient"
+        data-bs-toggle="modal"
+        data-bs-target="#addSalaryModal">
+  + <span> اضافة راتب</span>
+</button>
+ </div>
     </th>
   </tr>
 </thead>

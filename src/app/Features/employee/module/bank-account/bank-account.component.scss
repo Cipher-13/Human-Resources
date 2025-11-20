@@ -173,3 +173,11 @@ thead .btn-outline-gradient p {
     border: none;
   }
 }
+.add-bank-modal .modal-header {
+  align-items: center; // يخلي العنوان والزرار على نفس الخط
+
+  .btn-close {
+    margin-left: 12px; // يزود مسافة بسيطة بين الزرار والطرف
+    padding: 0.6rem; // يضبط حجم مساحة الضغط (hitbox)
+    color: red;   }
+}
