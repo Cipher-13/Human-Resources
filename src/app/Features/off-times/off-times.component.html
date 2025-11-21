@@ -24,11 +24,11 @@
   <div class="row align-items-center justify-content-between g-0 mb-3">
     <!-- Left: Buttons -->
     <div class="taps col-md-4 d-flex flex-wrap gap-2">
-      <button type="button" class="btn btn-outline-daysOff d-flex align-items-center gap-2">
+      <button type="button" class="btn btn-outline-daysOff d-flex align-items-center gap-2"[routerLink]="'/off-times'">
         <img src="assets/images/aero.png" alt="قسم التسويق" class="btn-icon" />
         <span>ايام الاجازة </span>
       </button>
-      <button type="button" class="btn btn-outline-customersServices">
+      <button type="button" class="btn btn-outline-customersServices" [routerLink]="'/off-times/leaving-hrs'">
        ⏰
         <span> ساعة المغادرة</span>
       </button>
@@ -58,3 +58,4 @@
     </div>
   </div>
 </header>
+<router-outlet></router-outlet>
