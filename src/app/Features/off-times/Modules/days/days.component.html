@@ -1,1 +1,36 @@
-<p>days works!</p>
+<section class="table-wrapper container-fluid mt-4">
+  <div class="custom-table table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>الشهر</th>
+          <th>تاريخ الذهاب</th>
+          <th>تاريخ العودة</th>
+          <th>عدد الايام</th>
+          <th>الحالة</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of movements">
+          <td>سبتمبر2025</td>
+
+          <td >
+           الاحد سبتمبر 2025
+          </td>
+
+          <td>الثلاثاء 23 سبتمبر2025</td>
+          <td>4 ايام</td>
+
+          <td >اجازة من ادارة الموارد البشرية</td>
+
+          <td class="d-flex justify-content-end">
+            <button class="btn btn-see" (click)="view(row)">👁 عرض</button>
+            <button type="button" class="btn btn-delete" (click)="delete(row)">❌</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
