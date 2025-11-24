@@ -9,7 +9,19 @@ export class ReportsComponent {
 
   selectAll = false;
 
-  
+  settings = [
+  { label: 'إظهار تفاصيل الإجازات والمغادرات', value: true },
+  { label: 'إظهار تفاصيل العمل الإضافي', value: false },
+  { label: 'إظهار تفاصيل الدخل والخصم', value: false },
+  { label: 'إظهار السجلات المتكررة', value: true },
+
+  { label: 'إظهار تفاصيل الإجازات والمغادرات', value: true },
+  { label: 'إظهار تفاصيل العمل الإضافي', value: false },
+  { label: 'إظهار تفاصيل الدخل والخصم', value: false },
+  { label: 'إظهار السجلات المتكررة', value: true }
+];
+
+
 
   fieldsList = [
     { label: 'الرقم الوظيفي', checked: false },

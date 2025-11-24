@@ -19,13 +19,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-   
+
     //Angular-Material
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
- 
+
   ],
 
   exports: [
@@ -34,15 +34,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-  
+
     //Angular-Material
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
- 
-  
-  
+
+
+
   ],
 })
 export class SharableModule {}

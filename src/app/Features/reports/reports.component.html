@@ -20,14 +20,14 @@
     </section>
   </div>
 
-  <!-- Second Row: Buttons, Search Bar, Date Picker -->
+
 <!-- Second Row: Buttons, Titles -->
 <div class="row align-items-center justify-content-between g-0 mb-3 second-row">
 
   <!-- Left: Title + Paragraph -->
   <div class="col-md-6 d-flex flex-column">
     <h3 class="mb-1">اعمدة الملف</h3>
-    <p class="m-0">قم باختيار الاعمدة التي ترغب بعرضها في القائمة الرئيسة</p>
+    <p class="m-0 stylish">قم باختيار الاعمدة التي ترغب بعرضها في القائمة الرئيسة</p>
   </div>
 
   <!-- Right: Button -->
@@ -41,6 +41,7 @@
 </div>
 
 </header>
+
 <div class="columns-grid">
   <!-- Select All فوق الأعمدة -->
   <div class="grid-header">
@@ -71,3 +72,13 @@
   </div>
 </div>
 
+<div class="settings-grid" dir="rtl">
+  <div class="setting-item" *ngFor="let item of settings">
+    <label>{{ item.label }}</label>
+
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="item.value">
+      <span class="slider round"></span>
+    </label>
+  </div>
+</div>

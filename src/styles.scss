@@ -45,6 +45,26 @@ $HR-theme: mat.define-light-theme((
   --transition: all 0.3s ease-in-out;
 }
 
+/* ON Color */
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: var(--clr-bg) !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #ffffff !important;
+}
+
+/* OFF Color */
+.mat-slide-toggle .mat-slide-toggle-bar {
+  background-color: #cfcfcf !important;
+}
+
+.mat-slide-toggle .mat-slide-toggle-thumb {
+  background-color: #fafafa !important;
+}
+
+
+
 @font-face {
   font-family: 'Lyon Arabic Display';
   src: url('assets/fonts/Lyon_Arabic_2/COMM\ -\ Lyon\ Arabic\ Display\ Light.otf') format('opentype');
