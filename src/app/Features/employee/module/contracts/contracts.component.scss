@@ -82,5 +82,158 @@
 
 .stylish {
   color: black;
+
+}
+/* Modal */
+.figma-modal {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
+/* Header */
+.figma-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+}
+
+.figma-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.figma-close {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+   color: red;
+  transition: 0.25s ease;
+}
+
+.figma-close:hover {
+  color: #111827;
+}
+
+.figma-divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* Body */
+.figma-body {
+  padding: 28px;
+}
+
+.figma-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.figma-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.figma-field.full {
+  grid-column: 1 / -1;
+}
+
+.figma-field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.figma-field input,
+.figma-field select {
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding-inline: 14px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.25s ease;
+}
+
+.figma-field input:focus,
+.figma-field select:focus {
+  outline: none;
+  border-color: #0b5c52;
+  background: #ffffff;
+}
+
+/* Upload */
+.figma-upload {
+  position: relative;
+  height: 56px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px dashed #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.figma-upload:hover {
+  border-color: #0b5c52;
+  color: #0b5c52;
+}
+
+.figma-upload input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Footer */
+.figma-footer {
+  padding: 22px 28px 26px;
+}
+
+.figma-submit {
+  width: 100%;
+  height: 48px;
+  background: #0b5c52;
+  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.figma-submit:hover {
+  background: #094a42;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .figma-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .figma-header,
+  .figma-body,
+  .figma-footer {
+    padding: 20px;
+  }
+}

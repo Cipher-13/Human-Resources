@@ -232,4 +232,127 @@ thead .btn-outline-gradient p {
     }
 
   }
+  }
+  /* Modal */
+  .addSalaryModal {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Header */
+  .addSalaryModal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
 }
+
+
+  .addSalaryModal .modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+     flex: 1; 
+  }
+
+  .addSalaryModal .btn-close {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color: red;
+    transition: 0.25s ease;
+  }
+
+  .addSalaryModal .btn-close:hover {
+    color: #111827;
+  }
+
+  /* Body */
+  .addSalaryModal .modal-body {
+    padding: 28px;
+  }
+
+  .addSalaryModal .row.g-4 {
+    margin: 0 -12px;
+  }
+
+  .addSalaryModal .col-md-6,
+  .addSalaryModal .col-md-12 {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .addSalaryModal label.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .addSalaryModal input.form-control,
+  .addSalaryModal select.form-select {
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    padding-inline: 14px;
+    font-size: 14px;
+    background: #f9fafb;
+    transition: 0.25s ease;
+  }
+
+  .addSalaryModal input.form-control:focus,
+  .addSalaryModal select.form-select:focus {
+    outline: none;
+    border-color: #0b5c52;
+    background: #ffffff;
+  }
+
+  /* Footer */
+  .addSalaryModal .modal-footer {
+    padding: 22px 28px 26px;
+    border: 0;
+  }
+
+  .addSalaryModal .confirm-btn {
+    width: 100%;
+    height: 48px;
+    background: #0b5c52;
+    color: #ffffff;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .addSalaryModal .confirm-btn:hover {
+    background: #094a42;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .addSalaryModal .row.g-4 {
+      flex-direction: column;
+    }
+
+    .addSalaryModal .col-md-6,
+    .addSalaryModal .col-md-12 {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .addSalaryModal .modal-header,
+    .addSalaryModal .modal-body,
+    .addSalaryModal .modal-footer {
+      padding: 20px;
+    }
+  }

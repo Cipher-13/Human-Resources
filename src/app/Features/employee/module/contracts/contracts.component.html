@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between mb-3">
         <h3>ملفات العمل</h3>
         <div class="btns">
-          <button type="button" class="btn-outline-gradient">
+          <button type="button" class="btn-outline-gradient" data-bs-toggle="modal" data-bs-target="#addContractModal">
             <span class="stylish">➕</span>اضافة ملف
           </button>
         </div>
@@ -90,7 +90,8 @@
         <h3>عقود العمل</h3>
         <div class="btns">
           <div class="btns">
-            <button type="button" class="btn-outline-gradient">
+            <button type="button" class="btn-outline-gradient" data-bs-toggle="modal"
+              data-bs-target="#addContractModal">
               <span class="stylish">➕</span>اضافة عقد
             </button>
           </div>
@@ -125,3 +126,63 @@
     </div>
   </div>
 </div>
+
+ <div class="modal fade" id="addContractModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content figma-modal">
+
+        <div class="figma-header">
+          <div class="figma-title">
+            <span>📁</span>
+            <span>إضافة عقد / ملف</span>
+          </div>
+          <button class="figma-close" data-bs-dismiss="modal">✕</button>
+        </div>
+
+        <div class="figma-divider"></div>
+
+        <div class="figma-body">
+          <div class="figma-grid">
+
+            <div class="figma-field">
+              <label>الموظف</label>
+              <select>
+                <option>خالد حسن</option>
+                <option>أحمد علي</option>
+              </select>
+            </div>
+
+            <div class="figma-field">
+              <label>اسم الملف / العقد</label>
+              <input type="text" placeholder="عقد عمل">
+            </div>
+
+            <div class="figma-field">
+              <label>تاريخ البداية</label>
+              <input type="date">
+            </div>
+
+            <div class="figma-field">
+              <label>تاريخ النهاية</label>
+              <input type="date">
+            </div>
+
+            <div class="figma-field full">
+              <label>رفع العقد / الملف</label>
+              <div class="figma-upload">
+                <span>⬆</span>
+                <span>اضغط لرفع الملف</span>
+                <input type="file">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="figma-footer">
+          <button class="figma-submit">تأكيد</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
