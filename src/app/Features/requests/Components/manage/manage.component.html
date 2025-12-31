@@ -1,1 +1,48 @@
-<p>manage works!</p>
+<header class="header container-fluid py-3 bg-white">
+  <div class="row align-items-center g-0 mb-3 second-row">
+
+    <div class="search-wrapper">
+      <div class="search-bar">
+
+        <!-- Search icon -->
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+
+        <!-- Input -->
+        <input
+          type="text"
+          class="search-input"
+          [placeholder]="'البحث عن ' + selectedFilter"
+          [(ngModel)]="searchText"
+        />
+
+        <!-- Filter -->
+        <div class="filter-container" (click)="$event.stopPropagation()">
+          <span
+            class="icon filter"
+            (click)="toggleFilter()"
+          >
+            <i class="bi bi-sliders"></i>
+          </span>
+
+          <!-- Dropdown -->
+          <div
+            class="filter-dropdown"
+            *ngIf="isFilterOpen"
+          >
+            <div
+              class="filter-item"
+              *ngFor="let item of filters"
+              (click)="selectFilter(item)"
+            >
+              {{ item }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>

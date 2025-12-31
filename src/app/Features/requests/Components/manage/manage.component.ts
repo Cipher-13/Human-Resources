@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-manage',
@@ -7,4 +7,31 @@ import { Component } from '@angular/core';
 })
 export class ManageComponent {
 
+  searchText = '';
+  isFilterOpen = false;
+
+  filters = [
+    'طلب',
+    'عمل إضافي',
+    'إجازة',
+    'مغادرة',
+    'استقالة',
+    'سلفة'
+  ];
+
+  selectedFilter = 'طلب';
+
+  toggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
+  }
+
+  selectFilter(filter: string) {
+    this.selectedFilter = filter;
+    this.isFilterOpen = false;
+  }
+
+  @HostListener('document:click')
+  closeDropdown() {
+    this.isFilterOpen = false;
+  }
 }
