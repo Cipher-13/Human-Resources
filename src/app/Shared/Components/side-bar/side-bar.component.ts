@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class SideBarComponent {
 
+    isRequestsOpen = false;
+
+  toggleRequests() {
+    this.isRequestsOpen = !this.isRequestsOpen;
+  }
+
+  closeRequests() {
+    this.isRequestsOpen = false;
+  }
+
 }

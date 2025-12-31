@@ -11,6 +11,8 @@ const routes: Routes = [
    { path: 'off-times', loadChildren: () => import('./Features/off-times/off-times.module').then(m => m.OffTimesModule) },
    { path: 'reports', loadChildren: () => import('./Features/reports/reports.module').then(m => m.ReportsModule) },
    { path: 'forms', loadChildren: () => import('./Features/forms/forms.module').then(m => m.FormsModule) },
+   { path: 'settings', loadChildren: () => import('./Features/settings/settings.module').then(m => m.SettingsModule) },
+   { path: 'rqeuests', loadChildren: () => import('./Features/requests/requests.module').then(m => m.RequestsModule) },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

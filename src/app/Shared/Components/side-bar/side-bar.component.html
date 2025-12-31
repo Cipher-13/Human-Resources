@@ -1,31 +1,71 @@
 <nav class="sidebar">
   <div class="sidebar__nav">
-    <a  class="nav-icon" routerLink="dash" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <img src="assets/images/sideBar-home.png" alt="Home" >
+
+    <!-- باقي الايقونات -->
+    <a class="nav-icon" routerLink="dash" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <img src="assets/images/sideBar-home.png">
     </a>
-    <a  class="nav-icon" routerLink="employee" routerLinkActive="active" >
-      <img src="assets/images/sideBar-user.png" alt="User" >
+
+    <a class="nav-icon" routerLink="employee" routerLinkActive="active">
+      <img src="assets/images/sideBar-user.png">
     </a>
-    <a  class="nav-icon" routerLink="off-times" routerLinkActive="active">
-      <img src="assets/images/sideBar-clock.png" alt="Clock" >
+
+    <a class="nav-icon" routerLink="off-times" routerLinkActive="active">
+      <img src="assets/images/sideBar-clock.png">
     </a>
-    <a  class="nav-icon" routerLink="financial-activity" routerLinkActive="active" >
-      <img src="assets/images/sideBar-breifcase.png" alt="Briefcase" >
+
+    <a class="nav-icon" routerLink="financial-activity" routerLinkActive="active">
+      <img src="assets/images/sideBar-breifcase.png">
     </a>
-    <a  class="nav-icon" routerLink="forms" routerLinkActive="active" >
-      <img src="assets/images/sideBar-folder.png" alt="Folder" >
+
+    <a class="nav-icon" routerLink="forms" routerLinkActive="active">
+      <img src="assets/images/sideBar-folder.png">
     </a>
-    <a  class="nav-icon" routerLink="reports" routerLinkActive="active">
-      <img src="assets/images/sideBar-news.png" alt="News" >
+
+    <a class="nav-icon" routerLink="reports" routerLinkActive="active">
+      <img src="assets/images/sideBar-news.png">
     </a>
-    <a  class="nav-icon">
-      <img src="assets/images/sideBar-list.png" alt="List" >
+
+    <!--  Requests Icon -->
+    <a class="nav-icon" (click)="toggleRequests()">
+      <img src="assets/images/sideBar-list.png" alt="List">
     </a>
-    <a  class="nav-icon">
-      <img src="assets/images/sideBar-star.png" alt="Star" >
+
+    <!-- Overlay -->
+    <div
+      class="modal-overlay"
+      *ngIf="isRequestsOpen"
+      (click)="closeRequests()">
+    </div>
+
+    <!-- Requests Modal -->
+    <div
+      class="requests-modal"
+      [class.active]="isRequestsOpen">
+
+      <h3 class="modal-title">الطلبات</h3>
+
+      <div class="modal-section">
+        <span class="section-title">طلباتي</span>
+
+        <ul class="requests-list">
+          <li>إدارة الطلبات</li>
+          <li>طلب عمل إضافي</li>
+          <li>طلب إجازة</li>
+          <li>طلب مغادرة</li>
+          <li>طلب استقالة</li>
+          <li>طلب سلفة</li>
+        </ul>
+      </div>
+    </div>
+
+    <a class="nav-icon">
+      <img src="assets/images/sideBar-star.png">
     </a>
-    <a  class="nav-icon">
-      <img src="assets/images/sideBar-settings.png" alt="Settings" >
+
+    <a class="nav-icon" routerLink="settings" routerLinkActive="active">
+      <img src="assets/images/sideBar-settings.png">
     </a>
+
   </div>
 </nav>
