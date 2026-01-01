@@ -1,36 +1,28 @@
+<!-- HEADER -->
 <header class="header container-fluid py-3 bg-white">
   <div class="row align-items-center g-0 mb-3 second-row">
 
     <div class="search-wrapper">
       <div class="search-bar">
 
-        <!-- Search icon -->
         <span class="icon search">
           <i class="bi bi-search"></i>
         </span>
 
-        <!-- Input -->
         <input
           type="text"
           class="search-input"
           [placeholder]="'البحث عن ' + selectedFilter"
           [(ngModel)]="searchText"
+          (ngModelChange)="applyFilter()"
         />
 
-        <!-- Filter -->
         <div class="filter-container" (click)="$event.stopPropagation()">
-          <span
-            class="icon filter"
-            (click)="toggleFilter()"
-          >
+          <span class="icon filter" (click)="toggleFilter()">
             <i class="bi bi-sliders"></i>
           </span>
 
-          <!-- Dropdown -->
-          <div
-            class="filter-dropdown"
-            *ngIf="isFilterOpen"
-          >
+          <div class="filter-dropdown" *ngIf="isFilterOpen">
             <div
               class="filter-item"
               *ngFor="let item of filters"
@@ -46,3 +38,81 @@
 
   </div>
 </header>
+
+<!-- TABLE + PAGINATION -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z0 custom-table"
+    >
+      <ng-container matColumnDef="jobNumber">
+        <th mat-header-cell *matHeaderCellDef> الرقم الوظيفي </th>
+        <td mat-cell *matCellDef="let element">{{ element.jobNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="residenceNumber">
+        <th mat-header-cell *matHeaderCellDef> رقم الإقامة </th>
+        <td mat-cell *matCellDef="let element">{{ element.residenceNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="employeeName">
+        <th mat-header-cell *matHeaderCellDef> اسم الموظف </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="employee-cell">
+            <span>{{ element.employeeName }}</span>
+            <img [src]="element.avatar" class="avatar" />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="jobTitle">
+        <th mat-header-cell *matHeaderCellDef> الوظيفة </th>
+        <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="workLocation">
+        <th mat-header-cell *matHeaderCellDef> موقع العمل </th>
+        <td mat-cell *matCellDef="let element">{{ element.workLocation }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef> الدائرة </th>
+        <td mat-cell *matCellDef="let element">{{ element.department }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="section">
+        <th mat-header-cell *matHeaderCellDef> القسم </th>
+        <td mat-cell *matCellDef="let element">{{ element.section }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="request">
+        <th mat-header-cell *matHeaderCellDef> الطلب </th>
+        <td mat-cell *matCellDef="let element">{{ element.request }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> الحالة </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="status-badge" [ngClass]="element.statusClass">
+            {{ element.status }}
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-number">2</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>

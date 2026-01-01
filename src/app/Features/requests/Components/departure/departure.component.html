@@ -1,1 +1,118 @@
-<p>departure works!</p>
+<div class="request-page" dir="rtl">
+
+  <div class="request-container">
+    <!-- Section: Request For -->
+    <div class="form-section">
+      <h2 class="section-title">طلب ل *</h2>
+
+   <mat-form-field appearance="outline" class="custom-mat-select">
+  <mat-select placeholder="طلب ل" [(value)]="selectedTeam1">
+    <mat-option *ngFor="let team of teams" [value]="team.name">
+      <div class="option-content">
+        <div class="text-group">
+          <span class="main-text">{{ team.name }} </span>
+          <span class="sub-text">قائد ( {{ team.leader }} )</span>
+        </div>
+        <span class="number-box">{{ team.id }}</span>
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+
+<mat-form-field appearance="outline" class="custom-mat-select">
+  <mat-select placeholder="طلب ل" [(value)]="selectedTeam2">
+    <mat-option *ngFor="let team of teams" [value]="team.name">
+      <div class="option-content">
+        <div class="text-group">
+          <span class="main-text">{{ team.name }} </span>
+          <span class="sub-text">قائد ( {{ team.leader }} )</span>
+        </div>
+        <span class="number-box">{{ team.id }}</span>
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+    <!-- Section: Time -->
+   <div class="form-section">
+  <h2 class="section-title">وقت *</h2>
+  <div class="date-range-row">
+
+    <!-- Start Date -->
+    <mat-form-field appearance="outline" class="date-input-wrapper">
+      <input matInput [matDatepicker]="startPicker" placeholder="أكثر" [(ngModel)]="startDate" class="date-input">
+      <mat-datepicker-toggle matSuffix [for]="startPicker">
+        <mat-icon>calendar_today</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+
+    <span class="range-separator">إلى</span>
+
+    <!-- End Date -->
+    <mat-form-field appearance="outline" class="date-input-wrapper">
+      <input matInput [matDatepicker]="endPicker" placeholder="أكثر" [(ngModel)]="endDate" class="date-input">
+      <mat-datepicker-toggle matSuffix [for]="endPicker">
+        <mat-icon>calendar_today</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+</div>
+
+    <!-- Section: Extra Time Type -->
+    <div class="form-section">
+      <h2 class="section-title">نوع  المغادرة</h2>
+      <div class="option-list">
+        <div class="option-item">مغادرة بجون خصم (2 ساعتين) </div>
+        <div class="option-item">مغادرة بخصم (ازيد من ساعتين) </div>
+      </div>
+    </div>
+
+    <!-- Section: Total Hours -->
+    <div class="form-section">
+      <h2 class="section-title">مجموع الساعات</h2>
+      <div class="input-wrapper half-width">
+        <input type="text" value="10" class="styled-input readonly-style" readonly>
+      </div>
+    </div>
+
+    <!-- Section: Value -->
+    <div class="form-section">
+      <h2 class="section-title">القيمه</h2>
+      <div class="input-wrapper half-width">
+        <input type="text" value="0 $" class="styled-input readonly-style" readonly>
+      </div>
+    </div>
+
+    <!-- Section: Notes -->
+    <div class="form-section">
+      <h2 class="section-title">ملاحظات</h2>
+      <textarea class="styled-textarea"></textarea>
+    </div>
+
+    <!-- Section: Attachment -->
+    <div class="form-section">
+      <h2 class="section-title">الملف المرفق</h2>
+      <div class="upload-area">
+        <div class="upload-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0b5d4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <div class="upload-text">
+          <p class="main-upload-text">قم بإسقاط الملفات هنا أو <span>انقر للتحميل</span></p>
+          <p class="sub-upload-text">الصيغ المسموح بها: pdf, doc, docx, xls, xlsx, ppt, pptx, txt, csv, jpeg, png, gif, jpg, JPG, PNG, PDF, doc, zip</p>
+          <p class="limit-text">أن تكون الملفات 5 ميجابايت أو أقل</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button class="btn-submit">طلب</button>
+    </div>
+  </div>
+</div>
