@@ -1,8 +1,11 @@
 <nav class="sidebar">
   <div class="sidebar__nav">
 
-    <!-- باقي الايقونات -->
-    <a class="nav-icon" routerLink="dash" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <!-- Main Icons -->
+    <a class="nav-icon"
+       routerLink="dash"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }">
       <img src="assets/images/sideBar-home.png">
     </a>
 
@@ -26,42 +29,73 @@
       <img src="assets/images/sideBar-news.png">
     </a>
 
-    <!--  Requests Icon -->
+    <!-- Requests -->
     <a class="nav-icon" (click)="toggleRequests()">
-      <img src="assets/images/sideBar-list.png" alt="List">
+      <img src="assets/images/sideBar-list.png">
     </a>
 
-    <!-- Overlay -->
-    <div class="modal-overlay" *ngIf="isRequestsOpen" (click)="closeRequests()">
-    </div>
-
-    <!-- Requests Modal -->
-    <div class="requests-modal" [class.active]="isRequestsOpen">
-
-      <h3 class="modal-title">الطلبات</h3>
-
-      <div class="modal-section">
-        <span class="section-title">طلباتي</span>
-
-        <ul class="requests-list">
-          <li [routerLink]="'/requests/handle'" routerLinkActive="active">إدارة الطلبات</li>
-          <li [routerLink]="'/requests/overloading'" routerLinkActive="active">طلب عمل إضافي</li>
-          <li [routerLink]="'/requests/off'" routerLinkActive="active">طلب إجازة</li>
-          <li [routerLink]="'/requests/leave'" routerLinkActive="active">طلب مغادرة</li>
-          <li [routerLink]="'/requests/out'" routerLinkActive="active">طلب استقالة</li>
-          <li [routerLink]="'/requests/cash'" routerLinkActive="active">طلب سلفة</li>
-        </ul>
-
-      </div>
-    </div>
-
-    <a class="nav-icon">
+    <!-- Evaluations -->
+    <a class="nav-icon" (click)="toggleEvaluationsMenu()">
       <img src="assets/images/sideBar-star.png">
     </a>
 
-    <a class="nav-icon" routerLink="settings" routerLinkActive="active">
+    <!-- Settings -->
+    <a class="nav-icon" (click)="toggleSettingsMenu()">
       <img src="assets/images/sideBar-settings.png">
     </a>
 
   </div>
 </nav>
+
+<!-- Shared Overlay -->
+<div class="modal-overlay"
+     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen"
+     (click)="closeAll()">
+</div>
+
+<div class="requests-modal" [class.active]="isEvaluationsOpen">
+  <h3 class="modal-title">التقييمات</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/evaluations/categories" routerLinkActive="active" (click)="closeAll()">فئات مؤشر الأداء</li>
+      <li routerLink="/evaluations/indicators" routerLinkActive="active" (click)="closeAll()">مؤشرات الأداء</li>
+      <li routerLink="/evaluations/goal-types" routerLinkActive="active" (click)="closeAll()">أنواع الأهداف</li>
+      <li routerLink="/evaluations/employee-goals" routerLinkActive="active" (click)="closeAll()">أهداف الموظفين</li>
+      <li routerLink="/evaluations/review-cycles" routerLinkActive="active" (click)="closeAll()">دورات المراجعة</li>
+      <li routerLink="/evaluations/reviews" routerLinkActive="active" (click)="closeAll()">مراجعات الموظفين</li>
+    </ul>
+  </div>
+</div>
+
+<div class="requests-modal" [class.active]="isRequestsOpen">
+  <h3 class="modal-title">الطلبات</h3>
+
+  <div class="modal-section">
+    <span class="section-title">طلباتي</span>
+
+    <ul class="requests-list">
+      <li routerLink="/requests/handle" routerLinkActive="active" (click)="closeAll()">إدارة الطلبات</li>
+      <li routerLink="/requests/overloading" routerLinkActive="active" (click)="closeAll()">طلب عمل إضافي</li>
+      <li routerLink="/requests/off" routerLinkActive="active" (click)="closeAll()">طلب إجازة</li>
+      <li routerLink="/requests/leave" routerLinkActive="active" (click)="closeAll()">طلب مغادرة</li>
+      <li routerLink="/requests/out" routerLinkActive="active" (click)="closeAll()">طلب استقالة</li>
+      <li routerLink="/requests/cash" routerLinkActive="active" (click)="closeAll()">طلب سلفة</li>
+    </ul>
+  </div>
+</div>
+
+<div class="requests-modal" [class.active]="isSettingsOpen">
+  <h3 class="modal-title">الإعدادات</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/settings/info" routerLinkActive="active" (click)="closeAll()">معلومات الشركة</li>
+      <li routerLink="/settings/policy" routerLinkActive="active" (click)="closeAll()">النظام</li>
+      <li routerLink="/settings/accessibilities" routerLinkActive="active" (click)="closeAll()">الصلاحيات</li>
+      <li routerLink="/settings/trade-mark" routerLinkActive="active" (click)="closeAll()">علامة تجارية</li>
+      <li routerLink="/settings/email" routerLinkActive="active" (click)="closeAll()">البريد الإلكتروني</li>
+      <li routerLink="/settings/change-password" routerLinkActive="active" (click)="closeAll()">تغيير كلمة المرور</li>
+    </ul>
+  </div>
+</div>

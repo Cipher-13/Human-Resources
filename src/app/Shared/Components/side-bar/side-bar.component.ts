@@ -6,15 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-
-    isRequestsOpen = false;
+  isRequestsOpen = false;
+  isSettingsOpen = false;
+  isEvaluationsOpen = false;
 
   toggleRequests() {
-    this.isRequestsOpen = !this.isRequestsOpen;
+    this.closeAll();
+    this.isRequestsOpen = true;
   }
 
-  closeRequests() {
+  toggleSettingsMenu() {
+    this.closeAll();
+    this.isSettingsOpen = true;
+  }
+
+  toggleEvaluationsMenu() {
+    this.closeAll();
+    this.isEvaluationsOpen = true;
+  }
+
+  closeAll() {
     this.isRequestsOpen = false;
+    this.isSettingsOpen = false;
+    this.isEvaluationsOpen = false;
   }
-
 }

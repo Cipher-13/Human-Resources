@@ -13,6 +13,7 @@ const routes: Routes = [
    { path: 'forms', loadChildren: () => import('./Features/forms/forms.module').then(m => m.FormsModule) },
    { path: 'settings', loadChildren: () => import('./Features/settings/settings.module').then(m => m.SettingsModule) },
    { path: 'requests', loadChildren: () => import('./Features/requests/requests.module').then(m => m.RequestsModule) },
+   { path: 'evaluations', loadChildren: () => import('./Features/evaluations/evaluations.module').then(m => m.EvaluationsModule) },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

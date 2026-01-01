@@ -3,7 +3,7 @@
   background-color: var(--clr-bg-dark);
   color: var(--clr-text);
   padding: 1rem 0.5rem;
-  
+
   transition: var(--transition);
   display: flex;
   flex-direction: column;
@@ -152,6 +152,16 @@
 .requests-list li:hover {
   color: #0F766E;
 }
+
+.requests-modal {
+  transform: translateX(100%);
+  transition: 0.3s ease;
+}
+
+.requests-modal.active {
+  transform: translateX(0);
+}
+
 
 
 @media (max-width: 1440px) { .sidebar { width: 80px; } }
