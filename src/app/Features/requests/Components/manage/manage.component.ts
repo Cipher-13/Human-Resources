@@ -1,21 +1,8 @@
+import { Requests } from './../../../../Core/Interfaces/itable';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface TableElement {
-  jobNumber: string;
-  residenceNumber: string;
-  employeeName: string;
-  avatar: string;
-  jobTitle: string;
-  workLocation: string;
-  department: string;
-  section: string;
-  request: string;
-  status: string;
-  statusClass: string;
-}
-
-const ELEMENT_DATA: TableElement[] = [
+const ELEMENT_DATA: Requests[] = [
   {
     jobNumber: '1',
     residenceNumber: '2311421',
@@ -27,7 +14,7 @@ const ELEMENT_DATA: TableElement[] = [
     section: 'البرمجة',
     request: 'عمل إضافي',
     status: 'موافقة',
-    statusClass: 'status-approved'
+    statusClass: 'status-approved',
   },
   {
     jobNumber: '2',
@@ -40,7 +27,7 @@ const ELEMENT_DATA: TableElement[] = [
     section: 'Angular',
     request: 'إجازة',
     status: 'قيد المراجعة',
-    statusClass: 'status-pending'
+    statusClass: 'status-pending',
   },
   {
     jobNumber: '3',
@@ -53,7 +40,7 @@ const ELEMENT_DATA: TableElement[] = [
     section: 'API',
     request: 'استقالة',
     status: 'مرفوضة',
-    statusClass: 'status-rejected'
+    statusClass: 'status-rejected',
   },
   {
     jobNumber: '4',
@@ -66,7 +53,7 @@ const ELEMENT_DATA: TableElement[] = [
     section: 'IOS',
     request: 'إجازة',
     status: 'قيد المراجعة',
-    statusClass: 'status-pending'
+    statusClass: 'status-pending',
   },
   {
     jobNumber: '5',
@@ -77,30 +64,23 @@ const ELEMENT_DATA: TableElement[] = [
     workLocation: 'الفرع الثاني',
     department: 'البرمجة',
     section: 'React',
-    request: 'إجازة',
+    request: 'مغادرة',
     status: 'موافقة',
-    statusClass: 'status-approved'
+    statusClass: 'status-approved',
   },
 ];
 
 @Component({
   selector: 'app-manage',
   templateUrl: './manage.component.html',
-  styleUrls: ['./manage.component.scss']
+  styleUrls: ['./manage.component.scss'],
 })
 export class ManageComponent implements OnInit {
   searchText = '';
   selectedFilter = 'طلب';
   isFilterOpen = false;
 
-  filters = [
-    'طلب',
-    'عمل إضافي',
-    'إجازة',
-    'مغادرة',
-    'استقالة',
-    'سلفة'
-  ];
+  filters = ['طلب', 'عمل إضافي', 'إجازة', 'مغادرة', 'استقالة', 'سلفة'];
 
   displayedColumns: string[] = [
     'status',
@@ -111,13 +91,12 @@ export class ManageComponent implements OnInit {
     'jobTitle',
     'employeeName',
     'residenceNumber',
-    'jobNumber'
+    'jobNumber',
   ];
 
-  dataSource = new MatTableDataSource<TableElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Requests>(ELEMENT_DATA);
 
   ngOnInit() {
-    // اعكس ترتيب الأعمدة تلقائي
     this.displayedColumns = this.displayedColumns.reverse();
   }
 
@@ -135,21 +114,19 @@ export class ManageComponent implements OnInit {
     const search = this.searchText.trim().toLowerCase();
     const filter = this.selectedFilter;
 
-    this.dataSource.filterPredicate = (data: TableElement) => {
+    this.dataSource.filterPredicate = (data: Requests) => {
       if (filter === 'طلب') {
         return data.request.toLowerCase().includes(search);
       }
       return (
         data.request === filter &&
-        (
-          data.employeeName.toLowerCase().includes(search) ||
+        (data.employeeName.toLowerCase().includes(search) ||
           data.jobNumber.includes(search) ||
-          data.residenceNumber.includes(search)
-        )
+          data.residenceNumber.includes(search))
       );
     };
 
-    this.dataSource.filter = Math.random().toString(); // Trigger filter
+    this.dataSource.filter = Math.random().toString();
   }
 
   @HostListener('document:click')

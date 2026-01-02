@@ -1,1 +1,99 @@
-<p>emp-reviews works!</p>
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-3 second-row justify-content-between">
+
+    <div class="search-wrapper">
+      <div class="search-bar">
+
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+
+        <input
+          type="text"
+          class="search-input"
+          placeholder="البحث عن  مرجعات الموظفين"
+        />
+
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+
+      </div>
+    </div>
+
+    <button class="add-btn"> + اضافة   الجدول الزمني</button>
+
+  </div>
+</header>
+
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+  <thead>
+    <tr>
+      <th>الموظف</th>
+      <th>المراجع</th>
+      <th>دورة المراجعة</th>
+      <th>تاريخ المراجعة</th>
+      <th>الحالة</th>
+      <th>التصنيف</th>
+      <th>الإجراءات</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let element of dataSource">
+      <!-- الموظف -->
+      <td>{{ element.employeeName }}</td>
+
+      <!-- المراجع -->
+      <td>{{ element.reviewerName }}</td>
+
+      <!-- دورة المراجعة -->
+      <td>{{ element.reviewCycle }}</td>
+
+      <!-- تاريخ المراجعة -->
+      <td>{{ element.reviewDate | date: 'dd/MM/yyyy' }}</td>
+
+      <!-- الحالة -->
+      <td>
+        <span class="status-badge" [ngClass]="element.statusClass">
+          {{ element.status }}
+        </span>
+      </td>
+
+      <!-- التصنيف -->
+      <td>{{ element.category }}</td>
+
+      <!-- الإجراءات -->
+      <td>
+        <div class="actions">
+          <button class="action-btn delete" (click)="onDelete(element)">
+            <i class="bi bi-trash"></i>
+          </button>
+
+          <button class="action-btn edit" (click)="onEdit(element)">
+            <i class="bi bi-pencil"></i>
+          </button>
+
+          <button class="action-btn view" (click)="onView(element)">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
