@@ -3,25 +3,24 @@
 
     <div class="search-wrapper">
       <div class="search-bar">
-
         <span class="icon search">
           <i class="bi bi-search"></i>
         </span>
-
-        <input
-          type="text"
-          class="search-input"
-          placeholder="البحث عن  هدف"
-        />
-
+        <input type="text" class="search-input" placeholder="البحث عن دورة مراجعة" />
         <span class="icon filter">
           <i class="bi bi-sliders"></i>
         </span>
-
       </div>
     </div>
 
-    <button class="add-btn"> + اضافة   دورة مراجعة</button>
+    <button
+      class="add-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#reviewCycleModal"
+      (click)="onAddClick()"
+    >
+      + اضافة دورة مراجعة
+    </button>
 
   </div>
 </header>
@@ -32,8 +31,8 @@
         <tr>
           <th>الاسم</th>
           <th>التكرار</th>
-          <th>وصف </th>
-          <th>انشاء ف </th>
+          <th>وصف</th>
+          <th>انشاء ف</th>
           <th>الحالة</th>
           <th>الاجرائات</th>
         </tr>
@@ -41,19 +40,76 @@
 
       <tbody>
         <tr *ngFor="let element of dataSource">
+          <td>{{ element.name }}</td>
+          <td>{{ element.name }}</td>
+          <td>{{ element.description || '-' }}</td>
+          <td>{{ element.createdAt | date:'yyyy/MM/dd' }}</td>
+          <td>
+            <span [ngClass]="element.statusClass">
+              {{ element.status }}
+            </span>
+          </td>
+          <td>
+            <button (click)="onView(element)">👁</button>
+            <button (click)="onEdit(element)">✏️</button>
+            <button (click)="onDelete(element)">🗑</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 
-  <!-- PAGINATION -->
-  <div class="pagination-container">
-    <div class="pagination-right">تنقل بين الصفحات</div>
-    <div class="pagination-left">
-      <button class="nav-btn">→</button>
-      <span class="page-number">1</span>
-      <button class="nav-btn">←</button>
+
+<div class="modal fade" id="reviewCycleModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content p-4">
+
+      <div class="modal-header d-flex justify-content-between border-0 pb-0">
+        <h5 class="modal-title fw-bold">إضافة دورة مراجعة جديدة</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <form [formGroup]="reviewForm">
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">اسم الدورة</label>
+            <input type="text" formControlName="name" class="form-control custom-input">
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">التكرار</label>
+            <select formControlName="name" class="form-select custom-input">
+              <option value="شهري">شهري</option>
+              <option value="ربع سنوي">ربع سنوي</option>
+              <option value="سنوي">سنوي</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">وصف</label>
+            <textarea formControlName="description" class="form-control custom-input"></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الحالة</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="نشط">نشط</option>
+              <option value="غير نشط">غير نشط</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-start gap-3 pt-0">
+        <button class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
+        <button class="btn btn-save px-5 py-2" (click)="saveReviewCycle()">حفظ</button>
+      </div>
+
     </div>
   </div>
 </div>
-

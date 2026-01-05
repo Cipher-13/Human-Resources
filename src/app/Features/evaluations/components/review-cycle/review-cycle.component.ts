@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ratings } from 'src/app/Core/Interfaces/itable';
 
-const ELEMENT_DATA: Ratings[] = [];
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-review-cycle',
@@ -9,20 +10,46 @@ const ELEMENT_DATA: Ratings[] = [];
   styleUrls: ['./review-cycle.component.scss']
 })
 export class ReviewCycleComponent {
-  dataSource: Ratings[] = ELEMENT_DATA;
 
-  ngOnInit(): void {}
+  dataSource: Ratings[] = [];
+  reviewForm: FormGroup;
 
-  onView(row: Ratings) {
-    console.log('View', row);
+  constructor(private fb: FormBuilder) {
+    this.reviewForm = this.fb.group({
+      name: ['', Validators.required],
+      frequency: ['', Validators.required],
+      description: [''],
+      status: ['نشط']
+    });
   }
 
-  onEdit(row: Ratings) {
-    console.log('Edit', row);
+  onAddClick() {
+    this.reviewForm.reset({ status: 'نشط' });
   }
 
-  onDelete(row: Ratings) {
-    console.log('Delete', row);
+  saveReviewCycle() {
+    if (this.reviewForm.invalid) {
+      this.reviewForm.markAllAsTouched();
+      return;
+    }
+
+    const newCycle: Ratings = {
+      ...this.reviewForm.value,
+      statusClass:
+        this.reviewForm.value.status === 'نشط'
+          ? 'status-approved'
+          : 'status-rejected',
+      createdAt: new Date()
+    };
+
+    this.dataSource = [...this.dataSource, newCycle];
+
+    bootstrap.Modal.getInstance(
+      document.getElementById('reviewCycleModal')
+    )?.hide();
   }
 
+  onView(row: Ratings) {}
+  onEdit(row: Ratings) {}
+  onDelete(row: Ratings) {}
 }

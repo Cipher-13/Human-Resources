@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ratings } from 'src/app/Core/Interfaces/itable';
 
+// Declare Bootstrap for modal manipulation
+declare var bootstrap: any;
 
 const ELEMENT_DATA: Ratings[] = [
   {
@@ -31,8 +34,8 @@ const ELEMENT_DATA: Ratings[] = [
   templateUrl: './targets-types.component.html',
   styleUrls: ['./targets-types.component.scss']
 })
-export class TargetsTypesComponent {
-displayedColumns: string[] = [
+export class TargetsTypesComponent implements OnInit {
+  displayedColumns: string[] = [
     'name',
     'description',
     'status',
@@ -40,10 +43,45 @@ displayedColumns: string[] = [
     'actions'
   ];
 
-  // Now it's just a plain array, not MatTableDataSource
   dataSource: Ratings[] = ELEMENT_DATA;
+  targetTypeForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.targetTypeForm = this.fb.group({
+      name: ['', Validators.required],
+      description: [''],
+      status: ['نشط']
+    });
+  }
 
   ngOnInit(): void {}
+
+  onAddClick() {
+    this.targetTypeForm.reset({ status: 'نشط' });
+  }
+
+  saveTargetType() {
+    if (this.targetTypeForm.valid) {
+      const newTargetType: Ratings = {
+        ...this.targetTypeForm.value,
+        statusClass: this.targetTypeForm.value.status === 'نشط' ? 'status-approved' : 'status-rejected',
+        createdAt: new Date()
+      };
+
+      this.dataSource = [...this.dataSource, newTargetType];
+
+      // Close modal using Bootstrap API
+      const modalElement = document.getElementById('addTargetTypeModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+
+      console.log('Target Type saved:', newTargetType);
+    } else {
+      this.targetTypeForm.markAllAsTouched();
+    }
+  }
 
   onView(row: Ratings) {
     console.log('View', row);
@@ -56,6 +94,4 @@ displayedColumns: string[] = [
   onDelete(row: Ratings) {
     console.log('Delete', row);
   }
-
-
 }

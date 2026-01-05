@@ -1,35 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Review } from './../../../../Core/Interfaces/itable';
 
-const ELEMENT_DATA: Review[] = [
-  {
-    employeeName: 'عمر أحمد',
-    reviewerName: 'أحمد هارون',
-    reviewCycle: 'التقييم السنوي',
-    reviewDate: new Date('2025-10-20'),
-    status: 'نشط',
-    statusClass: 'status-approved',
-    category: 'تقييم أداء عام'
-  },
-  {
-    employeeName: 'عمر أحمد',
-    reviewerName: 'أحمد هارون',
-    reviewCycle: 'التقييم السنوي',
-    reviewDate: new Date('2025-10-20'),
-    status: 'غير نشط',
-    statusClass: 'status-rejected',
-    category: 'تقييم أداء عام'
-  },
-  {
-    employeeName: 'عمر أحمد',
-    reviewerName: 'أحمد هارون',
-    reviewCycle: 'التقييم السنوي',
-    reviewDate: new Date('2025-10-20'),
-    status: 'نشط',
-    statusClass: 'status-approved',
-    category: 'تقييم أداء عام'
-  }
-];
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-emp-reviews',
@@ -37,27 +10,47 @@ const ELEMENT_DATA: Review[] = [
   styleUrls: ['./emp-reviews.component.scss']
 })
 export class EmpReviewsComponent {
-displayedColumns: string[] = [
-    'name',
-    'description',
-    'status',
-    'createdAt',
-    'actions'
-  ];
 
-  // Now it's just a plain array, not MatTableDataSource
-  dataSource: Review[] = ELEMENT_DATA;
+  dataSource: Review[] = [];
+  reviewForm: FormGroup;
 
-  ngOnInit(): void {}
-
-  onView(row: Review) {
-    console.log('View', row);
+  constructor(private fb: FormBuilder) {
+    this.reviewForm = this.fb.group({
+      employeeName: ['', Validators.required],
+      reviewerName: ['', Validators.required],
+      reviewCycle: ['', Validators.required],
+      reviewDate: ['', Validators.required],
+      category: ['', Validators.required],
+      status: ['المقرر']
+    });
   }
 
-  onEdit(row: Review) {
-    console.log('Edit', row);
+  onAddClick() {
+    this.reviewForm.reset({ status: 'المقرر' });
   }
 
-  onDelete(row: Review) {
-    console.log('Delete', row);
-  }}
+  saveReview() {
+    if (this.reviewForm.invalid) {
+      this.reviewForm.markAllAsTouched();
+      return;
+    }
+
+    const newReview: Review = {
+      ...this.reviewForm.value,
+      statusClass:
+        this.reviewForm.value.status === 'المقرر'
+          ? 'status-approved'
+          : 'status-rejected'
+    };
+
+    this.dataSource = [...this.dataSource, newReview];
+
+    bootstrap.Modal.getInstance(
+      document.getElementById('empReviewModal')
+    )?.hide();
+  }
+
+  onView(row: Review) {}
+  onEdit(row: Review) {}
+  onDelete(row: Review) {}
+}

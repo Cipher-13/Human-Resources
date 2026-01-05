@@ -3,87 +3,72 @@
 
     <div class="search-wrapper">
       <div class="search-bar">
-
         <span class="icon search">
           <i class="bi bi-search"></i>
         </span>
-
-        <input
-          type="text"
-          class="search-input"
-          placeholder="البحث عن  مرجعات الموظفين"
-        />
-
+        <input type="text" class="search-input" placeholder="البحث عن مرجعات الموظفين" />
         <span class="icon filter">
           <i class="bi bi-sliders"></i>
         </span>
-
       </div>
     </div>
 
-    <button class="add-btn"> + اضافة   الجدول الزمني</button>
+    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#empReviewModal" (click)="onAddClick()">
+      + اضافة الجدول الزمني
+    </button>
 
   </div>
 </header>
 
+
 <div class="table-wrapper">
   <div class="table-container">
     <table class="custom-table">
-  <thead>
-    <tr>
-      <th>الموظف</th>
-      <th>المراجع</th>
-      <th>دورة المراجعة</th>
-      <th>تاريخ المراجعة</th>
-      <th>الحالة</th>
-      <th>التصنيف</th>
-      <th>الإجراءات</th>
-    </tr>
-  </thead>
+      <thead>
+        <tr>
+          <th>الموظف</th>
+          <th>المراجع</th>
+          <th>دورة المراجعة</th>
+          <th>تاريخ المراجعة</th>
+          <th>الحالة</th>
+          <th>التصنيف</th>
+          <th>الإجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of dataSource">
 
-  <tbody>
-    <tr *ngFor="let element of dataSource">
-      <!-- الموظف -->
-      <td>{{ element.employeeName }}</td>
+          <td>{{ element.employeeName }}</td>
+          <td>{{ element.reviewerName }}</td>
+          <td>{{ element.reviewCycle }}</td>
+          <td>{{ element.reviewDate | date:'dd/MM/yyyy' }}</td>
 
-      <!-- المراجع -->
-      <td>{{ element.reviewerName }}</td>
+          <td>
+            <span class="status-badge" [ngClass]="element.statusClass">
+              {{ element.status }}
+            </span>
+          </td>
 
-      <!-- دورة المراجعة -->
-      <td>{{ element.reviewCycle }}</td>
+          <td>{{ element.category }}</td>
 
-      <!-- تاريخ المراجعة -->
-      <td>{{ element.reviewDate | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <div class="actions">
+              <button class="action-btn delete" (click)="onDelete(element)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <button class="action-btn edit" (click)="onEdit(element)">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="action-btn view" (click)="onView(element)">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </td>
 
-      <!-- الحالة -->
-      <td>
-        <span class="status-badge" [ngClass]="element.statusClass">
-          {{ element.status }}
-        </span>
-      </td>
+        </tr>
+      </tbody>
 
-      <!-- التصنيف -->
-      <td>{{ element.category }}</td>
-
-      <!-- الإجراءات -->
-      <td>
-        <div class="actions">
-          <button class="action-btn delete" (click)="onDelete(element)">
-            <i class="bi bi-trash"></i>
-          </button>
-
-          <button class="action-btn edit" (click)="onEdit(element)">
-            <i class="bi bi-pencil"></i>
-          </button>
-
-          <button class="action-btn view" (click)="onView(element)">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    </table>
 
   </div>
 
@@ -94,6 +79,62 @@
       <button class="nav-btn">→</button>
       <span class="page-number">1</span>
       <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="empReviewModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content p-4">
+
+      <div class="modal-header d-flex justify-content-between border-0 pb-0">
+        <h5 class="modal-title fw-bold">إضافة مراجعة موظف</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <form [formGroup]="reviewForm">
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الموظف</label>
+            <input type="text" formControlName="employeeName" class="form-control custom-input">
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">دورة المراجعة</label>
+            <input type="text" formControlName="reviewCycle" class="form-control custom-input">
+          </div>
+
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">المراجع</label>
+            <input type="text" formControlName="reviewerName" class="form-control custom-input">
+          </div>
+
+
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">تاريخ المراجعة</label>
+            <input type="date" formControlName="reviewDate" class="form-control custom-input">
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الحالة</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="المقرر">نشط</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-start gap-3 pt-0">
+        <button class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
+        <button class="btn btn-save px-5 py-2" (click)="saveReview()">حفظ</button>
+      </div>
+
     </div>
   </div>
 </div>

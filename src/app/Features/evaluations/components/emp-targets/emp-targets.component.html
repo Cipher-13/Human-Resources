@@ -3,28 +3,28 @@
 
     <div class="search-wrapper">
       <div class="search-bar">
-
         <span class="icon search">
           <i class="bi bi-search"></i>
         </span>
-
-        <input
-          type="text"
-          class="search-input"
-          placeholder="البحث عن  هدف"
-        />
-
+        <input type="text" class="search-input" placeholder="البحث عن  هدف" />
         <span class="icon filter">
           <i class="bi bi-sliders"></i>
         </span>
-
       </div>
     </div>
 
-    <button class="add-btn"> + اضافة   هدف</button>
+    <button
+      class="add-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#addCategoryModal"
+      (click)="onAddClick()"
+    >
+      + اضافة هدف
+    </button>
 
   </div>
 </header>
+
 <div class="table-wrapper">
   <div class="table-container">
     <table class="custom-table">
@@ -42,18 +42,121 @@
 
       <tbody>
         <tr *ngFor="let element of dataSource">
+          <td>{{ element.name }}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>
+            <span [ngClass]="element.statusClass">
+              {{ element.status }}
+            </span>
+          </td>
+          <td>{{ element.createdAt | date:'yyyy/MM/dd' }}</td>
+          <td>
+            <button (click)="onView(element)">👁</button>
+            <button (click)="onEdit(element)">✏️</button>
+            <button (click)="onDelete(element)">🗑</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 
-  <!-- PAGINATION -->
-  <div class="pagination-container">
-    <div class="pagination-right">تنقل بين الصفحات</div>
-    <div class="pagination-left">
-      <button class="nav-btn">→</button>
-      <span class="page-number">1</span>
-      <button class="nav-btn">←</button>
+<div class="modal fade" id="addCategoryModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content p-4">
+
+      <div class="modal-header d-flex justify-content-between border-0 pb-0 ">
+        <h5 class="modal-title fw-bold">إضافة هدف موظف جديد</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <form [formGroup]="empTargets">
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الموظف</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="نشط">نشط</option>
+              <option value="غير نشط">غير نشط</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">نوع الهدف</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="نشط">نشط</option>
+              <option value="غير نشط">غير نشط</option>
+            </select>
+          </div>
+
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">عنوان الهدف</label>
+            <input type="text" formControlName="name" class="form-control custom-input">
+            <div *ngIf="empTargets.get('name')?.touched && empTargets.get('name')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">وصف</label>
+            <textarea formControlName="description" class="form-control custom-input"></textarea>
+          </div>
+
+
+                      <div class="mb-4">
+            <label class="form-label fw-semibold"> تاريخ البدء</label>
+            <input type="date" formControlName="name" class="form-control custom-input">
+            <div *ngIf="empTargets.get('name')?.touched && empTargets.get('name')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+
+                      <div class="mb-4">
+            <label class="form-label fw-semibold"> تاريخ الانتهاء</label>
+            <input type="date" formControlName="name" class="form-control custom-input">
+            <div *ngIf="empTargets.get('name')?.touched && empTargets.get('name')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+            <div class="mb-4">
+            <label class="form-label fw-semibold"> الهدف</label>
+            <input type="text" formControlName="name" class="form-control custom-input">
+            <div *ngIf="empTargets.get('name')?.touched && empTargets.get('name')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+
+            <div class="mb-4">
+            <label class="form-label fw-semibold"> التقدم %</label>
+            <input type="number" formControlName="name" class="form-control custom-input">
+            <div *ngIf="empTargets.get('name')?.touched && empTargets.get('name')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الحاله</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="نشط">نشط</option>
+              <option value="غير نشط">غير نشط</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-start gap-3 pt-0">
+        <button class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
+        <button class="btn btn-save px-5 py-2" (click)="saveCategory()">حفظ</button>
+      </div>
+
     </div>
   </div>
 </div>

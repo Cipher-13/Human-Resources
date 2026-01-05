@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ratings } from './../../../../Core/Interfaces/itable';
+
+// Declare Bootstrap for modal manipulation if needed via JS
+declare var bootstrap: any;
 
 const ELEMENT_DATA: Ratings[] = [
   {
@@ -31,7 +35,6 @@ const ELEMENT_DATA: Ratings[] = [
   styleUrls: ['./progress-categories.component.scss']
 })
 export class ProgressCategoriesComponent implements OnInit {
-
   displayedColumns: string[] = [
     'name',
     'description',
@@ -40,10 +43,42 @@ export class ProgressCategoriesComponent implements OnInit {
     'actions'
   ];
 
-  // Now it's just a plain array, not MatTableDataSource
   dataSource: Ratings[] = ELEMENT_DATA;
+  categoryForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.categoryForm = this.fb.group({
+      name: ['', Validators.required],
+      description: [''],
+      status: ['نشط']
+    });
+  }
 
   ngOnInit(): void {}
+
+  onAddClick() {
+    this.categoryForm.reset({ status: 'نشط' });
+  }
+
+  saveCategory() {
+    if (this.categoryForm.valid) {
+      const newCategory: Ratings = {
+        ...this.categoryForm.value,
+        statusClass: this.categoryForm.value.status === 'نشط' ? 'status-approved' : 'status-rejected',
+        createdAt: new Date()
+      };
+
+      this.dataSource = [...this.dataSource, newCategory];
+
+      const modalElement = document.getElementById('addCategoryModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      modalInstance.hide();
+
+      console.log('Category saved:', newCategory);
+    } else {
+      this.categoryForm.markAllAsTouched();
+    }
+  }
 
   onView(row: Ratings) {
     console.log('View', row);
