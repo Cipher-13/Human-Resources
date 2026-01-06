@@ -7,6 +7,7 @@ import { ChoosenPlanComponent } from './Components/choosen-plan/choosen-plan.com
 import { PlanPrerequisitesComponent } from './Components/plan-prerequisites/plan-prerequisites.component';
 import { PlanPolicyComponent } from './Components/plan-policy/plan-policy.component';
 import { SharableModule } from 'src/app/Shared/sharable/sharable.module';
+import { AdvertismentComponent } from './Components/advertisment/advertisment.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharableModule } from 'src/app/Shared/sharable/sharable.module';
     PlansComponent,
     ChoosenPlanComponent,
     PlanPrerequisitesComponent,
-    PlanPolicyComponent
+    PlanPolicyComponent,
+    AdvertismentComponent
   ],
   imports: [
     CommonModule,

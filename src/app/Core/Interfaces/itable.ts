@@ -21,6 +21,29 @@ export interface Ratings {
 }
 
 
+export interface Requirements{
+  name: string;
+  email: string;
+  planName: string;
+  planDuration: 'شهري' | 'سنوي';
+  status: 'pending' | 'approved' | 'rejected';
+  requestedAt: Date;
+}
+
+export interface OrderPolicy {
+  orderName: string;
+  orderDate: Date;
+  userName: string;
+  planName: string;
+  originalPrice: number;
+  couponCode?: string;
+  discount: number;
+  finalPrice: number;
+  status: 'pending' | 'paid' | 'cancelled';
+}
+
+
+
 export interface Review {
   employeeName: string;      // الموظف
   reviewerName: string;      // المراجع

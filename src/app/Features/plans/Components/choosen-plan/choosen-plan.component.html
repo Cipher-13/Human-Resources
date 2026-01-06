@@ -1,1 +1,91 @@
-<p>choosen-plan works!</p>
+<div class="pricing-container">
+
+  <div class="se d-flex justify-content-between align-items-baseline ">
+ <div class="title">اختر خططك</div>
+  <!-- Billing Toggle -->
+  <div class="billing-toggle">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="save-badge">وفر 20%</span>
+    
+      <button class="toggle-btn" [class.active]="isAnnual" (click)="isAnnual = true">
+        سنوياً
+      </button>
+     </div>
+   <button class="toggle-btn" [class.active]="!isAnnual" (click)="isAnnual = false">
+      شهرياً
+    </button>
+
+  </div>
+</div>
+  <!-- Pricing Grid -->
+  <div class="pricing-grid">
+    <div *ngFor="let tier of tiers" class="pricing-card" [class.recommended]="tier.isRecommended" [id]="tier.id">
+
+      <!-- Recommended Badge -->
+      <div *ngIf="tier.isRecommended" class="recommended-badge">
+        <span>الموصى بها</span>
+        <span class="star-icon">★</span>
+      </div>
+
+      <!-- Current Plan Badge -->
+      <div *ngIf="tier.isCurrent" class="current-badge">
+        <span>الحالي</span>
+        <span class="crown-icon">👑</span>
+      </div>
+
+      <!-- Header -->
+      <div class="card-header">
+        <h2 class="plan-name">{{ tier.name }}</h2>
+
+        <div class="price-container">
+          <span class="currency-symbol">{{ tier.currency }}</span>
+          <span class="price-value">{{ getPrice(tier) }}</span>
+          <span class="period">/{{ getPeriod() }}</span>
+        </div>
+
+        <p class="description">{{ tier.description }}</p>
+
+        <div *ngIf="tier.trialDays" class="trial-info">
+          <span>days free trial {{ tier.trialDays }}</span>
+          <span class="star-icon">★</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Features -->
+      <div class="features-section">
+        <h3 class="section-title">المميزات</h3>
+        <ul class="features-list">
+          <li *ngFor="let feature of tier.features" class="feature-item">
+            <span>{{ feature.name }}</span>
+            <span class="feature-icon" [class.included]="feature.included" [class.not-included]="!feature.included">
+              {{ feature.included ? '✓' : '×' }}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Limits -->
+      <div class="limits-section">
+        <h3 class="section-title">حدود الاستخدام</h3>
+        <div class="limits-grid">
+          <div *ngFor="let limit of tier.limits" class="limit-card">
+            <span class="limit-value" [style.color]="limit.color">{{ limit.value }}</span>
+            <span class="limit-label">{{ limit.label }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <button *ngIf="tier.trialButtonText" class="trial-btn">
+        {{ tier.trialButtonText }}
+        <span class="bolt-icon">⚡</span>
+      </button>
+
+      <button class="action-btn">
+        {{ tier.buttonText }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { PlansComponent } from './plans.component';
 import { ChoosenPlanComponent } from './Components/choosen-plan/choosen-plan.component';
 import { PlanPrerequisitesComponent } from './Components/plan-prerequisites/plan-prerequisites.component';
 import { PlanPolicyComponent } from './Components/plan-policy/plan-policy.component';
+import { AdvertismentComponent } from './Components/advertisment/advertisment.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
       {
         path: 'choose',
         component: ChoosenPlanComponent,
-        data: { title: 'اختر خطتك' }
+        data: { title: 'الخطط ' }
       },
       {
         path: 'requirements',
@@ -22,6 +23,11 @@ const routes: Routes = [
         path: 'orders',
         component: PlanPolicyComponent,
         data: { title: ' اوامر الخطة ' }
+      },
+      {
+        path: 'advertising',
+        component: AdvertismentComponent,
+        data: { title: '  الاعلانات ' }
       },
     ]
   }

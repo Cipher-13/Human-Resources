@@ -1,1 +1,50 @@
-<p>plan-policy works!</p>
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث  " />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+    </div>
+</header>
+
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Order Name</th>
+          <th>Order Date </th>
+          <th>User Name  </th>
+          <th> اسم الخطة </th>
+          <th> Original Price  </th>
+          <th> رمز القسيمة </th>
+          <th> الخصم  </th>
+          <th> Final Price  </th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of dataSource">
+          <!-- Table data rows would go here -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-numbe2">1</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
