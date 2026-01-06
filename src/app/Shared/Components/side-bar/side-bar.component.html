@@ -39,6 +39,17 @@
       <img src="assets/images/sideBar-star.png">
     </a>
 
+     <!-- plans -->
+    <a class="nav-icon" (click)="togglePlansMenu()">
+      <img src="../../../../assets/images/plans.png">
+    </a>
+
+     <!-- Referrals -->
+    <a class="nav-icon" (click)="toggleReferralsMenu()">
+      <img src="../../../../assets/images/referrals.png">
+    </a>
+
+
     <!-- Settings -->
     <a class="nav-icon" (click)="toggleSettingsMenu()">
       <img src="assets/images/sideBar-settings.png">
@@ -49,7 +60,7 @@
 
 <!-- Shared Overlay -->
 <div class="modal-overlay"
-     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen"
+     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen"
      (click)="closeAll()">
 </div>
 
@@ -96,6 +107,30 @@
       <li routerLink="/settings/trade-mark" routerLinkActive="active" (click)="closeAll()">علامة تجارية</li>
       <li routerLink="/settings/email" routerLinkActive="active" (click)="closeAll()">البريد الإلكتروني</li>
       <li routerLink="/settings/change-password" routerLinkActive="active" (click)="closeAll()">تغيير كلمة المرور</li>
+    </ul>
+  </div>
+</div>
+
+<div class="requests-modal" [class.active]="isPlansOpen">
+  <h3 class="modal-title">الخطط</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/plans/choose" routerLinkActive="active" (click)="closeAll()">اختر خططك</li>
+      <li routerLink="/plans/requirements" routerLinkActive="active" (click)="closeAll()">متطلبات الخطة</li>
+      <li routerLink="/plans/orders" routerLinkActive="active" (click)="closeAll()">اوامر الخطة</li>
+    </ul>
+  </div>
+</div>
+
+<div class="requests-modal" [class.active]="isReferralsOpen">
+  <h3 class="modal-title">الاحاله</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/referral/dash" routerLinkActive="active" (click)="closeAll()">لوحة تحكم الاحالات  </li>
+      <li routerLink="/referral/users" routerLinkActive="active" (click)="closeAll()">المستخدمون المرجعون </li>
+      <li routerLink="/referral/pay" routerLinkActive="active" (click)="closeAll()">طلبات الدفع </li>
     </ul>
   </div>
 </div>
