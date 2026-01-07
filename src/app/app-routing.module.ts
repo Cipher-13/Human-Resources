@@ -16,6 +16,7 @@ const routes: Routes = [
    { path: 'evaluations', loadChildren: () => import('./Features/evaluations/evaluations.module').then(m => m.EvaluationsModule) },
    { path: 'plans', loadChildren: () => import('./Features/plans/plans.module').then(m => m.PlansModule) },
    { path: 'referral', loadChildren: () => import('./Features/referral/referral.module').then(m => m.ReferralModule) },
+   { path: 'calender', loadChildren: () => import('./Features/calender/calender.module').then(m => m.CalenderModule) },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

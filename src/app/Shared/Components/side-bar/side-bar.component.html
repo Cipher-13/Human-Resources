@@ -29,6 +29,12 @@
       <img src="assets/images/sideBar-news.png">
     </a>
 
+     <!-- Requests -->
+    <a class="nav-icon" (click)="toggleCalender()">
+      <img src="assets/images/side-calender.png">
+    </a>
+
+
     <!-- Requests -->
     <a class="nav-icon" (click)="toggleRequests()">
       <img src="assets/images/sideBar-list.png">
@@ -60,7 +66,7 @@
 
 <!-- Shared Overlay -->
 <div class="modal-overlay"
-     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen"
+     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen || isCalenderOpen"
      (click)="closeAll()">
 </div>
 
@@ -75,6 +81,18 @@
       <li routerLink="/evaluations/employee-goals" routerLinkActive="active" (click)="closeAll()">أهداف الموظفين</li>
       <li routerLink="/evaluations/review-cycles" routerLinkActive="active" (click)="closeAll()">دورات المراجعة</li>
       <li routerLink="/evaluations/reviews" routerLinkActive="active" (click)="closeAll()">مراجعات الموظفين</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="requests-modal" [class.active]="isCalenderOpen">
+  <h3 class="modal-title">التقويم</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/calender/handle" routerLinkActive="active" (click)="closeAll()">إدارة التقويم</li>
+      <li routerLink="/calender/entry" routerLinkActive="active" (click)="closeAll()">ادارة ادخال الوقت</li>
     </ul>
   </div>
 </div>

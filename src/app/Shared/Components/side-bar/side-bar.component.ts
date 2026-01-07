@@ -11,6 +11,7 @@ export class SideBarComponent {
   isEvaluationsOpen = false;
   isPlansOpen = false;
   isReferralsOpen = false;
+  isCalenderOpen = false;
 
 
   toggleRequests() {
@@ -38,11 +39,17 @@ export class SideBarComponent {
     this.isReferralsOpen = true;
   }
 
+  toggleCalender() {
+    this.closeAll();
+    this.isCalenderOpen = true;
+  }
+
   closeAll() {
     this.isRequestsOpen = false;
     this.isSettingsOpen = false;
     this.isEvaluationsOpen = false;
      this.isPlansOpen = false;
      this.isReferralsOpen = false;
+     this.isCalenderOpen = false;
   }
 }
