@@ -1,0 +1,146 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.payout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header Card Styles */
+.payout-header-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #006d5b;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.payout-btn {
+  background-color: #84ada6; /* Muted teal from design */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.payout-btn:hover {
+  background-color: #6d938c;
+}
+
+.plus-icon {
+  font-size: 20px;
+}
+
+/* History Card Styles */
+.payout-history-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  min-height: 300px;
+}
+
+.history-title {
+  margin: 0 0 30px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #006d5b;
+}
+
+/* Table Styles */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.payout-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+}
+
+.payout-table th {
+  color: #888;
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.payout-table td {
+  padding: 20px 0;
+  font-size: 16px;
+  color: #333;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.empty-row {
+  text-align: center;
+  color: #999;
+  padding: 40px 0 !important;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-pending { background: #fff7ed; color: #f7941d; }
+.status-completed { background: #e6f3f1; color: #006d5b; }
+.status-failed { background: #fee2e2; color: #ef4444; }
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .payout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

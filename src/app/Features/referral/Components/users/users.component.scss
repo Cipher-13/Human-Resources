@@ -1,0 +1,238 @@
+/* ======================================================
+   Host & Base
+====================================================== */
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+
+/* ======================================================
+   Layout Containers
+====================================================== */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.referred-users-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ======================================================
+   Headers (Generic)
+====================================================== */
+.card-header {
+  text-align: right;
+  margin-bottom: 40px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #004d40;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #888;
+}
+
+
+/* ======================================================
+   Stats Grid
+====================================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+
+/* ======================================================
+   Cards
+====================================================== */
+.stat-card,
+.large-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Stat Card Header (Scoped Flex) */
+.stat-card {
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+
+/* ======================================================
+   Stat Card Content
+====================================================== */
+.title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #666;
+
+  &.green { color: #006d5b; }
+  &.blue  { color: #2d5cf7; }
+  &.orange { color: #f7941d; }
+}
+
+
+/* ======================================================
+   Icons
+====================================================== */
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.gray {
+    background-color: #f0f0f0;
+    color: #666;
+  }
+
+  &.green {
+    background-color: #e6f3f1;
+    color: #006d5b;
+  }
+
+  &.blue {
+    background-color: #eef2ff;
+    color: #2d5cf7;
+  }
+
+  &.orange {
+    background-color: #fff7ed;
+    color: #f7941d;
+  }
+}
+
+
+/* ======================================================
+   Empty State
+====================================================== */
+.empty-state {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.icon-container {
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.empty-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #004d40;
+}
+
+.empty-subtitle {
+  margin-top: 12px;
+  max-width: 500px;
+
+  font-size: 18px;
+  line-height: 1.5;
+  color: #888;
+}
+
+
+/* ======================================================
+   Large Cards
+====================================================== */
+.large-card {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+
+
+/* ======================================================
+   Responsive
+====================================================== */
+@media (max-width: 768px) {
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .referred-users-card {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .empty-title {
+    font-size: 18px;
+  }
+
+  .empty-subtitle {
+    font-size: 16px;
+  }
+}

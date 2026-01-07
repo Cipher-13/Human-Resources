@@ -1,1 +1,47 @@
-<p>payment works!</p>
+<div class="payout-container" dir="rtl">
+  <!-- Create Payout Request Section -->
+  <div class="payout-header-card">
+    <div class="header-content">
+      <div class="text-section">
+        <h2 class="title">إنشاء طلب الدفع</h2>
+        <p class="subtitle">You need at least 50.00 ريال to request a payout</p>
+      </div>
+      <button class="payout-btn" (click)="requestPayout()">
+        <span class="plus-icon">+</span>
+        طلب الدفع
+      </button>
+    </div>
+  </div>
+
+  <!-- Payout History Section -->
+  <div class="payout-history-card">
+    <h3 class="history-title">طلبات الدفع الخاصة بك</h3>
+
+    <div class="table-container">
+      <table class="payout-table">
+        <thead>
+          <tr>
+            <th>المبلغ</th>
+            <th>الحاله</th>
+            <th>التاريخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Empty state or data rows -->
+          <tr *ngIf="payouts.length === 0">
+            <td colspan="3" class="empty-row">لا توجد طلبات دفع حالياً</td>
+          </tr>
+          <tr *for="let payout of payouts">
+            <td>{{ payout.amount }} ريال</td>
+            <td>
+              <span class="status-badge" [ngClass]="payout.statusClass">
+                {{ payout.status }}
+              </span>
+            </td>
+            <td>{{ payout.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
