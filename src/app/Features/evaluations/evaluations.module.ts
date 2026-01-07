@@ -10,6 +10,9 @@ import { TargetsTypesComponent } from './components/targets-types/targets-types.
 import { EmpTargetsComponent } from './components/emp-targets/emp-targets.component';
 import { ReviewCycleComponent } from './components/review-cycle/review-cycle.component';
 import { EmpReviewsComponent } from './components/emp-reviews/emp-reviews.component';
+import { PrizesComponent } from './components/prizes/prizes.component';
+import { PrizesTypeComponent } from './components/prizes-type/prizes-type.component';
+import { PromotionsComponent } from './components/promotions/promotions.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { EmpReviewsComponent } from './components/emp-reviews/emp-reviews.compon
     TargetsTypesComponent,
     EmpTargetsComponent,
     ReviewCycleComponent,
-    EmpReviewsComponent
+    EmpReviewsComponent,
+    PrizesComponent,
+    PrizesTypeComponent,
+    PromotionsComponent
   ],
   imports: [
     CommonModule,

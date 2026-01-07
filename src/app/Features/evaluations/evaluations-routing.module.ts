@@ -8,6 +8,9 @@ import { TargetsTypesComponent } from './components/targets-types/targets-types.
 import { EmpTargetsComponent } from './components/emp-targets/emp-targets.component';
 import { ReviewCycleComponent } from './components/review-cycle/review-cycle.component';
 import { EmpReviewsComponent } from './components/emp-reviews/emp-reviews.component';
+import { PrizesComponent } from './components/prizes/prizes.component';
+import { PrizesTypeComponent } from './components/prizes-type/prizes-type.component';
+import { PromotionsComponent } from './components/promotions/promotions.component';
 
 
 const routes: Routes = [
@@ -49,7 +52,23 @@ const routes: Routes = [
         path: 'reviews',
         component: EmpReviewsComponent,
         data: { title: 'مراجعات الموظفين' }
+      },
+        {
+        path: 'pri',
+        component: PrizesComponent,
+        data: { title: 'الجوائز ' }
+      },
+      {
+        path: 'pri-type',
+        component: PrizesTypeComponent,
+        data: { title: 'انواع الجوائز' }
+      },
+      {
+        path: 'lvl-up',
+        component: PromotionsComponent,
+        data: { title: 'الترقيات ' }
       }
+
     ]
   }
 ];
