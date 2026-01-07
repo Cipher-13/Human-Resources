@@ -1,57 +1,88 @@
+import { Advertisement } from './../../../../Core/Interfaces/itable';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Ratings } from 'src/app/Core/Interfaces/itable';
-
 declare var bootstrap: any;
-
 
 @Component({
   selector: 'app-advertisment',
   templateUrl: './advertisment.component.html',
   styleUrls: ['./advertisment.component.scss']
 })
-export class AdvertismentComponent  {
-
-  dataSource: Ratings[] = [];
-  reviewForm: FormGroup;
+export class AdvertismentComponent {
+  dataSource: Advertisement[] = [];
+  advertisementForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.reviewForm = this.fb.group({
-      name: ['', Validators.required],
-      frequency: ['', Validators.required],
-      description: [''],
-      status: ['نشط']
+    this.advertisementForm = this.fb.group({
+      title: ['', Validators.required],
+      category: ['', Validators.required],
+      shortDescription: [''],
+      content: [''],
+      isFeatured: [false],
+      isHighPriority: [false],
+      isCompanyWide: [false],
+      startDate: [null, Validators.required],
+      endDate: [null, Validators.required],
+      targetBranches: ['', Validators.required],
+      targetDepartments: ['', Validators.required]
     });
   }
 
   onAddClick() {
-    this.reviewForm.reset({ status: 'نشط' });
+    this.advertisementForm.reset({
+      isFeatured: false,
+      isHighPriority: false,
+      isCompanyWide: false
+    });
+
+    // Programmatic trigger for the modal
+    const modalElement = document.getElementById('advertisementModal');
+    if (modalElement) {
+      let modalInstance = bootstrap.Modal.getInstance(modalElement);
+      if (!modalInstance) {
+        modalInstance = new bootstrap.Modal(modalElement);
+      }
+      modalInstance.show();
+    }
   }
 
-  saveReviewCycle() {
-    if (this.reviewForm.invalid) {
-      this.reviewForm.markAllAsTouched();
+  saveAdvertisement() {
+    if (this.advertisementForm.invalid) {
+      this.advertisementForm.markAllAsTouched();
       return;
     }
 
-    const newCycle: Ratings = {
-      ...this.reviewForm.value,
-      statusClass:
-        this.reviewForm.value.status === 'نشط'
-          ? 'status-approved'
-          : 'status-rejected',
-      createdAt: new Date()
+    const formData = this.advertisementForm.value;
+
+    const newAd: Advertisement = {
+      ...formData,
+      createdAt: new Date(),
+      status: 'نشط',
+      statusClass: 'status-approved'
     };
 
-    this.dataSource = [...this.dataSource, newCycle];
+    console.log('Saving Advertisement:', newAd);
+    this.dataSource = [...this.dataSource, newAd];
 
-    bootstrap.Modal.getInstance(
-      document.getElementById('reviewCycleModal')
-    )?.hide();
+    // Close Modal
+    const modalElement = document.getElementById('advertisementModal');
+    if (modalElement) {
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    }
+
+    this.advertisementForm.reset({
+      isFeatured: false,
+      isHighPriority: false,
+      isCompanyWide: false
+    });
   }
 
-  onView(row: Ratings) {}
-  onEdit(row: Ratings) {}
-  onDelete(row: Ratings) {}
+  onView(row: Advertisement) {}
+  onEdit(row: Advertisement) {}
+  onDelete(row: Advertisement) {
+    this.dataSource = this.dataSource.filter(item => item !== row);
+  }
 }
-

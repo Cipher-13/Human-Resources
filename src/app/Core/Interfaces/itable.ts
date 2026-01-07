@@ -20,6 +20,23 @@ export interface Ratings {
   createdAt: Date;
 }
 
+export interface Advertisement {
+  id?: number;
+  title: string;
+  category: string;
+  shortDescription?: string;
+  content?: string;
+  isFeatured: boolean;
+  isHighPriority: boolean;
+  isCompanyWide: boolean;
+  startDate: Date;
+  endDate: Date;
+  targetBranches: string;
+  targetDepartments: string;
+  createdAt: Date;
+  status?: string;
+  statusClass?: string;
+}
 
 export interface Requirements{
   name: string;

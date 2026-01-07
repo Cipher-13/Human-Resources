@@ -1,12 +1,11 @@
 <header class="header container-fluid py-3 bg-white">
   <div class="row g-0 mb-3 second-row justify-content-between">
-
     <div class="search-wrapper">
       <div class="search-bar">
         <span class="icon search">
           <i class="bi bi-search"></i>
         </span>
-        <input type="text" class="search-input" placeholder="البحث   " />
+        <input type="text" class="search-input" placeholder="البحث" />
         <span class="icon filter">
           <i class="bi bi-sliders"></i>
         </span>
@@ -16,14 +15,14 @@
     <button
       class="add-btn"
       data-bs-toggle="modal"
-      data-bs-target="#reviewCycleModal"
+      data-bs-target="#advertisementModal"
       (click)="onAddClick()"
     >
       + الاعلانات
     </button>
-
   </div>
 </header>
+
 <div class="table-wrapper">
   <div class="table-container">
     <table class="custom-table">
@@ -37,22 +36,191 @@
           <th>الاجرائات</th>
         </tr>
       </thead>
-
       <tbody>
         <tr *ngFor="let element of dataSource">
-         </tr>
+          <td>{{element.title}}</td>
+          <td>{{element.category}}</td>
+          <td>{{element.startDate | date}} - {{element.endDate | date}}</td>
+          <td>{{element.targetBranches}}</td>
+          <td><i class="bi bi-paperclip"></i></td>
+          <td>
+            <button class="action-btn" (click)="onView(element)"><i class="bi bi-eye"></i></button>
+            <button class="action-btn" (click)="onEdit(element)"><i class="bi bi-pencil"></i></button>
+            <button class="action-btn" (click)="onDelete(element)"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-  <!-- PAGINATION -->
-  <div class="pagination-container">
-    <div class="pagination-right">تنقل بين الصفحات</div>
-    <div class="pagination-left">
-      <button class="nav-btn">→</button>
-      <span class="page-numbe2">1</span>
-      <button class="nav-btn">←</button>
+<!-- PAGINATION -->
+<div class="pagination-container">
+  <div class="pagination-right">تنقل بين الصفحات</div>
+  <div class="pagination-left">
+    <button class="nav-btn">→</button>
+    <span class="page-numbe2">1</span>
+    <button class="nav-btn">←</button>
+  </div>
+</div>
+
+<!-- THE MODAL -->
+<div class="modal fade" id="advertisementModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content custom-modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header border-0">
+        <h5 class="modal-title">إضافة إعلان جديد</h5>
+
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+       </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form [formGroup]="advertisementForm" class="ad-form">
+
+          <!-- Title Selection -->
+          <div class="form-group">
+            <label class="form-label">العنوان *</label>
+            <div class="native-select-wrapper">
+              <select class="native-input" formControlName="title">
+                <option value="" disabled selected>Select</option>
+                <option value="title1">العنوان 1</option>
+                <option value="title2">العنوان 2</option>
+              </select>
+              <i class="bi bi-chevron-down select-icon"></i>
+            </div>
+          </div>
+
+          <!-- Category Selection -->
+          <div class="form-group">
+            <label class="form-label">الفئه *</label>
+            <div class="native-select-wrapper">
+              <select class="native-input" formControlName="category">
+                <option value="" disabled selected>Select</option>
+                <option value="cat1">الفئة 1</option>
+                <option value="cat2">الفئة 2</option>
+              </select>
+              <i class="bi bi-chevron-down select-icon"></i>
+            </div>
+          </div>
+
+          <!-- Short Description -->
+          <div class="form-group">
+            <label class="form-label">وصف مختصر</label>
+            <textarea class="native-textarea" formControlName="shortDescription"></textarea>
+          </div>
+
+          <!-- Content (Rich Text Editor) -->
+          <div class="form-group">
+            <label class="form-label">المحتوي</label>
+            <div class="rich-text-editor">
+              <div class="editor-toolbar">
+                <i class="bi bi-type-bold"></i>
+                <i class="bi bi-type-italic"></i>
+                <i class="bi bi-type-strikethrough"></i>
+                <i class="bi bi-justify-left"></i>
+                <i class="bi bi-justify-center"></i>
+                <i class="bi bi-justify-right"></i>
+                <i class="bi bi-list-ul"></i>
+                <i class="bi bi-list-ol"></i>
+                <i class="bi bi-quote"></i>
+                <i class="bi bi-paperclip"></i>
+                <i class="bi bi-link-45deg"></i>
+                <i class="bi bi-arrow-counterclockwise"></i>
+                <i class="bi bi-arrow-clockwise"></i>
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <textarea class="editor-area" formControlName="content"></textarea>
+            </div>
+          </div>
+
+          <!-- Ad Type (Checkboxes) -->
+          <div class="form-group">
+            <label class="form-label">نوع الاعلان *</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="featured" formControlName="isFeatured">
+                <label for="featured">أعلان مميز</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="highPriority" formControlName="isHighPriority">
+                <label for="highPriority">أولويه عاليه</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="companyWide" formControlName="isCompanyWide">
+                <label for="companyWide">أعلان علي مستوي الشركه</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Date -->
+          <div class="form-group">
+            <label class="form-label">تاريخ البدء *</label>
+            <div class="native-date-wrapper">
+              <input type="date" class="native-input" formControlName="startDate">
+              <i class="bi bi-calendar3 date-icon"></i>
+            </div>
+          </div>
+
+          <!-- End Date -->
+          <div class="form-group">
+            <label class="form-label">تاريخ الأنتهاء *</label>
+            <div class="native-date-wrapper">
+              <input type="date" class="native-input" formControlName="endDate">
+              <i class="bi bi-calendar3 date-icon"></i>
+            </div>
+          </div>
+
+          <!-- Attachments -->
+          <div class="form-group">
+            <label class="form-label">المرفقات *</label>
+            <div class="upload-wrapper">
+              <input type="text" class="upload-input" placeholder="حدد ملف المرفق" readonly>
+            <button type="button" class="browser-btn">
+                <i class="bi bi-image"></i> Browser
+              </button>
+              
+            </div>
+          </div>
+
+          <!-- Target Branches -->
+          <div class="form-group">
+            <label class="form-label">فروع مستهدفه *</label>
+            <div class="native-select-wrapper">
+              <select class="native-input" formControlName="targetBranches">
+                <option value="" disabled selected>فروع</option>
+                <option value="branch1">فرع 1</option>
+              </select>
+              <i class="bi bi-chevron-down select-icon"></i>
+            </div>
+          </div>
+
+          <!-- Target Departments -->
+          <div class="form-group">
+            <label class="form-label">الإدارات مستهدفه *</label>
+            <div class="native-select-wrapper">
+              <select class="native-input" formControlName="targetDepartments">
+                <option value="" disabled selected>الاداره</option>
+                <option value="dept1">إدارة 1</option>
+              </select>
+              <i class="bi bi-chevron-down select-icon"></i>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer border-0 justify-content-between">
+        <button type="button" class="btn-cancel" data-bs-dismiss="modal">إلغاء</button>
+        <button type="button" class="btn-save" (click)="saveAdvertisement()">حفظ</button>
+
+      </div>
+
     </div>
   </div>
-
+</div>
