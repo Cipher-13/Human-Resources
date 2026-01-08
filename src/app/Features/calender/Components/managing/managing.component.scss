@@ -1,0 +1,172 @@
+header {
+  padding: 1rem 2rem;
+
+  .second-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .colors-wrapper {
+      width: fit-content;
+      height: fit-content;
+      background: #fff;
+      border: 1px solid #e7e8eb;
+      border-radius: 16px;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      padding: 8px 8px;
+    }
+  }
+}
+
+
+
+
+.calendar-container {
+  width: 100%;
+
+  margin: 0 auto;
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-center {
+  display: flex;
+  gap: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #004d40;
+}
+
+.month-selector, .year-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.arrow-down {
+  border: solid #004d40;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  margin-bottom: 5px;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 18px;
+  color: #004d40;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid #eee;
+}
+
+.day-name {
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #004d40;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.day-name:last-child {
+  border-right: none;
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  position: relative;
+  background-color: #fff;
+}
+
+.calendar-day:nth-child(7n) {
+  border-right: none;
+}
+
+.other-month {
+  background-color: #f9f9f9;
+  color: #999;
+}
+
+.selected-day {
+  background-color: #004d40;
+  color: #fff;
+}
+
+.day-number {
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+  font-weight: 500;
+}
+
+/* Event Types Colors */
+.meeting {
+  background-color: #e0f2f1;
+  color: #00796b;
+}
+
+.document {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.weekend {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.deadline, .taif-deadline, .medical-deadline, .hr-deadline {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+/* Adjustments for selected day badges */
+.selected-day .event-badge.taif-deadline {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+}
+
+.selected-day .event-badge.document {
+  background-color: #bbdefb;
+  color: #0d47a1;
+}

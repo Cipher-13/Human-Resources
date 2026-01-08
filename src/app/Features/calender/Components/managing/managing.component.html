@@ -1,1 +1,54 @@
-<p>managing works!</p>
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row">
+    <div class="colors-wrapper d-flex justify-content-between gap-3 mt-3">
+      <div class="img text-center">
+        <img src="../../../../../assets/images/calender-green.png" alt="">
+        <p>Meeting</p>
+      </div>
+      <div class="img text-center">
+        <img src="../../../../../assets/images/calender-orange.png" alt="">
+        <p>Weekend</p>
+      </div>
+      <div class="img text-center">
+        <img src="../../../../../assets/images/calender-red.png" alt="">
+        <p>Deadline</p>
+      </div>
+      <div class="img text-center">
+        <img src="../../../../../assets/images/calender-cyan.png" alt="">
+        <p>Documents</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="calendar-container">
+  <header class="calendar-header">
+    <button class="nav-btn">&lt;</button>
+    <div class="header-center">
+      <span class="month-selector">{{ currentMonth }} <i class="arrow-down"></i></span>
+      <span class="year-selector">{{ currentYear }} <i class="arrow-down"></i></span>
+    </div>
+    <button class="nav-btn">&gt;</button>
+  </header>
+
+  <div class="calendar-grid">
+    <!-- Days of Week -->
+    <div class="day-name" *ngFor="let day of daysOfWeek">{{ day }}</div>
+
+    <!-- Calendar Days -->
+    <div class="calendar-day"
+         *ngFor="let day of calendarDays"
+         [class.other-month]="!day.isCurrentMonth"
+         [class.selected-day]="day.isSelected">
+      <span class="day-number">{{ day.date }}</span>
+
+      <div class="events-container">
+        <div *ngFor="let event of day.events"
+             class="event-badge"
+             [ngClass]="event.type">
+          {{ event.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

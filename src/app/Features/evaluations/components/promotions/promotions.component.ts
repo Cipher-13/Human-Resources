@@ -1,10 +1,8 @@
-import { Promotions } from './../../../../Core/Interfaces/imodal';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Promotions } from 'src/app/Core/Interfaces/imodal';
 
 declare var bootstrap: any;
-
-const ELEMENT_DATA: Promotions[] = [];
 
 @Component({
   selector: 'app-promotions',
@@ -13,49 +11,53 @@ const ELEMENT_DATA: Promotions[] = [];
 })
 export class PromotionsComponent implements OnInit {
 
-  dataSource: Promotions[] = ELEMENT_DATA;
-  indicatorForm: FormGroup;
+  dataSource: Promotions[] = [];
+  indicatorForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  private initForm(): void {
     this.indicatorForm = this.fb.group({
       employee: ['', Validators.required],
       previousTitle: ['', Validators.required],
       newTitle: ['', Validators.required],
       promotionDate: ['', Validators.required],
       effectiveDate: ['', Validators.required],
-      salaryAdjustment: ['', [Validators.required, Validators.min(0)]],
-      status: ['نشط', Validators.required],
+      salaryAdjustment: [null, [Validators.required, Validators.min(0)]],
+      reason: [''],
+      status: ['معلق', Validators.required],
       document: ['']
     });
   }
 
-  ngOnInit(): void {}
-
   onAddClick(): void {
     this.indicatorForm.reset({
-      status: 'نشط'
+      status: 'معلق'
     });
   }
 
   saveIndicator(): void {
-    if (this.indicatorForm.valid) {
-
-      const newPromotion: Promotions = {
-        ...this.indicatorForm.value,
-        createdAt: new Date()
-      };
-
-      this.dataSource = [...this.dataSource, newPromotion];
-
-      const modalElement = document.getElementById('addIndicatorModal');
-      const modalInstance = bootstrap?.Modal.getInstance(modalElement);
-      modalInstance?.hide();
-
-      console.log('Promotion saved:', newPromotion);
-
-    } else {
+    if (this.indicatorForm.invalid) {
       this.indicatorForm.markAllAsTouched();
+      return;
     }
+
+    const newPromotion: Promotions = {
+      ...this.indicatorForm.value,
+      createdAt: new Date()
+    };
+
+    this.dataSource = [...this.dataSource, newPromotion];
+
+    const modalElement = document.getElementById('addIndicatorModal');
+    const modalInstance = bootstrap?.Modal.getInstance(modalElement);
+    modalInstance?.hide();
+
+    console.log('Promotion saved:', newPromotion);
   }
 
   onView(row: Promotions): void {
@@ -66,7 +68,8 @@ export class PromotionsComponent implements OnInit {
     console.log('Edit', row);
   }
 
-  onDelete(row: Promotions): void {
-    console.log('Delete', row);
+  onDelete(index: number): void {
+    this.dataSource.splice(index, 1);
+    this.dataSource = [...this.dataSource];
   }
 }

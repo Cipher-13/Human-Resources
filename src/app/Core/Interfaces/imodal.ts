@@ -27,6 +27,8 @@ export interface Promotions {
   effectiveDate: string;     // تاريخ التنفيذ
   salaryAdjustment: number;
   status: 'نشط' | 'غير نشط';
+  reason?: string;
   document?: string;         // optional (file / url)
   createdAt: Date;
 }
+

@@ -11,30 +11,50 @@
         </span>
       </div>
     </div>
-    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addIndicatorModal" (click)="onAddClick()"> + اضافة
-      ترقية</button>
+
+    <button
+      class="add-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#addIndicatorModal"
+      (click)="onAddClick()">
+      + اضافة ترقية
+    </button>
   </div>
 </header>
 
+<!-- TABLE -->
 <div class="table-wrapper">
   <div class="table-container">
     <table class="custom-table">
       <thead>
         <tr>
           <th>موظف</th>
-          <th>التسمية السابقة </th>
-          <th>التسمية الجديدة </th>
+          <th>التسمية السابقة</th>
+          <th>التسمية الجديدة</th>
           <th>تاريخ الترقية</th>
-          <th>تاريخ التنفيذ </th>
+          <th>تاريخ التنفيذ</th>
           <th>تعديل الاجور</th>
           <th>الحالة</th>
           <th>وثيقة</th>
           <th>الاجرائات</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr *ngFor="let element of dataSource">
-          <!-- Table data rows would go here -->
+        <tr *ngFor="let item of dataSource; let i = index">
+          <td>{{ item.employee }}</td>
+          <td>{{ item.previousTitle }}</td>
+          <td>{{ item.newTitle }}</td>
+          <td>{{ item.promotionDate | date }}</td>
+          <td>{{ item.effectiveDate | date }}</td>
+          <td>{{ item.salaryAdjustment }}</td>
+          <td>{{ item.status }}</td>
+          <td>{{ item.document || '—' }}</td>
+          <td>
+            <button (click)="onView(item)">عرض</button>
+            <button (click)="onEdit(item)">تعديل</button>
+            <button (click)="onDelete(i)">حذف</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -51,141 +71,135 @@
   </div>
 </div>
 
-<!-- BOOTSTRAP MODAL -->
-<div class="modal fade" id="addIndicatorModal" tabindex="-1" aria-labelledby="addIndicatorModalLabel"
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="addIndicatorModal"
+  tabindex="-1"
   aria-hidden="true">
+
   <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
     <div class="modal-content p-4">
-      <div class="modal-header d-flex justify-content-between border-0 pb-0">
-        <h5 class="modal-title fw-bold" id="addIndicatorModalLabel">إضافة مؤشر أداء جديد</h5>
-        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+
+      <div class="modal-header border-0 d-flex justify-content-between">
+        <h5 class="modal-title fw-bold">إضافة ترقية جديدة</h5>
+        <button
+          type="button"
+          class="btn-close-custom"
+          data-bs-dismiss="modal">
           <i class="bi bi-x-lg"></i>
         </button>
-
       </div>
 
       <div class="modal-body pt-4">
         <form [formGroup]="indicatorForm">
 
+          <!-- Employee -->
           <div class="mb-2">
-            <label for="indicatorName" class="form-label fw-semibold">
-              اسم المؤشر <span class="text-danger">*</span>
-            </label>
-            <input type="text" id="indicatorName" formControlName="indicatorName" class="form-control custom-input" />
-            <div *ngIf="indicatorForm.get('indicatorName')?.touched && indicatorForm.get('indicatorName')?.invalid"
-              class="text-danger small mt-1">
-              هذا الحقل مطلوب
-            </div>
+            <label class="form-label fw-semibold">الموظف</label>
+            <select formControlName="employee" class="form-select custom-input">
+              <option value="">اختر موظف</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+            </select>
           </div>
 
+          <!-- Previous Title -->
           <div class="mb-2">
-            <label for="categoryName" class="form-label fw-semibold">
-              اسم الفئة <span class="text-danger">*</span>
-            </label>
-            <input type="text" id="categoryName" formControlName="categoryName" class="form-control custom-input" />
-            <div *ngIf="indicatorForm.get('categoryName')?.touched && indicatorForm.get('categoryName')?.invalid"
-              class="text-danger small mt-1">
-              هذا الحقل مطلوب
-            </div>
+            <label class="form-label fw-semibold">التسمية السابقة</label>
+            <select formControlName="previousTitle" class="form-select custom-input">
+              <option value="">اختر التسمية</option>
+              <option value="Junior">Junior</option>
+              <option value="Mid">Mid</option>
+            </select>
           </div>
 
-          <!-- الوصف -->
+          <!-- New Title -->
           <div class="mb-2">
-            <label for="description" class="form-label fw-semibold">وصف</label>
-            <textarea id="description" formControlName="description" class="form-control custom-input" rows="4">
-    </textarea>
+            <label class="form-label fw-semibold">التسمية الجديدة</label>
+            <select formControlName="newTitle" class="form-select custom-input">
+              <option value="">اختر التسمية</option>
+              <option value="Senior">Senior</option>
+              <option value="Lead">Lead</option>
+            </select>
           </div>
 
-          <!-- وحدة القياس -->
+          <!-- Promotion Date -->
           <div class="mb-2">
-            <label for="unit" class="form-label fw-semibold">
-              وحدة القياس <span class="text-danger">*</span>
-            </label>
-            <input type="text" id="unit" formControlName="unit" class="form-control custom-input" />
-            <div *ngIf="indicatorForm.get('unit')?.touched && indicatorForm.get('unit')?.invalid"
-              class="text-danger small mt-1">
-              هذا الحقل مطلوب
-            </div>
+            <label class="form-label fw-semibold">تاريخ الترقية</label>
+            <input
+              type="date"
+              formControlName="promotionDate"
+              class="form-control custom-input">
           </div>
 
-          <!-- القيمة المستهدفة -->
+          <!-- Effective Date -->
           <div class="mb-2">
-            <label for="targetValue" class="form-label fw-semibold">
-              القيمة المستهدفة <span class="text-danger">*</span>
-            </label>
-            <input type="number" id="targetValue" formControlName="targetValue" class="form-control custom-input" />
-            <div *ngIf="indicatorForm.get('targetValue')?.touched && indicatorForm.get('targetValue')?.invalid"
-              class="text-danger small mt-1">
-              هذا الحقل مطلوب
-            </div>
+            <label class="form-label fw-semibold">تاريخ التنفيذ</label>
+            <input
+              type="date"
+              formControlName="effectiveDate"
+              class="form-control custom-input">
           </div>
 
-          <!-- الحالة -->
+          <!-- Salary Adjustment -->
           <div class="mb-2">
-            <label for="status" class="form-label fw-semibold">الحالة</label>
-            <select id="status" formControlName="status" class="form-select custom-input">
-              <option value="نشط">نشط</option>
-              <option value="غير نشط">غير نشط</option>
+            <label class="form-label fw-semibold">تعديل الاجور</label>
+            <input
+              type="number"
+              formControlName="salaryAdjustment"
+              class="form-control custom-input">
+          </div>
+
+          <!-- Reason -->
+          <div class="mb-2">
+            <label class="form-label fw-semibold">سبب الترقية</label>
+            <textarea
+              formControlName="reason"
+              class="form-control custom-input"
+              rows="3">
+            </textarea>
+          </div>
+
+          <!-- Document -->
+          <div class="mb-2">
+            <label class="form-label fw-semibold">وثيقة</label>
+            <input
+              type="text"
+              formControlName="document"
+              class="form-control custom-input"
+              placeholder="اسم الملف">
+          </div>
+
+          <!-- Status -->
+          <div class="mb-2">
+            <label class="form-label fw-semibold">الوضع</label>
+            <select formControlName="status" class="form-select custom-input">
+              <option value="معلق">معلق</option>
+              <option value="مقبول">مقبول</option>
+              <option value="مرفوض">مرفوض</option>
             </select>
           </div>
 
         </form>
-
       </div>
 
-      <div class="modal-footer border-0 d-flex justify-content-start gap-3 pt-0">
-        <button type="button" class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
-        <button type="button" class="btn btn-save px-5 py-2" (click)="saveIndicator()">حفظ</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="addIndicatorModal" tabindex="-1" aria-labelledby="addIndicatorModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
-    <div class="modal-content p-4">
-      <div class="modal-header d-flex justify-content-between border-0 pb-0">
-        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
-          <i class="bi bi-x-lg"></i>
+      <div class="modal-footer border-0 d-flex gap-3">
+        <button
+          type="button"
+          class="btn btn-cancel px-5"
+          data-bs-dismiss="modal">
+          إلغاء
         </button>
-        <h5 class="modal-title fw-bold" id="addIndicatorModalLabel">إضافة فئة مؤشر أداء جديدة</h5>
+
+        <button
+          type="button"
+          class="btn btn-save px-5"
+          (click)="saveIndicator()">
+          حفظ
+        </button>
       </div>
 
-      <div class="modal-body pt-4">
-        <form [formGroup]="indicatorForm">
-          <div class="mb-4">
-            <label for="name" class="form-label fw-semibold">اسم الفئه <span class="text-danger">*</span></label>
-            <input type="text" id="name" formControlName="name" class="form-control custom-input" placeholder="">
-            <div *ngIf="indicatorForm.get('name')?.touched && indicatorForm.get('name')?.invalid"
-              class="text-danger small mt-1">
-              هذا الحقل مطلوب
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label for="description" class="form-label fw-semibold">وصف</label>
-            <textarea id="description" formControlName="description" class="form-control custom-input"
-              rows="4"></textarea>
-          </div>
-
-          <div class="mb-4">
-            <label for="status" class="form-label fw-semibold">الحاله</label>
-            <div class="position-relative">
-              <select id="status" formControlName="status" class="form-select custom-input">
-                <option value="نشط">نشط</option>
-                <option value="غير نشط">غير نشط</option>
-              </select>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="modal-footer border-0 d-flex justify-content-start gap-3 pt-0">
-        <button type="button" class="btn btn-save px-5 py-2" (click)="saveIndicator()">حفظ</button>
-        <button type="button" class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
-      </div>
     </div>
   </div>
 </div>
