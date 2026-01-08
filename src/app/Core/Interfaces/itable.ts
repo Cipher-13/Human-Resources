@@ -94,3 +94,17 @@ export interface Rooms {
   registrar: string;
   createdAt: Date;
 }
+
+export interface Resignation {
+  id?: number;                // optional ID
+  employeeId: number | '';    // selected employee
+  employeeName?: string;      // name of employee for display
+  resignationDate: string;    // yyyy-mm-dd
+  lastWorkingDay: string;     // yyyy-mm-dd
+  noticePeriod: number;       // in days
+  reason: string;
+  status: 'قيد المراجعة' | 'مقبولة' | 'مرفوضة';
+  document?: string;          // optional document URL
+  createdAt?: Date;           // timestamp
+}
+

@@ -10,6 +10,7 @@ import { QuitingComponent } from './Components/quiting/quiting.component';
 import { CompliantsComponent } from './Components/compliants/compliants.component';
 import { TripsComponent } from './Components/trips/trips.component';
 import { VacationsComponent } from './Components/vacations/vacations.component';
+import { EmployeeTransactionsComponent } from './employee-transactions/employee-transactions.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { VacationsComponent } from './Components/vacations/vacations.component';
     QuitingComponent,
     CompliantsComponent,
     TripsComponent,
-    VacationsComponent
+    VacationsComponent,
+    EmployeeTransactionsComponent
   ],
   imports: [
     CommonModule,

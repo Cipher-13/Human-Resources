@@ -44,3 +44,26 @@ export interface ActionItem {
   notes?: string;
   createdAt?: Date;
 }
+
+
+export interface Quit {
+  employeeId: number;
+  employeeName?: string;
+
+  type: string;
+  resignationDate: Date;
+  lastWorkingDay: Date;
+  noticePeriod: number;
+
+  reasonType: number;
+  reasonDescription: string;
+
+  hours: number;
+  capacity: number;
+
+  status: string;
+  attachment?: File | string;
+
+  createdAt?: Date;
+}
+
