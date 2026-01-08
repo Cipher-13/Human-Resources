@@ -1,0 +1,137 @@
+<!-- HEADER -->
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addIndicatorModal" (click)="onAddClick()"> + اضافة دقيقة</button>
+  </div>
+</header>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الاجتماع</th>
+          <th>الموضوع</th>
+          <th>النوع</th>
+          <th>المحتوي</th>
+          <th>سجلت بواسطة</th>
+          <th>تم تسجيله في</th>
+          <th>الاجرائات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of dataSource">
+          <!-- Table data rows -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="addIndicatorModal" tabindex="-1" aria-labelledby="addIndicatorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content p-4">
+      <div class="modal-header d-flex justify-content-between border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="addIndicatorModalLabel">إضافة فئة مؤشر أداء جديدة</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <!-- FORM START -->
+        <form [formGroup]="indicatorForm">
+
+     <!-- مثال على الحقول بعد التصحيح -->
+<div class="mb-4">
+  <label class="form-label fw-semibold">الاجتماع</label>
+  <select formControlName="meeting" class="form-select custom-input">
+    <option value="">اختر الاجتماع</option>
+    <option value="نشط">نشط</option>
+    <option value="غير نشط">غير نشط</option>
+  </select>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">الموضوع</label>
+  <select formControlName="subject" class="form-select custom-input">
+    <option value="">اختر الموضوع</option>
+    <option value="نشط">نشط</option>
+    <option value="غير نشط">غير نشط</option>
+  </select>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">النوع</label>
+  <select formControlName="type" class="form-select custom-input">
+    <option value="">اختر النوع</option>
+    <option value="نشط">نشط</option>
+    <option value="غير نشط">غير نشط</option>
+  </select>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">المحتوي</label>
+  <textarea formControlName="description" class="form-control custom-input" rows="4"></textarea>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">سجلت بواسطة</label>
+  <select formControlName="recordedBy" class="form-select custom-input">
+    <option value="">اختر الشخص</option>
+    <option value="نشط">نشط</option>
+    <option value="غير نشط">غير نشط</option>
+  </select>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">تاريخ التسجيل</label>
+  <input type="date" formControlName="registrationDate" class="form-control custom-input">
+  <div *ngIf="indicatorForm.get('registrationDate')?.touched && indicatorForm.get('registrationDate')?.invalid" class="text-danger small">
+    هذا الحقل مطلوب
+  </div>
+</div>
+
+<div class="mb-4">
+  <label class="form-label fw-semibold">المسجل</label>
+  <select formControlName="registrar" class="form-select custom-input">
+    <option value="">اختر المسجل</option>
+    <option value="نشط">نشط</option>
+    <option value="غير نشط">غير نشط</option>
+  </select>
+</div>
+
+        </form>
+        <!-- FORM END -->
+      </div>
+
+      <div class="modal-footer border-0 d-flex justify-content-start gap-3 pt-0">
+        <button type="button" class="btn btn-save px-5 py-2" (click)="saveIndicator()">حفظ</button>
+        <button type="button" class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -130,6 +130,23 @@
   </div>
 </div>
 
+<div class="requests-modal" [class.active]="isMeetingsOpen">
+  <h3 class="modal-title">الاجتماعات</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/meetings/types" routerLinkActive="active" (click)="closeAll()">انواع الاجتماعات</li>
+      <li routerLink="/meetings/attend" routerLinkActive="active" (click)="closeAll()">حضور  الاجتماعات</li>
+      <li routerLink="/meetings/lectures" routerLinkActive="active" (click)="closeAll()">محاضر الاجتماعات</li>
+      <li routerLink="/meetings/rooms" routerLinkActive="active" (click)="closeAll()">غرف الاجتماعات</li>
+      <li routerLink="/meetings/rulez" routerLinkActive="active" (click)="closeAll()">بنود العمل</li>
+
+    </ul>
+  </div>
+</div>
+
+
+
 <div class="requests-modal" [class.active]="isRequestsOpen">
   <h3 class="modal-title">الطلبات</h3>
 

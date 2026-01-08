@@ -12,6 +12,18 @@ export interface Requests {
   statusClass: string;
 }
 
+
+
+export interface meetings {
+  name: string;
+  description?: string;
+  status: 'نشط' | 'غير نشط';
+  defaultDuration?: number; // Duration in minutes or hours
+  meetingsCount?: number;
+  createdAt: Date;
+}
+
+
 export interface Ratings {
  name: string;
   description: string;
