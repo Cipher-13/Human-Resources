@@ -25,6 +25,35 @@
       <img src="assets/images/sideBar-folder.png">
     </a>
 
+
+         <!-- hiring -->
+    <a class="nav-icon" (click)="toggleHiring()">
+      <img src="assets/images/side-hiring.png" alt="">
+    </a>
+
+         <!-- performance -->
+    <a class="nav-icon" (click)="toggleOriginal()">
+      <img src="assets/images/side-awsol.png" alt="">
+    </a>
+
+         <!-- training -->
+    <a class="nav-icon" (click)="toggleTraining()">
+      <img src="assets/images/side-training.png" alt="">
+    </a>
+
+
+         <!-- performance -->
+    <a class="nav-icon" (click)="togglePerformance()">
+      <img src="assets/images/side-performance.png" alt="">
+    </a>
+
+
+         <!-- meetings -->
+    <a class="nav-icon" (click)="toggleMeetings()">
+      <img src="assets/images/side-meetings.png" alt="">
+    </a>
+
+
     <a class="nav-icon" routerLink="reports" routerLinkActive="active">
       <img src="assets/images/sideBar-news.png">
     </a>
@@ -66,7 +95,7 @@
 
 <!-- Shared Overlay -->
 <div class="modal-overlay"
-     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen || isCalenderOpen"
+     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen || isCalenderOpen || isPerformanceOpen || isMeetingsOpen || isTrainingOpen || isOriginalOpen || isHiringOpen"
      (click)="closeAll()">
 </div>
 

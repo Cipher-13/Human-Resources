@@ -6,12 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-   isRequestsOpen = false;
+
+  isRequestsOpen = false;
   isSettingsOpen = false;
   isEvaluationsOpen = false;
   isPlansOpen = false;
   isReferralsOpen = false;
   isCalenderOpen = false;
+  isPerformanceOpen= false;
+  isMeetingsOpen= false;
+  isTrainingOpen= false;
+  isOriginalOpen= false;
+  isHiringOpen= false;
 
   toggleRequests() {
     this.closeAll();
@@ -43,6 +49,27 @@ export class SideBarComponent {
     this.isCalenderOpen = true;
   }
 
+  toggleHiring() {
+    this.closeAll();
+    this.isHiringOpen = true;
+  }
+  toggleOriginal() {
+    this.closeAll();
+    this.isOriginalOpen = true;
+  }
+  toggleTraining() {
+    this.closeAll();
+    this.isTrainingOpen = true;
+  }
+  togglePerformance() {
+    this.closeAll();
+    this.isPerformanceOpen = true;
+  }
+  toggleMeetings() {
+    this.closeAll();
+    this.isMeetingsOpen = true;
+  }
+
   closeAll() {
     this.isRequestsOpen = false;
     this.isSettingsOpen = false;
@@ -50,5 +77,10 @@ export class SideBarComponent {
     this.isPlansOpen = false;
     this.isReferralsOpen = false;
     this.isCalenderOpen = false;
+    this.isPerformanceOpen = false;
+    this.isMeetingsOpen = false;
+    this.isTrainingOpen = false;
+    this.isOriginalOpen = false;
+    this.isHiringOpen = false;
   }
 }

@@ -17,6 +17,11 @@ const routes: Routes = [
    { path: 'plans', loadChildren: () => import('./Features/plans/plans.module').then(m => m.PlansModule) },
    { path: 'referral', loadChildren: () => import('./Features/referral/referral.module').then(m => m.ReferralModule) },
    { path: 'calender', loadChildren: () => import('./Features/calender/calender.module').then(m => m.CalenderModule) },
+   { path: 'performance', loadChildren: () => import('./Features/performance/performance.module').then(m => m.PerformanceModule) },
+   { path: 'meetings', loadChildren: () => import('./Features/meetings/meetings.module').then(m => m.MeetingsModule) },
+   { path: 'training', loadChildren: () => import('./Features/training/training.module').then(m => m.TrainingModule) },
+   { path: 'original', loadChildren: () => import('./Features/original/original.module').then(m => m.OriginalModule) },
+   { path: 'hiring', loadChildren: () => import('./Features/hiring/hiring.module').then(m => m.HiringModule) },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
