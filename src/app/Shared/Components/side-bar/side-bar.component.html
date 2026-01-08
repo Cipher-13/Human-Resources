@@ -130,6 +130,20 @@
   </div>
 </div>
 
+
+<div class="requests-modal" [class.active]="isPerformanceOpen">
+  <h3 class="modal-title">الاداء</h3>
+
+  <div class="modal-section">
+    <ul class="requests-list">
+      <li routerLink="/performance/handle" routerLinkActive="active" (click)="closeAll()">إدارة التقويم</li>
+      <li routerLink="/performance/entry" routerLinkActive="active" (click)="closeAll()">ادارة ادخال الوقت</li>
+    </ul>
+  </div>
+</div>
+
+
+
 <div class="requests-modal" [class.active]="isMeetingsOpen">
   <h3 class="modal-title">الاجتماعات</h3>
 
