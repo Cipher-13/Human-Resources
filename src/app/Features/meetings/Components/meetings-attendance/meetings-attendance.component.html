@@ -1,1 +1,142 @@
-<p>meetings-attendance works!</p>
+<!-- HEADER -->
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addIndicatorModal" (click)="onAddClick()"> + اضافة
+      الحاضر</button>
+  </div>
+</header>
+
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الحاضر</th>
+          <th>الاجتماع</th>
+          <th>رد علي الطلب</th>
+          <th>الحضور</th>
+          <th>تارخ قبول الاجابة </th>
+          <th>سبب الرفض</th>
+          <th>الاجرائات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of dataSource">
+          <!-- Table data rows -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="addIndicatorModal" tabindex="-1" aria-labelledby="addIndicatorModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content p-4">
+      <div class="modal-header d-flex justify-content-between border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="addIndicatorModalLabel">إضافة الحاضر </h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <!-- FORM START -->
+        <form [formGroup]="indicatorForm">
+
+          <!-- الاجتماع -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الاجتماع</label>
+            <select formControlName="meeting" class="form-select custom-input">
+              <option value="">اختر الاجتماع</option>
+              <option value="اجتماع 1">اجتماع 1</option>
+              <option value="اجتماع 2">اجتماع 2</option>
+            </select>
+          </div>
+
+          <!-- الموظف -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الموظف</label>
+            <select formControlName="employee" class="form-select custom-input">
+              <option value="">اختر الموظف</option>
+              <option value="Ahmed">Ahmed</option>
+              <option value="Mohamed">Mohamed</option>
+            </select>
+          </div>
+
+          <!-- نوع الحضور -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">نوع الحضور</label>
+            <select formControlName="attendanceType" class="form-select custom-input">
+              <option value="">اختر نوع الحضور</option>
+              <option value="حضوري">حضوري</option>
+              <option value="عن بعد">عن بعد</option>
+            </select>
+          </div>
+
+          <!-- حالة الإجابة -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">حالة الإجابة</label>
+            <select formControlName="responseStatus" class="form-select custom-input">
+              <option value="">اختر حالة الإجابة</option>
+              <option value="مقبول">مقبول</option>
+              <option value="مرفوض">مرفوض</option>
+              <option value="قيد المراجعة">قيد المراجعة</option>
+            </select>
+          </div>
+
+          <!-- حالة الحضور -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">حالة الحضور</label>
+            <select formControlName="attendanceStatus" class="form-select custom-input">
+              <option value="">اختر حالة الحضور</option>
+              <option value="حضر">حضر</option>
+              <option value="لم يحضر">لم يحضر</option>
+            </select>
+          </div>
+
+          <!-- سبب الرفض -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">سبب الرفض</label>
+            <textarea formControlName="description" class="form-control custom-input" rows="4"
+              placeholder="اكتب سبب الرفض (إن وجد)">
+    </textarea>
+          </div>
+
+        </form>
+        <!-- FORM END -->
+
+        <!-- FORM END -->
+      </div>
+
+      <div class="modal-footer border-0 d-flex justify-content-start gap-3 pt-0">
+        <button type="button" class="btn btn-save px-5 py-2" (click)="saveIndicator()">حفظ</button>
+        <button type="button" class="btn btn-cancel px-5 py-2" data-bs-dismiss="modal">إلغاء</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,3 +32,15 @@ export interface Promotions {
   createdAt: Date;
 }
 
+
+export interface ActionItem {
+  meetingId: string;
+  trainingItem: string;
+  description?: string;
+  assignedTo: string;
+  dueDate: string;
+  priority: string;
+  progress: number;
+  notes?: string;
+  createdAt?: Date;
+}

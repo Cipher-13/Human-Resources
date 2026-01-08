@@ -82,3 +82,15 @@ export interface Review {
   statusClass: string;       // class للـ badge
   category: string;          // التصنيف
 }
+
+
+export interface Rooms {
+  meeting: string;
+  subject: string;
+  type: string;
+  description: string;
+  recordedBy: string;
+  registrationDate: string;
+  registrar: string;
+  createdAt: Date;
+}
