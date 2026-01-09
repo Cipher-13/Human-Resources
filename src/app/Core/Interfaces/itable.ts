@@ -188,3 +188,29 @@ export interface transaction {
   expectedResults?: string;
   advanceAmount?: number;
 }
+
+export interface Vacation {
+  holidayName: string;
+
+  employeeId: number;
+  employeeName?: string;
+
+  branchId: number;
+  branchName?: string;
+
+  startDate: Date;
+  endDate: Date;
+
+  description: string;
+
+  annualLeave: boolean;
+  paidLeave: boolean;
+  halfDay: boolean;
+
+  type?: string;
+
+  document?: File | null;
+
+  status: string;
+  createdAt: Date;
+}
