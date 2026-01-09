@@ -96,6 +96,14 @@ export interface Rooms {
 }
 
 export interface Resignation {
+  warningFromId: any;
+  subject: any;
+  severity: any;
+  warningDate: any;
+  description: any;
+  improvementGoals: any;
+  improvementStartDate: any;
+  improvementEndDate: any;
   id?: number;                // optional ID
   employeeId: number | '';    // selected employee
   employeeName?: string;      // name of employee for display
@@ -108,3 +116,39 @@ export interface Resignation {
   createdAt?: Date;           // timestamp
 }
 
+export interface Complain {
+  id?: number; // اختياري للداخلية
+  complainantId: number; // الشاكي
+  employeeName?: string; // اسم الشاكي للعرض
+  againstId?: number; // الشخص ضده (ID)
+  againstName?: string; // الاسم للعرض
+  complaintType: string; // نوع الشكوى
+  date: string; // تاريخ الشكوى
+  description: string; // وصف الشكوى
+  attachments?: string; // رابط أو اسم الملف
+  sendWithName: boolean; // نوع الإرسال
+  sendWithoutName: boolean; // نوع الإرسال
+  status?: string; // الحالة
+  createdAt?: Date; // تاريخ الإنشاء
+}
+
+
+export interface Trip {
+  employeeId: number;
+  employeeName?: string;
+
+  purpose: string;          // الغرض
+  destination: string;      // الوجهة
+
+  startDate: string;        // تاريخ البدء
+  endDate: string;          // تاريخ الانتهاء
+
+  description: string;      // الوصف
+  expectedResults: string;  // النتائج المتوقعة
+
+  advanceAmount: number;    // مبلغ مقدم
+  documents?: string;       // الوثائق
+
+  status: string;
+  createdAt?: Date;
+}

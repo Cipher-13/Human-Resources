@@ -1,1 +1,149 @@
-<p>compliants works!</p>
+<!-- HEADER -->
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+
+    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addResignationModal" (click)="onAddClick()">
+      + إضافة شكوي
+    </button>
+  </div>
+</header>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الشاكي</th>
+          <th>ضد</th>
+          <th>نوع الشكوى</th>
+          <th>الموضوع</th>
+          <th>التاريخ</th>
+          <th>الحالة</th>
+          <th>معين</th>
+          <th>الوثائق</th>
+          <th>الإجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- سيتم إضافة البيانات هنا ديناميكيًا -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">←</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="addResignationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-4">
+
+      <div class="modal-header border-0 pb-0 justify-content-between">
+        <h5 class="modal-title fw-bold">إضافة شكوى جديدة</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <form [formGroup]="indicatorForm">
+
+          <!-- الشاكي -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الشاكي</label>
+            <select formControlName="complainantId" class="form-select custom-input">
+              <option value="">اختر الموظف</option>
+              <option *ngFor="let emp of employees" [value]="emp.id">{{ emp.name }}</option>
+            </select>
+          </div>
+
+          <!-- ضد -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">ضد</label>
+            <select formControlName="againstId" class="form-select custom-input">
+              <option value="">اختر الموظف</option>
+              <option *ngFor="let emp of employees" [value]="emp.id">{{ emp.name }}</option>
+            </select>
+          </div>
+
+          <!-- نوع الشكوى -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">نوع الشكوى</label>
+            <select formControlName="complaintType" class="form-select custom-input">
+              <option value="">اختر النوع</option>
+              <option *ngFor="let type of complaintTypes" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <!-- تاريخ الشكوى -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">تاريخ الشكوى</label>
+            <input type="date" formControlName="date" class="form-control custom-input">
+            <div *ngIf="indicatorForm.get('date')?.touched && indicatorForm.get('date')?.invalid" class="text-danger small">
+              هذا الحقل مطلوب
+            </div>
+          </div>
+
+          <!-- الوصف -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">وصف الشكوى</label>
+            <textarea formControlName="description" class="form-control custom-input"></textarea>
+          </div>
+
+          <!-- الوثائق -->
+          <div class="form-group mb-4">
+            <label class="form-label">الوثائق</label>
+            <div class="upload-wrapper">
+              <input type="text" class="upload-input" placeholder="حدد ملف المرفق" readonly>
+              <button type="button" class="browser-btn">
+                <i class="bi bi-image"></i> Browse
+              </button>
+            </div>
+          </div>
+
+          <!-- نوع الإرسال -->
+          <div class="send-type mb-4">
+            <label>نوع الإرسال <span style="color:red">*</span></label>
+            <div class="options">
+              <label class="option">
+                <input type="checkbox" formControlName="sendWithName">
+                <span>أرسل بالاسم</span>
+              </label>
+              <label class="option">
+                <input type="checkbox" formControlName="sendWithoutName">
+                <span>أرسل بدون الاسم</span>
+              </label>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-start gap-3">
+        <button class="btn btn-cancel px-5" data-bs-dismiss="modal">إلغاء</button>
+        <button class="btn btn-save px-5" [disabled]="indicatorForm.invalid" (click)="saveIndicator()">حفظ</button>
+      </div>
+
+    </div>
+  </div>
+</div>

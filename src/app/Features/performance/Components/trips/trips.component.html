@@ -1,1 +1,167 @@
-<p>trips works!</p>
+<!-- HEADER -->
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search"><i class="bi bi-search"></i></span>
+        <input type="text" class="search-input" placeholder="البحث" />
+        <span class="icon filter"><i class="bi bi-sliders"></i></span>
+      </div>
+    </div>
+
+    <button
+      class="add-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#addResignationModal"
+      (click)="onAddClick()"
+    >
+      + إضافة رحلة
+    </button>
+  </div>
+</header>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الموظف</th>
+          <th>الغرض</th>
+          <th>الوجهة</th>
+          <th>تاريخ البدء</th>
+          <th>تاريخ الانتهاء</th>
+          <th>الحالة</th>
+          <th>الإجراءات</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of dataSource">
+          <td>{{ item.employeeName }}</td>
+          <td>{{ item.purpose }}</td>
+          <td>{{ item.destination }}</td>
+          <td>{{ item.startDate }}</td>
+          <td>{{ item.endDate }}</td>
+          <td>{{ item.status }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" (click)="onDelete(item)">
+              حذف
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="dataSource.length === 0">
+          <td colspan="7" class="text-center">لا توجد بيانات</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="addResignationModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-4">
+
+      <div class="modal-header border-0 justify-content-between">
+        <h5 class="modal-title fw-bold">إضافة رحلة جديدة</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="indicatorForm">
+
+          <!-- الموظف -->
+          <div class="mb-3">
+            <label class="form-label">الموظف</label>
+            <select formControlName="employeeId" class="form-select">
+              <option value="">اختر الموظف</option>
+              <option *ngFor="let emp of employees" [value]="emp.id">
+                {{ emp.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- الغرض -->
+          <div class="mb-3">
+            <label class="form-label">الغرض</label>
+            <input type="text" formControlName="purpose" class="form-control" />
+          </div>
+
+          <!-- الوجهة -->
+          <div class="mb-3">
+            <label class="form-label">الوجهة</label>
+            <input type="text" formControlName="destination" class="form-control" />
+          </div>
+
+          <!-- تاريخ البدء -->
+          <div class="mb-3">
+            <label class="form-label">تاريخ البدء</label>
+            <input type="date" formControlName="startDate" class="form-control" />
+          </div>
+
+          <!-- تاريخ الانتهاء -->
+          <div class="mb-3">
+            <label class="form-label">تاريخ الانتهاء</label>
+            <input type="date" formControlName="endDate" class="form-control" />
+          </div>
+
+          <!-- الوصف -->
+          <div class="mb-3">
+            <label class="form-label">الوصف</label>
+            <textarea formControlName="description" class="form-control"></textarea>
+          </div>
+
+          <!-- النتائج المتوقعة -->
+          <div class="mb-3">
+            <label class="form-label">النتائج المتوقعة</label>
+            <textarea formControlName="expectedResults" class="form-control"></textarea>
+          </div>
+
+          <!-- الوثائق -->
+          <div class="form-group mb-4">
+            <label class="form-label">الوثائق</label>
+            <div class="upload-wrapper">
+              <input
+                type="text"
+                formControlName="documents"
+                class="upload-input"
+                placeholder="حدد ملف المرفق"
+                readonly
+              />
+              <button type="button" class="browser-btn">
+                <i class="bi bi-image"></i> Browse
+              </button>
+            </div>
+          </div>
+
+          <!-- مبلغ مقدم -->
+          <div class="mb-3">
+            <label class="form-label">مبلغ مقدم</label>
+            <input
+              type="number"
+              formControlName="advanceAmount"
+              class="form-control"
+            />
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-cancel" data-bs-dismiss="modal">إلغاء</button>
+        <button
+          class="btn btn-save"
+          [disabled]="indicatorForm.invalid"
+          (click)="saveIndicator()"
+        >
+          حفظ
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
