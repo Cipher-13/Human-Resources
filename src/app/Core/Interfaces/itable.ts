@@ -152,3 +152,39 @@ export interface Trip {
   status: string;
   createdAt?: Date;
 }
+
+export interface transaction {
+  employeeId: number;
+  employeeName?: string;
+
+  branchId: number;
+  branchName?: string;
+
+  departmentId: number;
+  departmentName?: string;
+
+  positionId: number;
+  positionName?: string;
+
+  transferDate: Date;
+  executionDate: Date;
+
+  description: string;
+  document?: File | null;
+
+  status: string;
+  createdAt?: Date;
+
+  // Added missing properties to fix compilation errors
+  transferType?: string;
+  from?: string;
+  to?: string;
+  purpose?: string;
+
+  // Other properties used in the component's saveIndicator method
+  destination?: string;
+  startDate?: string;
+  endDate?: string;
+  expectedResults?: string;
+  advanceAmount?: number;
+}

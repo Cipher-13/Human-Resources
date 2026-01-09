@@ -10,7 +10,7 @@ import { QuitingComponent } from './Components/quiting/quiting.component';
 import { CompliantsComponent } from './Components/compliants/compliants.component';
 import { TripsComponent } from './Components/trips/trips.component';
 import { VacationsComponent } from './Components/vacations/vacations.component';
-import { EmployeeTransactionsComponent } from './employee-transactions/employee-transactions.component';
+import { EmployeeTransactionsComponent } from './Components/employee-transactions/employee-transactions.component';
 
 
 @NgModule({
