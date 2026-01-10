@@ -1,1 +1,230 @@
-<p>originals works!</p>
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+
+    <button
+      class="add-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#addIndicatorModal"
+      (click)="onAddClick()">
+      + إضافة الأصول
+    </button>
+  </div>
+</header>
+
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الاسم</th>
+          <th>رمز الأصل</th>
+          <th>الحالة</th>
+          <th>تاريخ الشراء</th>
+          <th>تكلفة الشراء</th>
+          <th>الموظف</th>
+          <th>الموقع</th>
+          <th>الإجراءات</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of dataSource">
+          <td>{{ item.assetCode }}</td>
+          <td>{{ item.serialNumber }}</td>
+          <td>{{ item.status }}</td>
+          <td>{{ item.purchaseDate }}</td>
+          <td>{{ item.purchaseCost }}</td>
+          <td>{{ item.employeeId }}</td>
+          <td>{{ item.location }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger">حذف</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-container">
+    <div>تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">→</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">←</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addIndicatorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered custom-modal-width">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header border-0 d-flex justify-content-between">
+        <h5 class="modal-title">إضافة أصل جديد</h5>
+        <button class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form [formGroup]="indicatorForm">
+          <div class="row g-4">
+
+            <!-- Employee Selection -->
+            <div class="col-md-6">
+              <label class="form-label">الموظف</label>
+              <select class="form-select custom-input" formControlName="employeeId">
+                <option value="">اختر الموظف</option>
+                <option value="1">موظف 1</option>
+              </select>
+            </div>
+
+            <!-- Department Selection -->
+            <div class="col-md-6">
+              <label class="form-label">القسم</label>
+              <select class="form-select custom-input" formControlName="departmentId">
+                <option value="">اختر القسم</option>
+              </select>
+            </div>
+
+            <!-- Asset Type -->
+            <div class="col-md-6">
+              <label class="form-label">نوع الأصل</label>
+              <select class="form-select custom-input" formControlName="assetTypeId">
+                <option value="">اختر النوع</option>
+              </select>
+            </div>
+
+            <!-- Serial Number -->
+            <div class="col-md-6">
+              <label class="form-label">رقم التسلسل</label>
+              <input type="text" class="form-control custom-input" formControlName="serialNumber" placeholder="أدخل رقم التسلسل">
+            </div>
+
+            <!-- Asset Code -->
+            <div class="col-md-6">
+              <label class="form-label">رمز الأصل</label>
+              <input type="text" class="form-control custom-input" formControlName="assetCode" placeholder="أدخل رمز الأصل">
+            </div>
+
+            <!-- Purchase Date -->
+            <div class="col-md-6">
+              <label class="form-label">تاريخ الشراء</label>
+              <input type="date" class="form-control custom-input" formControlName="purchaseDate">
+            </div>
+
+            <!-- Purchase Cost -->
+            <div class="col-md-6">
+              <label class="form-label">تكلفة الشراء</label>
+              <input type="number" class="form-control custom-input" formControlName="purchaseCost" placeholder="0.00">
+            </div>
+
+            <!-- Status -->
+            <div class="col-md-6">
+              <label class="form-label">الحالة</label>
+              <select class="form-select custom-input" formControlName="status">
+                <option value="">اختر الحالة</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+              </select>
+            </div>
+
+            <!-- Location -->
+            <div class="col-md-6">
+              <label class="form-label">الموقع</label>
+              <input type="text" class="form-control custom-input" formControlName="location" placeholder="أدخل الموقع">
+            </div>
+
+            <!-- Supplier -->
+            <div class="col-md-6">
+              <label class="form-label">المورد</label>
+              <input type="text" class="form-control custom-input" formControlName="supplier" placeholder="اسم المورد">
+            </div>
+
+            <!-- Warranty Info -->
+            <div class="col-md-6">
+              <label class="form-label">معلومات الضمان</label>
+              <input type="text" class="form-control custom-input" formControlName="warrantyInfo" placeholder="تفاصيل الضمان">
+            </div>
+
+            <!-- Warranty End Date -->
+            <div class="col-md-6">
+              <label class="form-label">تاريخ انتهاء الضمان</label>
+              <input type="date" class="form-control custom-input" formControlName="warrantyEndDate">
+            </div>
+
+            <!-- Asset Images Upload -->
+            <div class="col-md-6">
+              <label class="form-label">صور الأصل</label>
+              <div class="upload-wrapper">
+                <span class="upload-placeholder">اسحب الصور هنا أو تصفح</span>
+                <input type="file" class="upload-input" multiple accept="image/*">
+                <button type="button" class="browser-btn">تصفح</button>
+              </div>
+            </div>
+
+            <!-- Documents Upload -->
+            <div class="col-md-6">
+              <label class="form-label">وثائق</label>
+              <div class="upload-wrapper">
+                <span class="upload-placeholder">اسحب الملفات هنا أو تصفح</span>
+                <input type="file" class="upload-input" multiple accept=".pdf,.doc,.docx">
+                <button type="button" class="browser-btn">تصفح</button>
+              </div>
+            </div>
+
+            <!-- Depreciation Method -->
+            <div class="col-md-4">
+              <label class="form-label">طريقة الانخفاض</label>
+              <select class="form-select custom-input" formControlName="depreciationMethod">
+                <option value="">اختر الطريقة</option>
+                <option value="straight">القسط الثابت</option>
+                <option value="declining">المتناقص</option>
+              </select>
+            </div>
+
+            <!-- Usage Life -->
+            <div class="col-md-4">
+              <label class="form-label">عمر المستخدم</label>
+              <input type="number" class="form-control custom-input" formControlName="usageLife" placeholder="بالسنوات">
+            </div>
+
+            <!-- Salvage Value -->
+            <div class="col-md-4">
+              <label class="form-label">القيمة المخلصة</label>
+              <input type="number" class="form-control custom-input" formControlName="salvageValue" placeholder="0.00">
+            </div>
+
+            <!-- Description -->
+            <div class="col-12">
+              <label class="form-label">الوصف</label>
+              <textarea class="form-control custom-input" formControlName="description" placeholder="أدخل وصفاً تفصيلياً للأصل..."></textarea>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer border-0">
+        <button class="btn btn-primary" (click)="saveIndicator()">حفظ</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+      </div>
+
+    </div>
+  </div>
+</div>

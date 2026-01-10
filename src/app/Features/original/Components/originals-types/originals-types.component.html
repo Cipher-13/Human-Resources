@@ -1,1 +1,92 @@
-<p>originals-types works!</p>
+<!-- HEADER -->
+<header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+
+    <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addResignationModal" (click)="onAddClick()">
+      +اضافة نوع الاصل
+    </button>
+  </div>
+</header>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>الاسم</th>
+          <th>الوصف </th>
+          <th>الاصول  </th>
+           <th>الإجراءات</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of dataSource">
+           </tr>
+
+        <tr *ngIf="dataSource.length === 0">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button class="nav-btn">←</button>
+      <span class="page-number">1</span>
+      <button class="nav-btn">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="addResignationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header border-0 pb-0 justify-content-between">
+        <h5 class="modal-title fw-bold">إضافة نوع اصول جديد</h5>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body pt-4">
+        <form [formGroup]="indicatorForm">
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الاسم</label>
+            <input type="text" formControlName="noticePeriod" class="form-control custom-input">
+          </div>
+
+
+          <!-- وصف -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold">الوصف</label>
+            <textarea formControlName="reasonDescription" class="form-control custom-input"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 justify-content-start gap-3">
+        <button class="btn btn-cancel px-5" data-bs-dismiss="modal">إلغاء</button>
+        <button class="btn btn-save px-5" [disabled]="indicatorForm.invalid" (click)="saveIndicator()">
+          حفظ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

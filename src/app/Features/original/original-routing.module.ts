@@ -13,12 +13,12 @@ const routes: Routes = [
       {
         path: 'origin-types',
         component: OriginalsTypesComponent,
-        data: { title: 'ادارة ادخال الوقت' },
+        title: 'Orignials Types ',
       },
       {
         path: 'origins',
         component: OriginalsComponent,
-        data: { title: 'ادارة التقويم' },
+        title: 'Originals ',
       },
     ],
   },
