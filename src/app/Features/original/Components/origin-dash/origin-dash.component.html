@@ -1,0 +1,111 @@
+<div class="dashboard-container" >
+  <!-- Header Buttons -->
+  <header class="dashboard-header d-flex justify-content-between align-items-center">
+
+     <p class="report-title">لوحة تحكم الأصول</p>
+    <div class="btns d-flex gap-4 ">
+     <button class="btn btn-secondary">
+      <i class="icon-list"></i>
+     <span><img src="assets/images/humbleicons_chart.png" alt="" ></span> قائمة الأصول
+    </button>
+    <button class="btn btn-secondary">
+      <i class="icon-report"></i>
+     <span><img src="assets/images/line-md_list.png" alt=""></span> تقرير الخصم
+    </button>
+    </div>
+  </header>
+
+  <!-- Top Summary Cards -->
+  <div class="summary-cards">
+    <div class="card summary-card">
+      <span class="card-title">إجمالي الأصول</span>
+      <span class="card-value total">0</span>
+    </div>
+    <div class="card summary-card">
+      <span class="card-title">متوفرة</span>
+      <span class="card-value available">0</span>
+    </div>
+    <div class="card summary-card">
+      <span class="card-title">تم تعيينه</span>
+      <span class="card-value assigned">0</span>
+    </div>
+    <div class="card summary-card">
+      <span class="card-title">تحت الصيانة</span>
+      <span class="card-value maintenance">0</span>
+    </div>
+  </div>
+
+  <!-- Asset Value Summary Card -->
+  <div class="card value-summary-card " >
+    <h2 class="section-title">ملخص قيمة الأصول</h2>
+    <div class="value-columns">
+      <div class="value-column">
+        <span class="column-label">إجمالي قيمة الشراء</span>
+        <div class="column-value">
+          <span class="currency"><img src="assets/images/KSA-riyal.png" alt=""></span>
+          <span class="amount">0.00</span>
+        </div>
+      </div>
+      <div class="value-column">
+        <span class="column-label">القيمة الحالية الإجمالية</span>
+        <div class="column-value">
+          <span class="currency"><img src="assets/images/KSA-riyal.png" alt=""></span>
+          <span class="amount">0.00</span>
+        </div>
+      </div>
+      <div class="value-column">
+        <span class="column-label">الإخراجات الإجمالية</span>
+        <div class="column-value">
+          <span class="currency"><img src="assets/images/KSA-riyal.png" alt=""></span>
+          <span class="amount">0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-header">
+        <span class="progress-label">تقدم الخصم</span>
+      </div>
+      <div class="progress-bar-container" dir="rtl">
+        <div class="progress-bar" style="width: 0%"></div>
+      </div>
+      <span class="progress-percentage">0%</span>
+    </div>
+
+    <div class="card-footer"dir="ltr">
+      <button class="btn btn-outline">
+        
+        عرض تقرير الخصم
+        <span><img src="assets/images/humbleicons_chart.png" alt="" ></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Grid -->
+  <div class="bottom-grid">
+    <div class="card grid-card">
+      <h3 class="grid-card-title">توزيع الأصول حسب النوع</h3>
+      <div class="grid-card-content">
+        <p>لا توجد بيانات عن الأصول</p>
+      </div>
+    </div>
+    <div class="card grid-card">
+      <h3 class="grid-card-title">التعيينات الأخيرة</h3>
+      <div class="grid-card-content">
+        <p>لا توجد مهام حديثة</p>
+      </div>
+    </div>
+    <div class="card grid-card">
+      <h3 class="grid-card-title">الصيانة القادمة</h3>
+      <div class="grid-card-content">
+        <p>لا يوجد صيانة قادمة</p>
+      </div>
+    </div>
+    <div class="card grid-card">
+      <h3 class="grid-card-title">الضمانات التي تنتهي صلاحيتها</h3>
+      <div class="grid-card-content">
+        <p>لا توجد ضمانات تنتهي</p>
+      </div>
+    </div>
+  </div>
+</div>

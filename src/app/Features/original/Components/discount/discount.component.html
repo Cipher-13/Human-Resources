@@ -1,0 +1,107 @@
+<div class="report-container" dir="rtl">
+  <!-- Header Section -->
+  <header class="report-header">
+    <h1 class="report-title">تقرير استهلاك الأصول</h1>
+
+    <div class="header-actions">
+      <button type="button" class="btn-action">
+        <i class="icon-list"></i>
+       <span><img src="assets/images/line-md_list.png" alt=""></span>  قائمة الأصول
+      </button>
+      <button type="button" class="btn-action">
+        <i class="icon-chart"></i>
+       <span><img src="assets/images/humbleicons_chart.png" alt="" ></span>  تقرير الخصم
+      </button>
+      <button type="button" class="btn-action">
+        <i class="icon-print"></i>
+       <span><img src="assets/images/cil_print.png" alt=""></span>  الطباعة
+      </button>
+      <button type="button" class="btn-action">
+        <i class="icon-download"></i>
+          <span><img src="assets/images/download.png" alt=""></span>  الصادرة CSV
+      </button>
+    </div>
+  </header>
+
+  <!-- Value Cards Row -->
+  <div class="value-cards-row">
+    <div class="value-card">
+      <h2 class="card-label">إجمالي قيمة الشراء</h2>
+      <div class="card-value-container">
+        <span class="currency-symbol"><img src="assets/images/KSA-riyal.png" alt=""></span>
+        <span class="value-amount">0.00</span>
+      </div>
+    </div>
+
+    <div class="value-card">
+      <h2 class="card-label">القيمة الحالية الإجمالية</h2>
+      <div class="card-value-container">
+        <span class="currency-symbol"><img src="assets/images/KSA-riyal.png" alt=""></span>
+        <span class="value-amount">0.00</span>
+      </div>
+    </div>
+
+    <div class="value-card">
+      <h2 class="card-label">الإخراجات الإجمالية</h2>
+      <div class="card-value-container">
+        <span class="currency-symbol"><img src="assets/images/KSA-riyal.png" alt=""></span>
+        <span class="value-amount">0.00</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <h1>تفاصيل خفض قيمة الاصول</h1>
+
+  <header class="header container-fluid py-3 bg-white">
+  <div class="row g-0 mb-2 second-row justify-content-between align-items-center">
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <span class="icon search">
+          <i class="bi bi-search"></i>
+        </span>
+        <input type="text" class="search-input" placeholder="البحث عن فئة" />
+        <span class="icon filter">
+          <i class="bi bi-sliders"></i>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="table-wrapper">
+  <div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>اسم الاصل </th>
+          <th>تاريخ الشراء</th>
+          <th>تكلفة الشراء </th>
+          <th>طريقة الانخفاض</th>
+          <th>القيمة الحالية</th>
+          <th>الخصم</th>
+          <th>%من الخصم</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- سيتم إضافة البيانات هنا ديناميكيًا -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <div class="pagination-right">تنقل بين الصفحات</div>
+    <div class="pagination-left">
+      <button type="button" class="nav-btn">←</button>
+      <span class="page-number">1</span>
+      <button type="button" class="nav-btn">→</button>
+    </div>
+  </div>
+</div>
+
+
+</div>

@@ -1,0 +1,236 @@
+$bg-color: #000000;
+$card-bg: #ffffff;
+$primary-teal: #004d40;
+$text-black: #000000;
+$text-gray: #757575;
+$border-color: #e0e0e0;
+
+$total-color: #004d40;
+$available-color: #2e7d32;
+$assigned-color: #0288d1;
+$maintenance-color: #fbc02d;
+
+.dashboard-container {
+  padding: 24px;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif; // Common Arabic font
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: $text-black;
+}
+
+.dashboard-header {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+
+  .report-title{
+      color: #004d40;
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    background: $card-bg;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: $primary-teal;
+
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+.card {
+  background: $card-bg;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  .summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 120px;
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary-teal;
+      margin-bottom: 12px;
+    }
+
+    .card-value {
+      font-size: 32px;
+      font-weight: 800;
+
+      &.total { color: $total-color; }
+      &.available { color: $available-color; }
+      &.assigned { color: $assigned-color; }
+      &.maintenance { color: $maintenance-color; }
+    }
+  }
+}
+
+.value-summary-card {
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-black;
+    margin-bottom: 24px;
+    text-align: right;
+  }
+
+  .value-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .value-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .column-label {
+        font-size: 14px;
+        color: $text-black;
+        margin-bottom: 8px;
+      }
+
+      .column-value {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        color: $primary-teal;
+
+        .currency {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+  .progress-section {
+    margin-bottom: 24px;
+
+    .progress-header {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+
+      .progress-label {
+        font-size: 14px;
+        color: $text-gray;
+      }
+    }
+
+    .progress-bar-container {
+      height: 12px;
+      background-color: #f0f0f0;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+
+      .progress-bar {
+        height: 100%;
+        background-color: $available-color;
+        border-radius: 6px;
+      }
+    }
+
+    .progress-percentage {
+      font-size: 18px;
+      font-weight: 700;
+      color: $text-black;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid $border-color;
+      background: transparent;
+      color: $text-black;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  .grid-card {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+
+    .grid-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: $primary-teal;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+
+    .grid-card-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-black;
+      font-size: 14px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
