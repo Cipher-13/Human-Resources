@@ -11,22 +11,22 @@ const routes: Routes = [{
       {
         path: 'types',
         component: TrainingTypesComponent,
-        data: { title: 'لوحة تحكم الاحالات' }
+        data: { title: 'انواع التدريب  ' }
       },
       {
         path: 'programs',
         component: TrainingProgramsComponent,
-        data: { title: 'طلبات الدفع   ' }
+        data: { title: 'برامج التدريب    ' }
       },
       {
         path: 'course',
         component: TrainingCoursesComponent,
-        data: { title: ' المستخدمون المرجعون  ' }
+        data: { title: '  دورات تدريبيه     ' }
       },
       {
         path: 'em-train',
         component: EmpTrainingComponent,
-        data: { title: ' المستخدمون المرجعون  ' }
+        data: { title: ' تدريب الموظفين   ' }
       },
     ]
   }
