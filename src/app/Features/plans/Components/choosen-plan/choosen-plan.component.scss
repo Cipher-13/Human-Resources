@@ -75,12 +75,15 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
 .pricing-card.recommended {
-  background-color: #e0f7f4;
+  background: linear-gradient(
+    135deg,
+    #b2dfdb 0%,
+    #c8ede7 50%,
+    #e0f7f4 100%
+  );
   border-color: #b2dfdb;
 }
-
 /* Badges */
 .recommended-badge {
   position: absolute;

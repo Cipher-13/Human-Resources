@@ -5,7 +5,7 @@
       class="welcoming col-md-6 d-flex align-items-center justify-content-md-start justify-content-center text-md-start text-center gap-2"
     >
       <h1 class="fw-bold mb-0">لوحة التحكم</h1>
-      <span class="greeting">👋 هلا والله محمود</span>
+      <span class="greeting"><i class="fa-solid fa-hands"></i> هلا والله محمود</span>
     </section>
 
     <!-- Left side: Company identity -->
@@ -43,7 +43,7 @@
           <button class="date-button month-btn" (click)="picker.open()">
             <span class="arrow">⌄</span>
             <span class="text">{{ selectedMonthLabel }}</span>
-            📅
+            <i class="fa-solid fa-calendar mx-2"></i>
           </button>
 
           <mat-datepicker
@@ -72,45 +72,46 @@
   <div class="row cards">
     <div class="col-md-6 types d-flex flex-wrap justify-content-between">
       <div class="annual dayOff">
-        <img src="assets/images/aero.png" alt />
+        <i class="fa-solid fa-plane"></i>
         <span>اجازات سنوية</span>
       </div>
 
       <div class="separator">|</div>
 
       <div class="illness dayOff">
-        <img src="assets/images/sicky.png" alt />
+        <i class="fa-solid fa-face-dizzy"></i>
         <span>اجازات مرضية</span>
       </div>
 
       <div class="separator">|</div>
 
       <div class="official dayOff">
-        <img src="assets/images/speaker.png" alt />
+       <i class="fa-solid fa-bullhorn"></i>
         <span>عطلات رسمية</span>
       </div>
 
       <div class="separator">|</div>
 
       <div class="unpaid dayOff">
-        <img src="assets/images/cash.png" alt />
+        <i class="fa-solid fa-sack-dollar"></i>
         <span>اجازات بدون اجر</span>
       </div>
     </div>
 
     <div class="col-md-5 quests d-flex flex-wrap justify-content-between">
       <div class="pallette projects-scheduling d-flex">
-        <p>🗓️</p>
+        <p><i class="fa-solid fa-calendar mx-2"></i>
+          </p>
         <p>جدول المشاريع</p>
       </div>
 
       <div class="pallette requests d-flex">
-        <p>📫</p>
+        <p><i class="fa-solid fa-envelope-open-text"></i></p>
         <p>الطلبات</p>
       </div>
 
       <div class="pallette tasks d-flex">
-        <p>📋</p>
+        <p><i class="fa-solid fa-list-check"></i></p>
         <p>المهام</p>
       </div>
     </div>
@@ -171,7 +172,7 @@
               <p>مصمم مواقع</p>
             </div>
           </div>
-          <div class="date">💻 <span>12/12/2025</span></div>
+          <div class="date"><i class="fa-solid fa-laptop"></i> <span>12/12/2025</span></div>
         </div>
         <div class="person-item">
           <div class="info">
@@ -183,7 +184,7 @@
               <p>مصمم مواقع</p>
             </div>
           </div>
-          <div class="date">💻 <span>12/12/2025</span></div>
+          <div class="date"><i class="fa-solid fa-laptop"></i> <span>12/12/2025</span></div>
         </div>
       </div>
     </div>
@@ -201,7 +202,7 @@
               <p>مبرمج أودو</p>
             </div>
           </div>
-          <div class="date">✈️ <span>14/12/2025</span></div>
+          <div class="date"><i class="fa-solid fa-bezier-curve"></i> <span>14/12/2025</span></div>
         </div>
         <div class="person-item">
           <div class="info">
@@ -213,7 +214,7 @@
               <p>مبرمج أودو</p>
             </div>
           </div>
-          <div class="date">✈️ <span>14/12/2025</span></div>
+          <div class="date"><i class="fa-solid fa-bezier-curve"></i> <span>14/12/2025</span></div>
         </div>
       </div>
     </div>
@@ -237,7 +238,7 @@
         <div class="col-md-3 ">
           <div class="team-card">
             <div class="card-header">
-              <span>🎨 فريق التصميم</span>
+              <span><i class="fa-solid fa-palette"></i> فريق التصميم</span>
             </div>
             <div class="card-body">
               <small class="text-muted">مهمة</small>
@@ -252,7 +253,7 @@
         <div class="col-md-3 flex-shrink-0">
           <div class="team-card">
             <div class="card-header">
-              <span>☎ خدمة العملاء</span>
+              <span><i class="fa-solid fa-tty"></i> خدمة العملاء</span>
             </div>
             <div class="card-body">
               <small class="text-muted">مهمة</small>
@@ -267,7 +268,7 @@
         <div class="col-md-3 flex-shrink-0">
           <div class="team-card">
             <div class="card-header">
-              <span>🛒 فريق التسويق</span>
+              <span><i class="fa-solid fa-cart-shopping"></i> فريق التسويق</span>
             </div>
             <div class="card-body">
               <small class="text-muted">مهمة</small>
@@ -282,7 +283,7 @@
         <div class="col-md-3 flex-shrink-0">
           <div class="team-card">
             <div class="card-header">
-              <span>💻 فريق البرمجة</span>
+              <span><i class="fa-solid fa-laptop"></i> فريق البرمجة</span>
             </div>
             <div class="card-body">
               <small class="text-muted">مهمة</small>
@@ -303,69 +304,3 @@
     </div>
   </div>
 </div>
-
-
-<!--
-<div class="container my-4">
-  <div class="row g-3">
-    <div class="col-md-3">
-      <div class="team-card">
-        <div class="card-header">
-          <span>🎨 فريق التصميم</span>
-        </div>
-        <div class="card-body">
-          <small class="text-muted">مهمة</small>
-          <div class="progress mt-2">
-            <div class="progress-bar bg-warning" style="width: 60%"></div>
-          </div>
-          <div class="date">١٥/٨</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="team-card">
-        <div class="card-header">
-          <span>☎ خدمة العملاء</span>
-        </div>
-        <div class="card-body">
-          <small class="text-muted">مهمة</small>
-          <div class="progress mt-2">
-            <div class="progress-bar bg-danger" style="width: 90%"></div>
-          </div>
-          <div class="date">١٥/١٣</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="team-card">
-        <div class="card-header">
-          <span>🛒 فريق التسويق</span>
-        </div>
-        <div class="card-body">
-          <small class="text-muted">مهمة</small>
-          <div class="progress mt-2">
-            <div class="progress-bar bg-secondary" style="width: 70%"></div>
-          </div>
-          <div class="date">١٥/١٠</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="team-card">
-        <div class="card-header">
-          <span>💻 فريق البرمجة</span>
-        </div>
-        <div class="card-body">
-          <small class="text-muted">مهمة</small>
-          <div class="progress mt-2">
-            <div class="progress-bar bg-dark" style="width: 30%"></div>
-          </div>
-          <div class="date">١٥/٣</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->

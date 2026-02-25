@@ -3,7 +3,8 @@
   background-color: var(--clr-bg-dark);
   color: var(--clr-text);
   padding: 1rem 0.5rem;
-
+  height: 100vh;           
+  overflow: hidden;  
   transition: var(--transition);
   display: flex;
   flex-direction: column;
@@ -16,6 +17,8 @@
     align-items: center;
     width: 100%;
     gap: 1.9rem;
+    height: 100vh;            /* يخليه بطول الشاشة */
+    overflow: hidden;  
   }
 
   .nav-icon {
@@ -27,6 +30,7 @@
     border-radius: 10px;
     transition: var(--transition);
     position: relative;
+    outline: none;
     cursor: pointer;
 
     img {
@@ -37,7 +41,9 @@
       transition: all 0.3s ease;
     }
 
-    &:hover {
+    /* UPDATED: Added &:focus-visible to handle tabbing */
+    &:hover,
+    &:focus-visible {
       background-color: var(--clr-hover);
       transform: translateY(-2px);
 
@@ -137,8 +143,7 @@
   padding: 0;
   margin: 16px 0 0;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: column; gap: 16px;
 }
 
 .requests-list li {
@@ -161,8 +166,6 @@
 .requests-modal.active {
   transform: translateX(0);
 }
-
-
 
 @media (max-width: 1440px) { .sidebar { width: 80px; } }
 @media (max-width: 1366px) { .sidebar { width: 78px; } }

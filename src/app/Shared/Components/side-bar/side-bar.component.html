@@ -2,101 +2,113 @@
   <div class="sidebar__nav">
 
     <!-- Main Icons -->
-    <a class="nav-icon"
-       routerLink="dash"
-       routerLinkActive="active"
-       [routerLinkActiveOptions]="{ exact: true }">
-      <img src="assets/images/sideBar-home.png">
+    <a class="nav-icon text-decoration-none" routerLink="dash" routerLinkActive="active" data-bs-toggle="tooltip"
+      data-bs-placement="right" title="لوحة التحكم">
+      <i class="fa-solid fa-warehouse text-white"></i>
     </a>
 
-    <a class="nav-icon" routerLink="employee" routerLinkActive="active">
-      <img src="assets/images/sideBar-user.png">
+    <a class="nav-icon text-decoration-none" routerLink="employee" data-bs-toggle="tooltip" data-bs-placement="right"
+      title="الموظفيين">
+
+      <i class="fa-solid fa-user-gear text-white"></i>
     </a>
 
-    <a class="nav-icon" routerLink="off-times" routerLinkActive="active">
-      <img src="assets/images/sideBar-clock.png">
-    </a>
-
-    <a class="nav-icon" routerLink="financial-activity" routerLinkActive="active">
-      <img src="assets/images/sideBar-breifcase.png">
-    </a>
-
-    <a class="nav-icon" routerLink="forms" routerLinkActive="active">
-      <img src="assets/images/sideBar-folder.png">
+    <a class="nav-icon text-decoration-none" routerLink="off-times" data-bs-toggle="tooltip" data-bs-placement="right"
+      title="الاجازات و المغادرات">
+      <i class="fa-solid fa-clock text-white"></i>
     </a>
 
 
-         <!-- hiring -->
-    <a class="nav-icon" (click)="toggleHiring()">
-      <img src="assets/images/side-hiring.png" alt="">
+    <a class="nav-icon text-decoration-none" routerLink="financial-activity" routerLinkActive="active"
+      data-bs-toggle="tooltip" data-bs-placement="right" title="الحركة المالية">
+      <i class="fa-solid fa-briefcase text-white"></i></a>
+
+
+    <a class="nav-icon text-decoration-none" routerLink="forms" routerLinkActive="active" data-bs-toggle="tooltip"
+      data-bs-placement="right" title="النماذج">
+      <i class="fa-solid fa-folder-closed text-white"></i></a>
+
+
+    <!-- performance -->
+    <a class="nav-icon text-decoration-none" (click)="toggleOriginal()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الاصول">
+      <i class="fa-solid fa-folder-tree text-white"></i> </a>
+
+    <!-- training -->
+    <a class="nav-icon text-decoration-none" (click)="toggleTraining()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="التدريب">
+      <i class="fa-solid fa-person-chalkboard text-white"></i></a>
+
+
+    <!-- performance -->
+    <a class="nav-icon text-decoration-none" (click)="togglePerformance()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الأداء">
+      <i class="fa-solid fa-chart-simple text-white"></i></a>
+
+
+    <!-- meetings -->
+    <a class="nav-icon text-decoration-none" (click)="toggleMeetings()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الاجتماعات">
+      <i class="fa-solid fa-people-group text-white"></i> </a>
+
+
+    <a class="nav-icon text-decoration-none" routerLink="reports" routerLinkActive="active" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="التقارير">
+      <i class="fa-solid fa-newspaper text-white"></i>
     </a>
 
-         <!-- performance -->
-    <a class="nav-icon" (click)="toggleOriginal()">
-      <img src="assets/images/side-awsol.png" alt="">
-    </a>
-
-         <!-- training -->
-    <a class="nav-icon" (click)="toggleTraining()">
-      <img src="assets/images/side-training.png" alt="">
-    </a>
-
-
-         <!-- performance -->
-    <a class="nav-icon" (click)="togglePerformance()">
-      <img src="assets/images/side-performance.png" alt="">
-    </a>
-
-
-         <!-- meetings -->
-    <a class="nav-icon" (click)="toggleMeetings()">
-      <img src="assets/images/side-meetings.png" alt="">
-    </a>
-
-
-    <a class="nav-icon" routerLink="reports" routerLinkActive="active">
-      <img src="assets/images/sideBar-news.png">
-    </a>
-
-     <!-- Requests -->
-    <a class="nav-icon" (click)="toggleCalender()">
-      <img src="assets/images/side-calender.png">
-    </a>
+    <!-- Requests -->
+    <a class="nav-icon text-decoration-none" (click)="toggleCalender()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="التقويم">
+      <i class="fa-solid fa-calendar-days text-white"></i> </a>
 
 
     <!-- Requests -->
-    <a class="nav-icon" (click)="toggleRequests()">
-      <img src="assets/images/sideBar-list.png">
+    <a class="nav-icon text-decoration-none" (click)="toggleRequests()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الطلبات">
+      <i class="fa-solid fa-list text-white"></i>
     </a>
 
     <!-- Evaluations -->
-    <a class="nav-icon" (click)="toggleEvaluationsMenu()">
-      <img src="assets/images/sideBar-star.png">
-    </a>
+    <a class="nav-icon text-decoration-none" (click)="toggleEvaluationsMenu()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="التقييمات">
+      <i class="fa-solid fa-star text-white"></i></a>
 
-     <!-- plans -->
-    <a class="nav-icon" (click)="togglePlansMenu()">
-      <img src="../../../../assets/images/plans.png">
-    </a>
+    <!-- plans -->
+    <a class="nav-icon text-decoration-none" (click)="togglePlansMenu()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الخطط">
+      <i class="fa-solid fa-book text-white"></i></a>
 
-     <!-- Referrals -->
-    <a class="nav-icon" (click)="toggleReferralsMenu()">
-      <img src="../../../../assets/images/side-referral.png">
+    <!-- Referrals -->
+    <a class="nav-icon text-decoration-none" (click)="toggleReferralsMenu()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الاحالة">
+      <i class="fa-solid fa-user-plus text-white"></i>
     </a>
 
 
     <!-- Settings -->
-    <a class="nav-icon" (click)="toggleSettingsMenu()">
-      <img src="assets/images/sideBar-settings.png">
-    </a>
+    <a class="nav-icon text-decoration-none " (click)="toggleSettingsMenu()" data-bs-toggle="tooltip"
+   data-bs-placement="right"
+   title="الإعدادات">
+      <i class="fa-solid fa-gear text-white"></i> </a>
 
   </div>
 </nav>
 
 <!-- Shared Overlay -->
 <div class="modal-overlay"
-     [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen || isCalenderOpen || isPerformanceOpen || isMeetingsOpen || isTrainingOpen || isOriginalOpen || isHiringOpen"
-     (click)="closeAll()">
+  [class.active]="isRequestsOpen || isSettingsOpen || isEvaluationsOpen || isPlansOpen || isReferralsOpen || isCalenderOpen || isPerformanceOpen || isMeetingsOpen || isTrainingOpen || isOriginalOpen || isHiringOpen"
+  (click)="closeAll()">
 </div>
 
 <div class="requests-modal" [class.active]="isEvaluationsOpen">
@@ -137,8 +149,8 @@
     <ul class="requests-list">
       <li routerLink="/original/origin-dash" routerLinkActive="active" (click)="closeAll()">لوحة تحكم الاصول </li>
       <li routerLink="/original/origins" routerLinkActive="active" (click)="closeAll()">الاصول </li>
-      <li routerLink="/original/origin-types" routerLinkActive="active" (click)="closeAll()">انواع الاصول  </li>
-      <li routerLink="/original/origin-dis" routerLinkActive="active" (click)="closeAll()">خصم الاصول   </li>
+      <li routerLink="/original/origin-types" routerLinkActive="active" (click)="closeAll()">انواع الاصول </li>
+      <li routerLink="/original/origin-dis" routerLinkActive="active" (click)="closeAll()">خصم الاصول </li>
 
     </ul>
   </div>
@@ -152,8 +164,8 @@
     <ul class="requests-list">
       <li routerLink="/training/types" routerLinkActive="active" (click)="closeAll()">أنواع التدريب</li>
       <li routerLink="/training/programs" routerLinkActive="active" (click)="closeAll()">برامج التدريب </li>
-      <li routerLink="/training/course" routerLinkActive="active" (click)="closeAll()"> دورات تدريبيه   </li>
-      <li routerLink="/training/em-train" routerLinkActive="active" (click)="closeAll()">تدريب الموظفين   </li>
+      <li routerLink="/training/course" routerLinkActive="active" (click)="closeAll()"> دورات تدريبيه </li>
+      <li routerLink="/training/em-train" routerLinkActive="active" (click)="closeAll()">تدريب الموظفين </li>
 
     </ul>
   </div>
@@ -167,12 +179,12 @@
   <div class="modal-section">
     <ul class="requests-list">
       <li routerLink="/performance/resign" routerLinkActive="active" (click)="closeAll()">الاستقالة </li>
-      <li routerLink="/performance/quit" routerLinkActive="active" (click)="closeAll()">الانهاء  </li>
+      <li routerLink="/performance/quit" routerLinkActive="active" (click)="closeAll()">الانهاء </li>
       <li routerLink="/performance/warn" routerLinkActive="active" (click)="closeAll()">التحذيرات </li>
-      <li routerLink="/performance/comp" routerLinkActive="active" (click)="closeAll()">الشكاوي  </li>
+      <li routerLink="/performance/comp" routerLinkActive="active" (click)="closeAll()">الشكاوي </li>
       <li routerLink="/performance/trip" routerLinkActive="active" (click)="closeAll()"> الرحلات </li>
       <li routerLink="/performance/trans" routerLinkActive="active" (click)="closeAll()">تحويلات الموظفين </li>
-      <li routerLink="/performance/off" routerLinkActive="active" (click)="closeAll()">العطلات  </li>
+      <li routerLink="/performance/off" routerLinkActive="active" (click)="closeAll()">العطلات </li>
 
     </ul>
   </div>
@@ -186,7 +198,7 @@
   <div class="modal-section">
     <ul class="requests-list">
       <li routerLink="/meetings/types" routerLinkActive="active" (click)="closeAll()">انواع الاجتماعات</li>
-      <li routerLink="/meetings/attend" routerLinkActive="active" (click)="closeAll()">حضور  الاجتماعات</li>
+      <li routerLink="/meetings/attend" routerLinkActive="active" (click)="closeAll()">حضور الاجتماعات</li>
       <li routerLink="/meetings/lectures" routerLinkActive="active" (click)="closeAll()">محاضر الاجتماعات</li>
       <li routerLink="/meetings/rooms" routerLinkActive="active" (click)="closeAll()">غرف الاجتماعات</li>
       <li routerLink="/meetings/rulez" routerLinkActive="active" (click)="closeAll()">بنود العمل</li>
@@ -248,7 +260,7 @@
 
   <div class="modal-section">
     <ul class="requests-list">
-      <li routerLink="/referral/dash" routerLinkActive="active" (click)="closeAll()">لوحة تحكم الاحالات  </li>
+      <li routerLink="/referral/dash" routerLinkActive="active" (click)="closeAll()">لوحة تحكم الاحالات </li>
       <li routerLink="/referral/users" routerLinkActive="active" (click)="closeAll()">المستخدمون المرجعون </li>
       <li routerLink="/referral/pay" routerLinkActive="active" (click)="closeAll()">طلبات الدفع </li>
     </ul>

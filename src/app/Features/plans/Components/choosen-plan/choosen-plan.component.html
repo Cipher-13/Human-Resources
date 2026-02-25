@@ -1,22 +1,22 @@
 <div class="pricing-container">
 
   <div class="se d-flex justify-content-between align-items-baseline ">
- <div class="title">اختر خططك</div>
-  <!-- Billing Toggle -->
-  <div class="billing-toggle">
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span class="save-badge">وفر 20%</span>
-    
-      <button class="toggle-btn" [class.active]="isAnnual" (click)="isAnnual = true">
-        سنوياً
-      </button>
-     </div>
-   <button class="toggle-btn" [class.active]="!isAnnual" (click)="isAnnual = false">
-      شهرياً
-    </button>
+    <div class="title">اختر خططك</div>
+    <!-- Billing Toggle -->
+    <div class="billing-toggle">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="save-badge">وفر 20%</span>
 
+        <button class="toggle-btn" [class.active]="isAnnual" (click)="isAnnual = true">
+          سنوياً
+        </button>
+      </div>
+      <button class="toggle-btn" [class.active]="!isAnnual" (click)="isAnnual = false">
+        شهرياً
+      </button>
+
+    </div>
   </div>
-</div>
   <!-- Pricing Grid -->
   <div class="pricing-grid">
     <div *ngFor="let tier of tiers" class="pricing-card" [class.recommended]="tier.isRecommended" [id]="tier.id">
@@ -30,15 +30,14 @@
       <!-- Current Plan Badge -->
       <div *ngIf="tier.isCurrent" class="current-badge">
         <span>الحالي</span>
-        <span class="crown-icon">👑</span>
+        <span class="crown-icon"><i class="fa-solid fa-crown"></i></span>
       </div>
 
       <!-- Header -->
       <div class="card-header">
         <h2 class="plan-name">{{ tier.name }}</h2>
 
-        <div class="price-container">
-          <span class="currency-symbol">{{ tier.currency }}</span>
+        <div class="price-container"><img class="currency-symbol" [src]="tier.currency" alt="currency">
           <span class="price-value">{{ getPrice(tier) }}</span>
           <span class="period">/{{ getPeriod() }}</span>
         </div>
@@ -80,7 +79,7 @@
       <!-- Actions -->
       <button *ngIf="tier.trialButtonText" class="trial-btn">
         {{ tier.trialButtonText }}
-        <span class="bolt-icon">⚡</span>
+        <span class="bolt-icon"><i class="fa-solid fa-bolt-lightning"></i></span>
       </button>
 
       <button class="action-btn">
