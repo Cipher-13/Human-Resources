@@ -36,13 +36,13 @@
           <td class="status">{{ row.status }}</td>
 
           <td>
-            <button class="btn btn-see" (click)="view(row)">👁 عرض</button>
+            <button class="btn btn-see" (click)="view(row)"><i class="fa-solid fa-eye"></i> عرض</button>
           </td>
           <td>
-            <button class="btn btn-edit" (click)="edit(row)">📝 تعديل</button>
+            <button class="btn btn-edit" (click)="edit(row)"><i class="fa-solid fa-pen-to-square"></i> تعديل</button>
           </td>
           <td>
-            <button class="btn btn-delete" (click)="delete(row)">❌</button>
+            <button class="btn btn-delete" (click)="delete(row)"><i class="fa-solid fa-xmark text-danger"></i></button>
           </td>
         </tr>
 
