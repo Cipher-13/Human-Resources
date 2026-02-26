@@ -16,7 +16,7 @@ export class ChoosenPlanComponent {
       name: 'Free',
       monthlyPrice: 0,
       annualPrice: 0,
-      currency: '../../../../../assets/images/KSA-riyal.png',
+      currency: 'assets/images/Saudi_Riyal_Symbol-1.png',
       description: 'Basic plan for small businesses just getting started',
       isRecommended: true,
       isCurrent: true,
@@ -36,7 +36,7 @@ export class ChoosenPlanComponent {
       name: 'Starter',
       monthlyPrice: 19.99,
       annualPrice: 191.9, // خصم 20%
-      currency: '../../../../../assets/images/KSA-riyal.png',
+     currency: 'assets/images/Saudi_Riyal_Symbol-1.png',
       description: 'Perfect for small businesses looking to grow',
       trialDays: 7,
       features: [
@@ -56,7 +56,7 @@ export class ChoosenPlanComponent {
       name: 'Pro',
       monthlyPrice: 49.99,
       annualPrice: 479.9,
-      currency: "../../../../../assets/images/KSA-riyal.png",
+      currency: 'assets/images/Saudi_Riyal_Symbol-1.png',
       description: 'Ideal for growing businesses',
       trialDays: 14,
       features: [
