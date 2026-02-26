@@ -3,8 +3,8 @@
   background-color: var(--clr-bg-dark);
   color: var(--clr-text);
   padding: 1rem 0.5rem;
-  height: 100vh;           
-  overflow: hidden;  
+  height: 100vh;
+  overflow: hidden;
   transition: var(--transition);
   display: flex;
   flex-direction: column;
@@ -17,8 +17,31 @@
     align-items: center;
     width: 100%;
     gap: 1.9rem;
-    height: 100vh;            /* يخليه بطول الشاشة */
-    overflow: hidden;  
+    height: 100vh;
+    /* ✅ التعديل الأساسي: تغيير overflow من hidden إلى auto */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* ✅ إضافة padding عشان الـ scrollbar ما يخفي الأيقونات */
+    padding-right: 0.3rem;
+
+    /* ✅ تنسيق الـ scrollbar (اختياري لكن يحسن الشكل) */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
   }
 
   .nav-icon {
@@ -32,6 +55,7 @@
     position: relative;
     outline: none;
     cursor: pointer;
+    flex-shrink: 0; /* ✅ منع الأيقونات من الانضغاط */
 
     img {
       width: 24px;
@@ -126,7 +150,7 @@
   margin: 0;
 }
 
-.modal-section{
+.modal-section {
   margin-top: -20px;
 }
 
@@ -143,7 +167,8 @@
   padding: 0;
   margin: 16px 0 0;
   display: flex;
-  flex-direction: column; gap: 16px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .requests-list li {
@@ -167,14 +192,47 @@
   transform: translateX(0);
 }
 
-@media (max-width: 1440px) { .sidebar { width: 80px; } }
-@media (max-width: 1366px) { .sidebar { width: 78px; } }
-@media (max-width: 1200px) { .sidebar { width: 75px; } }
-@media (max-width: 1024px) { .sidebar { width: 70px; } }
-@media (max-width: 900px)  { .sidebar { width: 65px; } }
-@media (max-width: 820px)  { .sidebar { width: 60px; } }
-@media (max-width: 768px)  {
-  .layout { flex-direction: column-reverse; }
+@media (max-width: 1440px) {
+  .sidebar {
+    width: 80px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .sidebar {
+    width: 78px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 75px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 70px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 65px;
+  }
+}
+
+@media (max-width: 820px) {
+  .sidebar {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column-reverse;
+  }
+
   .sidebar {
     width: 100%;
     height: auto;
@@ -188,6 +246,9 @@
       flex-direction: row;
       justify-content: center;
       gap: 1.2rem;
+      height: auto;
+      overflow-y: visible; /* ✅ إلغاء السكرول في الموبايل */
+      overflow-x: auto; /* ✅ السكرول الأفقي بدل العمودي */
     }
 
     .nav-icon {
@@ -197,8 +258,38 @@
     }
   }
 }
-@media (max-width: 600px)  { .sidebar { width: 100%; height: auto; } }
-@media (max-width: 414px)  { .sidebar { width: 100%; height: auto; } }
-@media (max-width: 375px)  { .sidebar { width: 100%; height: auto; } }
-@media (max-width: 360px)  { .sidebar { width: 100%; height: auto; } }
-@media (max-width: 320px)  { .sidebar { width: 100%; height: auto; } }
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 414px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
