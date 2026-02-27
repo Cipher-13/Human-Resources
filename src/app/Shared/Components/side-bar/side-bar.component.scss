@@ -9,22 +9,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  
+     border-right: 1px solid rgba(255, 255, 255, 0.1);
 
   .sidebar__nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    gap: 1.9rem;
-    height: 100vh;
-    /* ✅ التعديل الأساسي: تغيير overflow من hidden إلى auto */
-    overflow-y: auto;
+       width: 100%;
+     height: 100%; 
+    justify-content: space-between; 
+    gap: 1rem; 
+     overflow-y: auto;
     overflow-x: hidden;
-    /* ✅ إضافة padding عشان الـ scrollbar ما يخفي الأيقونات */
     padding-right: 0.3rem;
 
-    /* ✅ تنسيق الـ scrollbar (اختياري لكن يحسن الشكل) */
     &::-webkit-scrollbar {
       width: 6px;
     }
@@ -57,6 +56,7 @@
     cursor: pointer;
     flex-shrink: 0; /* ✅ منع الأيقونات من الانضغاط */
 
+    i{font-size: 18px;}
     img {
       width: 24px;
       height: 24px;
@@ -93,7 +93,6 @@
         top: 20%;
         height: 60%;
         width: 3px;
-        background-color: var(--clr-text);
         border-radius: 4px;
       }
     }

@@ -5,8 +5,7 @@
       <!-- Cards Section -->
       <div class="card" *ngFor="let leave of leaveCards">
         <div class="row-data">
-          <p class="icon">{{ leave.icon }}</p>
-          <div class="d-flex flex-column txt">
+      <p class="icon" [innerHTML]="leave.icon"></p>    <div class="d-flex flex-column txt">
             <p>{{ leave.type }}</p>
             <p>{{ leave.days }}</p>
           </div>
@@ -25,7 +24,7 @@
           <button class="date-button month-btn" (click)="picker.open()">
             <span class="arrow">⌄</span>
             <span class="text">{{ selectedMonthLabel }}</span>
-            📅
+            <i class="fa-solid fa-calendar-days"></i>
           </button>
 
           <mat-datepicker
@@ -80,12 +79,12 @@
 
             <td>
               <ng-container *ngIf="leave.status === 'pending'">
-                <button class="btn btn-outline-gradient">قبول الطلب ✓</button>
+                <button class="btn btn-outline-gradient">قبول الطلب <span><i class="fa-solid fa-check"></i></span></button>
               </ng-container>
             </td>
 
             <td>
-              <span class="delete-icon">✖</span>
+              <span class="delete-icon"><i class="fa-solid fa-xmark text-danger"></i></span>
             </td>
 
           </tr>

@@ -22,14 +22,14 @@ export class OffDaysComponent {
   selectedMonthLabel: string = "شهر سبتمبر";
   selectedDateLabel: string = "";
   leaveCards = [
-  { icon: "✈️", type: "اجازات سنوية", days: "15/3 يوم" },
-  { icon: "🤒", type: "اجازات مرضية", days: "10/5 يوم" },
-  { icon: "💰", type: "اجازات بدون اجر", days: "15/8 يوم" },
-  { icon: "🚨", type: "اجازات طارئة", days: "5/2 يوم" },
-  { icon: "🤵‍♂️", type: "اجازات زواج", days: "5/2 يوم" },
-  { icon: "📘", type: "اجازات دراسية", days: "5/2 يوم" },
-  { icon: "🥀", type: "عطلات وفاة", days: "15/3 يوم" },
-  { icon: "📢", type: "عطلات رسمية", days: "3 يوم" }
+  { icon: `<i class="fa-solid fa-plane"></i>`, type: "اجازات سنوية", days: "15/3 يوم" },
+  { icon: `<i class="fa-solid fa-face-dizzy"></i>`, type: "اجازات مرضية", days: "10/5 يوم" },
+  { icon: `<i class="fa-solid fa-sack-dollar"></i>`, type: "اجازات بدون اجر", days: "15/8 يوم" },
+  { icon: `<i class="fa-solid fa-bullhorn"></i>`, type: "اجازات طارئة", days: "5/2 يوم" },
+  { icon: `<i class="fa-solid fa-user-tie"></i>`, type: "اجازات زواج", days: "5/2 يوم" },
+  { icon: `<i class="fa-solid fa-book-bookmark"></i>`, type: "اجازات دراسية", days: "5/2 يوم" },
+  { icon: `<i class="fa-solid fa-skull"></i>`, type: "عطلات وفاة", days: "15/3 يوم" },
+  { icon: `<i class="fa-solid fa-bullhorn"></i>`, type: "عطلات رسمية", days: "3 يوم" }
 ];
 
 leaveRows = [
